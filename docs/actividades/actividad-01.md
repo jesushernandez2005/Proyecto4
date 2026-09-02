@@ -72,6 +72,7 @@ Se obtuvo el concepto validado de **"El Cuerpo Mensajero"**, un protocolo de com
 | Manga enrollada | "Necesito ayuda" |
 | Nudo en la muñeca | "Hay dinero disponible" |
 | Bolsillo marcado / prenda al revés | "Cambié de lugar" |
-  
+
+ 
 
 > **Conversación completa con la IA:** [Ver chat completo](https://claude.ai/share/9fe48d43-83a2-4848-8101-68f74f54d754)
