@@ -328,11 +328,7 @@ Aquí colocaré el documento utilizado o generado para representar el Pain-Gain 
 
 > Si el archivo tiene otro nombre, cambiar la ruta anterior por el nombre real del PDF.
 
-### Evidencia
 
-![Pain-Gain Map](PAIN-GAIN_Chuy.pdf)
-
----
 
 #  Resultados finales de la IA
 
@@ -382,6 +378,10 @@ Para conservar evidencia del proceso, agrego aquí el enlace a la conversación 
 *  [Perplexity](https://www.perplexity.ai/search/6c47b131-38b8-4b29-9a62-5d96c10e1ab0)
 
 ---
+
+### Defensa de mi oportunidad
+
+* [Oportunidad](defensa_paso7_visual.pdf)
 
 #  ¿Qué aprendí?
 

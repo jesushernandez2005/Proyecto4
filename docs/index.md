@@ -18,7 +18,7 @@ La idea es ir agregando aquí lo que se vaya realizando durante el semestre, jun
 **Materia:** Proyectos 4
 **Periodo:** 2026
 
-### 📷 Mi foto
+###  Mi foto
 
 
 ![Foto de Jesús](actividades/foto.jpeg)
