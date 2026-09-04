@@ -326,7 +326,6 @@ Aquí colocaré el documento utilizado o generado para representar el Pain-Gain 
 
 **[ Ver / descargar Pain-Gain Map](PAIN-GAIN_Chuy.pdf)**
 
-> Si el archivo tiene otro nombre, cambiar la ruta anterior por el nombre real del PDF.
 
 
 
@@ -359,7 +358,6 @@ Para conservar evidencia del proceso, agrego aquí el enlace a la conversación 
 
 ** [Ver conversación con la IA](https://claude.ai/share/633829b8-7260-453b-bc52-214fa529a1ca)**
 
-> El enlace puede sustituirse por el enlace real de la conversación cuando esté disponible.
 
 ---
 
