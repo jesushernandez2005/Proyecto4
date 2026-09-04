@@ -324,13 +324,13 @@ falseables para probar con usuarios en la semana siguiente.
 
 Aquí colocaré el documento utilizado o generado para representar el Pain-Gain Map.
 
-**[ Ver / descargar Pain-Gain Map](../assets/Pain-Gain-Map.pdf)**
+**[ Ver / descargar Pain-Gain Map](PAIN-GAIN_Chuy.pdf)**
 
 > Si el archivo tiene otro nombre, cambiar la ruta anterior por el nombre real del PDF.
 
 ### Evidencia
 
-![Pain-Gain Map](../assets/Pain_Gain_Map.jpg)
+![Pain-Gain Map](PAIN-GAIN_Chuy.pdf)
 
 ---
 
@@ -361,7 +361,7 @@ Aquí colocaré el documento utilizado o generado para representar el Pain-Gain 
 
 Para conservar evidencia del proceso, agrego aquí el enlace a la conversación que utilicé durante la actividad.
 
-** [Ver conversación con la IA](PEGAR-AQUI-LINK-DE-LA-CONVERSACION)**
+** [Ver conversación con la IA](https://claude.ai/share/633829b8-7260-453b-bc52-214fa529a1ca)**
 
 > El enlace puede sustituirse por el enlace real de la conversación cuando esté disponible.
 
@@ -371,15 +371,15 @@ Para conservar evidencia del proceso, agrego aquí el enlace a la conversación 
 
 ### Documentos
 
-* [ Pain-Gain Map](../assets/Pain-Gain-Map.pdf)
-* [ Matriz de Selección — Equipo](../assets/MATRIZ_DE_SELECCION_Equipo_chuy.docx)
-* [ Reporte de Oportunidad — Semana 2](../assets/Reporte_Oportunidad_Semana2.pdf)
-* [ Otros documentos](../assets/)
+* [ Pain-Gain Map](PAIN-GAIN_Chuy.pdf)
+* [ Matriz de Selección — Equipo](MATRIZ_DE_SELECCIÓN_Equipo_chuy.pdf)
+* [ Reporte de Oportunidad — Semana 2](REPORTE_DE_OPORTUNIDAD.pdf)
+
 
 ### Enlaces
 
-*  [Conversación con IA](PEGAR-AQUI-LINK)
-*  [Otra fuente utilizada](PEGAR-AQUI-LINK)
+*  [Claude](https://claude.ai/share/633829b8-7260-453b-bc52-214fa529a1ca)
+*  [Perplexity](https://www.perplexity.ai/search/6c47b131-38b8-4b29-9a62-5d96c10e1ab0)
 
 ---
 
