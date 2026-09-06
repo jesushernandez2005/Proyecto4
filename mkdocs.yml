@@ -45,7 +45,4 @@ nav:
   - Inicio: index.md
   - Actividades:
       - Actividad 1 - SCAMPER: actividades/actividad-01.md
-  - Recursos:
-      - Comandos MkDocs: comandos.md
-      - Ejemplo: ejemplo.md
-      - Comandos Git: gitcmds.md
+      - Actividad 2 - Búsqueda de Oportunidad: actividades/actividad-02.md
