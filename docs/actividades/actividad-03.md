@@ -220,7 +220,7 @@ En vigilancia tecnológica entendí que interpretar una patente no es solo ver s
 
 ### Presentación de nombre
 
-* [Nombre](distanciacero_fto.pdf.pdf)
+* [Nombre](distanciacero_fto.pdf)
 
 ## Estado de la actividad
 
