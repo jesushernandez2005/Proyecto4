@@ -1,9 +1,9 @@
 # Actividad 4 — Mercado, Valor y Propuesta de Valor
 
 **Tema:** DistanciaCero — Segmento accionable, dimensionamiento de mercado, análisis competitivo y propuesta de valor
-**Fecha:** 17/09/2026
+**Fecha:** 17/09/2026 · Actualizado 18/09/2026 con validación real (Semana 3)
 **Blueprint:** Creación de valor → Captura de valor
-**DVF:** 🔴 Deseable · 🟡 Viable
+**DVF:** 🟢 Deseable (validado con entrevistas) · 🟡 Viable (precio validado, riesgo de adopción nuevo)
 
 ---
 
@@ -15,6 +15,8 @@ La actividad avanza en cuatro frentes articulados: **segmento accionable en 4 ca
 
 Documento aquí todo el proceso que seguí con el equipo para el proyecto **DistanciaCero** — el sistema digital-físico de tranquilidad a distancia para hijos con un padre o madre mayor que vive solo(a).
 
+> **🔄 Actualización (18/09/2026):** esta semana se realizaron las tres entrevistas de validación que estaban pendientes (Mariana, Lupita, Ricardo). Los resultados están integrados en cada bloque de abajo, marcados explícitamente como ✅ CONFIRMADO, ⚠️ CONFIRMADO CON MATIZ o 🔧 AJUSTE DE DISEÑO. El detalle completo de metodología, citas y veredicto está en la sección **"Validación con usuarios — Semana 3"**.
+
 ---
 
 ## Contexto del producto
@@ -22,7 +24,7 @@ Documento aquí todo el proceso que seguí con el equipo para el proyecto **Dist
 - **Problema:** hijos e hijas de 35–55 años en México con un padre/madre de 65+ que vive solo y lejos, viviendo con ansiedad y culpa constante — el miedo a "la llamada".
 - **Mecanismo:** artefacto integrado en un objeto cotidiano (bastón, sillón, taza) con conectividad celular/LoRa propia, que detecta pasivamente la rutina diaria del adulto mayor sin que él haga nada ni dependa de WiFi doméstico.
 - **IA:** modelo en la nube que aprende el patrón individual de rutina de cada usuario y notifica al hijo/a solo por excepción, cuando la rutina se rompe.
-- **Punto de partida importante:** aún no existen entrevistas de validación con usuarios reales. Todo lo que se documenta abajo parte de investigación de mercado secundaria (fuentes públicas, estadísticas oficiales) y del Pain-Gain Map de semana 2 — no de conversaciones directas con el segmento. Esto se marca explícitamente en cada bloque.
+- **Punto de partida (actualizado):** el análisis de mercado documentado abajo partió originalmente de investigación secundaria (fuentes públicas, estadísticas oficiales) y del Pain-Gain Map de semana 2 — sin conversaciones directas con el segmento. En semana 3 se realizaron tres entrevistas a profundidad (Mariana, Lupita, Ricardo) que confirman, matizan o ajustan cada hipótesis crítica identificada entonces. El análisis original se conserva íntegro abajo; lo que la evidencia directa confirmó o cambió está marcado explícitamente en cada bloque.
 
 ---
 
@@ -63,13 +65,15 @@ entrevistas reales.]
 
 > El perfil salió deliberadamente **incompleto por diseño**. La Capa 1 (demográfica) y la Capa 2 (conductual) tuvieron datos VERIFICADOS pero **solo sobre el adulto mayor y sobre la existencia del mercado/comunidades** — ninguna fuente secundaria caracteriza directamente al hijo/hija comprador. La Capa 3 (psicográfica) quedó **casi vacía**: ninguna fuente contiene una cita textual de un hijo/hija adulto sobre su ansiedad o culpa; la emoción central del Pain-Gain Map ("miedo a la llamada") se marcó como HIPÓTESIS, no como hallazgo.
 
-**Hipótesis críticas identificadas:**
+**Hipótesis críticas identificadas (estado actualizado con entrevistas semana 3):**
 
-1. Que el segmento correcto sea el hijo/hija 35-55 (y no otro familiar) como comprador y usuario real.
-2. Que la emoción central sea "culpa" y el disparador de compra sea "tranquilidad sin preguntar" — sin ninguna fuente secundaria que lo respalde.
-3. Disposición a pagar por una **suscripción recurrente**, frente al modelo de compra única observado en los botones de pánico del mercado actual.
+1. Que el segmento correcto sea el hijo/hija 35-55 (y no otro familiar) como comprador y usuario real. → ⚠️ **Confirmado con matiz** — el comprador sí es el hijo/a 35-55, pero no siempre busca su propia tranquilidad: Ricardo compra "para aliviarle la vida a mi hermana" (Sonia), no para sí mismo.
+2. Que la emoción central sea "culpa" y el disparador de compra sea "tranquilidad sin preguntar" — sin ninguna fuente secundaria que lo respalde. → ⚠️ **Confirmado con matiz** — el disparador depende del perfil: para Lupita (sin red local) es ansiedad activa y constante ("un estado de alerta constante"); para Mariana es un pico de ansiedad puntual ("se me acelera el corazón"); para Ricardo (con red local fuerte) casi no aparece como emoción propia.
+3. Disposición a pagar por una **suscripción recurrente**, frente al modelo de compra única observado en los botones de pánico del mercado actual. → ✅ **Confirmada** — las tres cotizaciones espontáneas caen dentro o por encima del rango $300–600 MXN/mes.
 
-**Próximo paso señalado:** las entrevistas de validación deben confirmar, en orden, (1) quién es el actor real con dolor y poder de compra, (2) el lenguaje emocional real del hijo/hija ante un momento de preocupación reciente, y (3) qué pagan hoy por manejar esa preocupación.
+> **✅ Actualización con entrevistas (semana 3):** la Capa 3 dejó de estar vacía. Las tres entrevistas contienen cita textual de la emoción central. La hipótesis del "miedo a la llamada" queda **confirmada con matiz**: la preocupación es real y descrita en primera persona ("si tarda mucho en contestar ya se me acelera el corazón", "vivir en otro país te pone en un estado de alerta constante"), pero su frecuencia **no depende de la distancia en kilómetros sino de si el adulto mayor ya tiene una red humana de apoyo cerca**. Ricardo, con red local fuerte (su hermana Sonia), se preocupa fuera de las llamadas solo ~1 vez por semana — muy por debajo de lo que el perfil "vive lejos" hacía suponer. Esto implica que "hijo/a que vive lejos" ya **no** es suficiente para definir el segmento accionable: la variable que más mueve el dolor es la presencia o ausencia de un cuidador local de confianza, no la distancia geográfica. (Ver tabla de 3 perfiles en la sección de validación, abajo.)
+
+**Próximo paso (actualizado):** con el patrón "el dolor depende de la red local, no de la distancia" identificado en solo tres entrevistas, el siguiente paso es entrevistar a más personas distinguiendo explícitamente si ya tienen o no una red humana local, para confirmar el patrón con una muestra mayor — y no seguir usando "vive lejos" como único criterio de segmentación.
 
 ---
 
@@ -114,6 +118,8 @@ filtro con su fuente o supuesto de primer principio explícito.
 **Señal de viabilidad:** Marginal — el SOM cubre nómina básica e infraestructura de una startup de 4 personas con margen operativo estrecho (10-20%); se necesitarían 1,500-2,000 clientes en año 3, o introducir el hardware como pago único, para ser cómodamente viable.
 
 **Nota metodológica de la IA:** el supuesto más incierto de todo el modelo es la disposición de pago (25%). Si baja a 15%, el TAM cae a 56,610 personas; si sube a 35% (validado con entrevistas reales), sube a 132,090. Recomendó explícitamente 15-20 entrevistas para refinar este número antes de comprometer presupuesto de marketing con base en él.
+
+> **✅ Actualización con entrevistas (semana 3):** la variable más incierta del modelo — el supuesto de disposición de pago (25%) — queda confirmada como conservadora, no optimista. Las tres cotizaciones espontáneas fueron: Mariana $450 MXN/mes ("sin pensarlo dos veces"), Lupita $30–35 USD/mes (~$550–650 MXN, "techo indoloro, ya arriba del rango") y Ricardo $600–700 MXN/mes ("para aliviar a su hermana, no a sí mismo"). Las tres caen dentro o por encima del rango estimado $300–600 MXN/mes. Esto sostiene el TAM de $509.5M MXN como base razonable, aunque sigue siendo un supuesto validado con **n=3**, no con una muestra representativa — el próximo paso sigue siendo el mismo que señaló la IA: más entrevistas antes de comprometer presupuesto de marketing sobre esta cifra.
 
 ---
 
@@ -190,6 +196,8 @@ segmento accionable.]
 
 **Advertencia de océano rojo señalada por la IA:** el atributo "resuelve la culpa de reemplazar el vínculo humano" puntúa igual (3/5) que el sustituto más peligroso — si el mercado percibe el producto como un simple "automatizador de la llamada", la discusión se vuelve emocional y ninguna ventaja de hardware ayuda ahí.
 
+> **🔧 Actualización con entrevistas (semana 3) — ajuste de diseño necesario:** la advertencia de océano rojo se confirma y se vuelve más específica y más grave de lo previsto. No es solo que el atributo "resuelve la culpa de reemplazar el vínculo humano" empate con el sustituto informal — la entrevista con Ricardo revela un **actor de decisión que no estaba en el lienzo**: cuando ya existe un cuidador humano local (como su hermana Sonia), **el consentimiento de esa persona puede pesar más que el del propio adulto mayor**. Ricardo dijo explícitamente que no instalaría el producto si Sonia lo sintiera como un "voto de desconfianza" hacia su forma de cuidar, y que ella tendría que estar de acuerdo antes que su papá. Esto convierte al cuidador local en un segundo comprador/veto que el análisis de mercado original no contemplaba, y confirma con evidencia directa que el riesgo más grande de este producto puede ser humano, no técnico.
+
 ---
 
 ### Prompt 5 — Propuesta de valor final
@@ -226,19 +234,105 @@ tres versiones de máximo 25 palabras cada una.]
 
 **Oferta vs. propuesta de valor — la diferencia señalada por la IA:** la oferta describe qué hace el objeto (detección, conectividad, notificación); la propuesta describe qué deja de sentir el hijo/a (miedo, culpa) — el sujeto pasa del artefacto al usuario, y el nivel sube de funcional a emocional sin mencionar nunca al competidor por nombre.
 
+> **⚠️ Actualización con entrevistas (semana 3):** la evaluación IDEO sube de Targeted ⚠️ a **Targeted ✅ con matiz** — el segmento sí siente el dolor descrito, pero no es un segmento homogéneo: son **tres perfiles distintos** según si ya existe o no una red humana local (ver tabla de "Hallazgo estructural" abajo). La Versión 3 sigue funcionando para Lupita (sin red local, rechaza el silencio), pero **no** es el mensaje correcto para Ricardo (con red local fuerte, prefiere el silencio y no compra para aliviar su propio miedo sino el de su hermana). Se necesitan variantes de propuesta de valor por perfil, no una sola versión universal.
+
+**Propuesta de valor ajustada por perfil (post-entrevistas):**
+
+| Perfil | Propuesta de valor ajustada |
+|---|---|
+| Sin red local fuerte (tipo Lupita) | "Para quienes viven lejos y no tienen quién revise a su mamá o papá, DistanciaCero avisa apenas algo cambia — sin depender de que alguien más esté cerca para reaccionar." |
+| Con red local fuerte (tipo Ricardo) | "Para quienes ya tienen quién cuide de cerca a su padre o madre, DistanciaCero le quita a esa persona la carga de estar siempre pendiente — sin reemplazarla." |
+| Local, sin red delegada (tipo Mariana) | "Para quienes viven cerca pero no pueden estar ahí todo el día, DistanciaCero confirma que todo está bien sin pedirle nada a su mamá o papá — ni una app, ni un botón, ni acordarse de nada." |
+
+---
+
+## Validación con usuarios — Semana 3
+
+Tres entrevistas a profundidad, tres hipótesis puestas a prueba, y lo que cambia a partir de aquí.
+
+### Metodología — a quién entrevistamos
+
+| | Mariana, 42 | Lupita, 37 | Ricardo, 51 |
+|---|---|---|---|
+| Ubicación | Puebla capital | Chicago, EE. UU. | CDMX |
+| Perfil | Cuidadora local | Cuidadora diáspora | Cuidador con apoyo local |
+| Padre/madre | Su mamá vive en la misma ciudad | Su mamá (66) vive sola en Puebla | Su papá (68) vive en Veracruz |
+| Contacto habitual | Llama todos los días, 7–7:30 pm | Videollamada diaria, 20–40 min | Llama martes y viernes, no a diario |
+| Apoyo local más cercano | Su tía Licha | Prima a 40–60 min | Su hermana Sonia lo ve cada 2–3 días |
+| Historial con tecnología | Nunca ha usado apps ni dispositivos | Ya probó y abandonó un botón SOS | Nunca ha buscado ni pagado por monitoreo |
+
+### Hipótesis 1 · Sobre el dolor — ¿se preocupan seguido, fuera de las llamadas?
+
+**✓ CONFIRMADA — CON MATIZ**
+
+> "Todos los días, varias veces (...) vivir en otro país te pone en un estado de alerta constante." — Lupita (diáspora, sin red local cercana)
+
+> "Si tarda mucho en contestar sí ya se me acelera el corazón, aunque luego resulte que nomás estaba regando las plantas." — Mariana
+
+> "Poco, la verdad, tal vez una vez a la semana, y casi siempre es cuando Sonia menciona algo de pasada, no espontáneamente." — Ricardo
+
+**El matiz:** la frecuencia de la preocupación no depende de la distancia en km, sino de si ya existe una persona de confianza cerca del adulto mayor.
+
+### Hipótesis 2 · Sobre la solución — ¿prefieren el silencio o una confirmación diaria?
+
+**⚠ DEPENDE DEL PERFIL** — no hay una respuesta única; depende de si ya existe una red humana de apoyo local.
+
+> "Sin duda el mensaje diario, sin pensarlo (...) necesito algo activo, algo que confirme, no algo pasivo." — Lupita, sin red local fuerte
+
+> "El silencio no me pondría nervioso, al contrario, creo que lo preferiría — ya confío en el sistema humano que tengo con Sonia." — Ricardo, con red local fuerte
+
+**Implicación de diseño:** el modo de notificación (silencio total vs. confirmación diaria) no puede ser una decisión única de producto — debe ser configurable por familia. Ricardo además pide que la alerta llegue a él y a Sonia al mismo tiempo, no solo al pagador.
+
+### Hipótesis 3 · Sobre el pago — ¿cuánto pagarían sin pensarlo?
+
+**✓ CONFIRMADA** — las tres caen dentro o por encima del rango estimado de $300–$600 MXN/mes.
+
+| | Mariana (local) | Lupita (diáspora) | Ricardo (con apoyo local) |
+|---|---|---|---|
+| Precio sin pensarlo | $450 MXN/mes | $30–35 USD/mes (~$550–650 MXN) | $600–700 MXN/mes |
+| Nota | Arriba de esa cifra, compara con "lo que ya hago gratis" | Techo indoloro, ya arriba del rango; de $35 a $50 USD "lo piensa un poco" | Para aliviar a su hermana, no a sí mismo; de $1,000 en adelante lo consulta con Sonia primero |
+
+### Más allá de las 3 hipótesis — lo que no esperábamos encontrar
+
+1. **La autonomía del adulto mayor pesa más que la ansiedad del hijo.** El mayor freno de Mariana no es el precio ni la tecnología: es que su mamá se sienta vigilada o incapaz de vivir sola.
+2. **El diseño "sin WiFi" ya está validado por una frustración real.** Mariana describe espontáneamente una mala experiencia configurando el router de su mamá a distancia.
+3. **"Cero acción del adulto mayor" se valida por un fracaso ajeno.** Lupita pagó por un botón de emergencia y lo canceló porque su mamá "nunca se acordaba de traerlo puesto".
+4. **La alerta sin un respondiente cercano genera más ansiedad, no menos.** Para Lupita, avisar que algo cambió no basta si sigue sin haber nadie que pueda llegar rápido.
+5. **A veces el comprador no busca su propia tranquilidad.** Ricardo pagaría "para aliviarle la vida a mi hermana", como forma de compensar que ella carga el trabajo físico y él solo paga.
+6. **El riesgo más grande puede ser humano, no técnico.** Ricardo no instalaría el producto si Sonia lo sintiera como un "voto de desconfianza" hacia su forma de cuidar — antes que su papá, ella tendría que estar de acuerdo.
+
+### Hallazgo estructural — no es un segmento, son tres perfiles
+
+| | Mariana | Lupita | Ricardo |
+|---|---|---|---|
+| Distancia física | Misma ciudad | Otro país | Otra ciudad (Veracruz) |
+| Red humana local existente | Tía cercana | Prima a 40–60 min | Hermana ahí, c/2–3 días |
+| Respuesta local si algo pasa | Minutos | 40–60+ min | Inmediata (Sonia ya está) |
+| Preocupación fuera de llamadas | Puntual | Varias veces al día | ~1 vez por semana |
+| Preferencia silencio / activo | Sin explorar a fondo | Rechaza el silencio | Prefiere el silencio |
+| Techo de pago sin pensarlo | $450 MXN/mes | $30–35 USD/mes | $600–700 MXN/mes |
+
+### Veredicto de viabilidad
+
+**QUEDA VALIDADO:** el dolor es real (H1), con una causa identificable: depende de si ya hay una red humana local · el precio estimado es correcto e incluso conservador en 2 de 3 perfiles (H3) · el diseño sin WiFi y sin acción del adulto mayor ataca fricciones que los usuarios ya vivieron y abandonaron en otras soluciones.
+
+**DEBE AJUSTARSE:** el modo "silencio vs. confirmación activa" (H2) no puede ser único: debe ser configurable según si la familia ya tiene una red local fuerte. Aparece un riesgo nuevo y crítico: un cuidador humano existente (como Sonia) puede bloquear la adopción si siente que el producto desconfía de su cuidado — su consentimiento puede pesar más que el del propio adulto mayor. Falta resolver también la alerta-sin-respondiente y el consentimiento explícito del adulto mayor.
+
+**Próximo paso:** entrevistar más personas distinguiendo si ya tienen o no una red humana local, para confirmar el patrón, y diseñar un modo de notificación configurable (silencio vs. confirmación diaria, y multi-destinatario).
+
 ---
 
 ## Conclusión de esta semana
 
-| Bloque | Resultado |
+| Bloque | Resultado (actualizado con entrevistas, semana 3) |
 |---|---|
-| Segmento accionable | Construido en 4 capas, con la mayoría de la Capa 3 (psicográfica) marcada explícitamente como HIPÓTESIS por falta de entrevistas |
-| TAM / SAM / SOM | $509.5M / $96.3M / $4.59M MXN — viabilidad marginal, sensible al supuesto de disposición de pago (25%) |
-| Mapa competitivo | 3 directos, 3 indirectos, 2 sustitutos — el más peligroso es el sustituto informal (llamadas + red social), no un competidor tecnológico |
-| Blue Ocean | Eliminar autonomía requerida, reducir respuesta de emergencia en vivo, incrementar silencio/sin fricción, crear detección de rutina en objeto cotidiano sin WiFi |
-| Propuesta de valor | Nivel Emocional: "reemplaza el miedo a 'la llamada' por la certeza diaria de que todo está bien — sin preguntar, sin culpa" |
+| Segmento accionable | Capa 3 (psicográfica) pasa de HIPÓTESIS a CONFIRMADA CON MATIZ: el dolor es real pero varía según si existe red humana local, no según la distancia en km. El segmento deja de ser homogéneo — son 3 perfiles distintos. |
+| TAM / SAM / SOM | Supuesto de disposición de pago (25%) confirmado como conservador — las 3 cotizaciones reales caen dentro o arriba del rango $300–600 MXN/mes. Base del TAM ($509.5M MXN) sostenida, validada con n=3. |
+| Mapa competitivo | Advertencia de océano rojo confirmada y ampliada: aparece un nuevo actor de decisión — el cuidador humano local — cuyo consentimiento puede bloquear la venta aunque el pagador esté convencido. |
+| Blue Ocean | "Cero acción del adulto mayor" y "sin WiFi" se validan por fracasos reales ya vividos por los entrevistados (botón SOS abandonado, mala experiencia configurando router). |
+| Propuesta de valor | Sube de Targeted ⚠️ a ✅ con matiz — pero se necesitan 3 variantes de mensaje, una por perfil, no una propuesta única. |
 
-**Pendiente explícito para la siguiente semana:** todo este análisis descansa sobre evidencia de mercado *secundaria*. Ninguna capa psicográfica, ninguna cifra de disposición de pago real, y ninguna validación del atributo "resuelve la culpa" del lienzo Blue Ocean puede confirmarse sin las entrevistas directas con el segmento — que siguen pendientes.
+**Pendiente explícito para la siguiente semana:** con solo tres entrevistas, el patrón "el dolor depende de la red local, no de la distancia" es una hipótesis fuerte, no una ley — el siguiente paso es entrevistar más personas distinguiendo explícitamente si ya tienen o no una red humana local, para confirmar el patrón con una muestra mayor. Quedan además tres preguntas de diseño sin resolver: (1) cómo diseñar la alerta cuando no hay un respondiente cercano disponible (el caso de Lupita), (2) cómo obtener el consentimiento explícito del adulto mayor sin que sienta el producto como vigilancia, y (3) cómo obtener el consentimiento del cuidador humano local (como Sonia) antes de que la familia compre, dado que su rechazo puede bloquear la adopción incluso cuando el pagador está convencido.
 
 ---
 
@@ -248,11 +342,15 @@ Lo que más me quedó de esta semana es que cada bloque expone honestamente dón
 
 En el lienzo Blue Ocean, lo que más me sorprendió fue la "advertencia de océano rojo": el atributo de resolver la culpa de reemplazar el vínculo humano quedó empatado con el competidor más peligroso. Es fácil construir un lienzo donde todo parece ganado — la honestidad de puntuar bajo donde realmente no hay ventaja fue lo que hizo que esa advertencia apareciera, y es probablemente el riesgo más grande de todo el análisis de esta semana.
 
+**Actualización tras las entrevistas reales:** lo que más me cambió la cabeza esta semana fue descubrir que "hijo/a que vive lejos" no era la variable correcta. Llevaba semanas construyendo el segmento alrededor de la distancia en kilómetros, y las tres entrevistas mostraron que lo que realmente predice el dolor es si ya existe alguien de confianza cerca del adulto mayor — Ricardo, que vive más lejos que Mariana, se preocupa muchísimo menos porque ya tiene a Sonia. Y la advertencia de océano rojo que la IA había señalado como hipotética resultó ser más concreta y más seria de lo que pensé: no es solo un empate en un lienzo, es que Sonia — una persona que ni siquiera es la que compraría — puede vetar la venta si siente que el producto desconfía de ella. Eso no estaba en ningún mapa competitivo que hice.
+
 ---
 
 ## Reflexión personal
 
 > Antes de esta actividad, para mí "conocer al mercado" significaba tener muchos datos — cifras de INEGI, precios de competidores, un TAM grande. Después de construir estos cinco bloques en secuencia entendí que conocer al mercado significa poder señalar exactamente dónde termina lo que sé y empieza lo que estoy asumiendo. El perfil de segmento con la Capa 3 casi vacía se sintió, al principio, como un resultado pobre — hasta que entendí que ese vacío es información real: me dice que todavía no puedo escribir la propuesta de valor con la certeza de un hallazgo, solo con la certeza de una hipótesis razonada. Lo mismo con el TAM: la cifra de $509.5M MXN se ve bien en una diapositiva, pero lo que realmente importa es que puedo defender cada filtro que la construye y sé exactamente cuál de esos filtros (la disposición de pago) es el más frágil. Y en el Blue Ocean, ver que un atributo clave de mi propuesta quedó empatado con el competidor más peligroso — en lugar de ganado — fue el momento donde más sentí que el análisis estaba siendo honesto conmigo, y no al revés. Lo que sigue ahora, y lo que más necesito, son las entrevistas reales: son las únicas que pueden mover cualquiera de estas hipótesis a un VERIFICADO de verdad.
+
+> Ya con las tres entrevistas hechas, esa última línea envejeció rápido — y bien. Las entrevistas no solo confirmaron precio y dolor, hicieron algo que no esperaba: partieron el segmento en tres perfiles distintos y me obligaron a aceptar que la variable que puse en el centro del análisis (la distancia) no era la que importaba. Lo más incómodo de aceptar fue el hallazgo de Ricardo y Sonia: había construido todo el Blue Ocean pensando en el adulto mayor y el hijo/a como los dos actores relevantes, y resulta que hay un tercero — el cuidador humano local — cuyo consentimiento puede pesar más que el de los otros dos juntos. Si algo tengo que llevarme de esta semana es que una entrevista bien hecha no solo valida hipótesis, también te enseña qué pregunta se te olvidó hacer.
 
 ---
 
@@ -260,9 +358,12 @@ En el lienzo Blue Ocean, lo que más me sorprendió fue la "advertencia de océa
 
 *  [Claude](https://claude.ai/share/684e6038-b72b-41d0-a2f7-828ab7e78cf3)
 *  [Perplexity](https://www.perplexity.ai/search/fe92e9be-d5e6-4745-8569-88a0e2ec682d)
+*  [Ver presentación de resultados](resultados_validacion_semana3.pdf)
+*  [Canvas de Mercado](https://claude.ai/artifact/NfgEFMUyQQNhebEqt3RA7x)
+
 ## Estado de la actividad
 
-🟡 **Actividad en curso** — análisis de mercado completo con evidencia secundaria; pendientes las entrevistas de validación directa con el segmento antes de poder marcar las hipótesis críticas como confirmadas.
+🟢 **Actividad validada con matices** — análisis de mercado completo, contrastado con tres entrevistas de validación directa (semana 3). Las hipótesis de dolor y precio quedan confirmadas; el modo de notificación y el riesgo de bloqueo por un cuidador humano local quedan como ajustes de diseño pendientes, y el patrón de los 3 perfiles debe confirmarse con más entrevistas.
 
 **Tema:** Mercado, Valor y Propuesta de Valor
-**Evidencias:** Prompts + resultados de IA + perfil de segmento en 4 capas + dimensionamiento TAM/SAM/SOM + mapa competitivo + lienzo Blue Ocean + propuesta de valor en 3 versiones
+**Evidencias:** Prompts + resultados de IA + perfil de segmento en 4 capas + dimensionamiento TAM/SAM/SOM + mapa competitivo + lienzo Blue Ocean + propuesta de valor en 3 versiones + validación con 3 entrevistas de usuario (semana 3)
