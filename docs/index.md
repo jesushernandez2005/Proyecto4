@@ -97,7 +97,7 @@ Aquí se registrará:
 | 2 | [Modo Explorador: Deporte en adultos mayores](actividades/actividad-02.md) | 02/09/2026 | 🟢 Completado |
 | 3 | [Propiedad Intelectual, Marca y Vigilancia Tecnológica](actividades/actividad-03.md) | 10/09/2026 | 🟢 Completado |
 | 4 | [Mercado, Valor y Propuesta de Valor](actividades/actividad-04.md) | 17/09/2026 | 🟢 Completado |
-| 5 | Por agregar | --/--/2026 | 🟡 Pendiente |
+| 5 | [Product Design Specification y Arquitectura del Sistema](actividades/actividad-05.md) | 24/09/2026 | 🟢 Completado |
 ---
 
 ##  GitHub
