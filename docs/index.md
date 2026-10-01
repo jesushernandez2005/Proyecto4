@@ -98,6 +98,7 @@ Aquí se registrará:
 | 3 | [Propiedad Intelectual, Marca y Vigilancia Tecnológica](actividades/actividad-03.md) | 10/09/2026 | 🟢 Completado |
 | 4 | [Mercado, Valor y Propuesta de Valor](actividades/actividad-04.md) | 17/09/2026 | 🟢 Completado |
 | 5 | [Product Design Specification y Arquitectura del Sistema](actividades/actividad-05.md) | 24/09/2026 | 🟢 Completado |
+| 6 | [Generación y Selección de Concepto de Diseño](actividades/actividad-06.md) | 01/10/2026 | 🟢 Completado |
 ---
 
 ##  GitHub
