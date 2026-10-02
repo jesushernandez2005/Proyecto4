@@ -305,16 +305,92 @@ botón único de acción, sin gráficas técnicas.
 
 ## Entregable final — Semana 6
 
-**Equipo:** Jesús + equipo DistanciaCero · **Concepto elegido:** El Reposabrazos Centinela
+**Equipo:** Jesús y Andrea · **Concepto elegido:** El Reposabrazos Centinela
 
 ### 1. Tabla morfológica
-*(ver tabla completa arriba, en Prompt 1 — 7 parámetros × 3 variantes, enriquecida con la variante de carga por contacto magnético del Prompt 2)*
+
+| Parámetro | Variante A | Variante B | Variante C |
+|---|---|---|---|
+| Objeto anfitrión | Bastón (impresión 3D + inserto) | Sillón/silla (módulo adherido bajo cojín o brazo) | Taza/posavasos (cápsula removible) |
+| Forma de la carcasa | Cilíndrica integrada al eje | Placa delgada rectangular redondeada | Cápsula circular plana removible |
+| Método de instalación | Inserto deslizante dentro del bastón | Velcro industrial bajo el cojín | Adhesivo/magnético bajo la taza o posavasos |
+| Indicador de estado | LED tipo detector de humo (parpadeo breve periódico) | Sin indicador físico — todo en app | Anillo luminoso tenue en la base |
+| Material y acabado | ABS acabado "madera" mate | Silicona suave, textura de tapicería | Acabado "cerámico" satinado |
+| Interfaz física | Sin botones — automático | Botón único de reset recesado | Touch capacitivo oculto |
+| Fuente de energía | Batería 18650 removible, tapa inferior | Batería 18650, panel trasero, **carga por contacto magnético** *(variante agregada vía analogía del cepillo eléctrico)* | Batería sellada, reemplazo de cápsula completa |
 
 ### 2. Los 3 conceptos de diseño
-*(ver desarrollo completo arriba, en Prompt 3 — Bastón Centinela, Reposabrazos Centinela, Posavasos Guardián)*
+
+**Concepto 1 — "El Bastón Centinela"**
+
+| | |
+|---|---|
+| Combinación morfológica | Bastón · cilíndrico integrado · inserto deslizante · LED tipo detector de humo · acabado madera · sin botones · carga por contacto magnético |
+| Instalación | Insertar el módulo en la base hasta hacer clic → colocar en su soporte de carga → esperar luz verde breve → escanear QR en la app |
+| Uso cotidiano | Se usa como un bastón normal; el único cambio de hábito es guardarlo siempre en su soporte, que también lo carga |
+| Principios activos | Affordances (el soporte solo encaja en una orientación) · Contour bias (torneado sin aristas) · Confirmación (LED breve solo en instalación) |
+| App — normal | Ícono de bastón en verde + "Todo tranquilo hoy" |
+| App — alerta | Ícono en rojo + "Mamá no se ha movido en las últimas 3 horas" |
+| App — omisión deliberada | Sin gráficas de movimiento ni datos crudos |
+| Landing — headline | "El bastón de tu mamá ahora también cuida de ti." |
+| Landing — visual | Bastón de madera en su soporte junto a una ventana con luz natural, sin elementos tecnológicos visibles |
+| Landing — CTA | "Quiero tranquilidad diaria." |
+
+**Concepto 2 — "El Reposabrazos Centinela"** ✅ *(elegido — ver Matriz de Pugh)*
+
+| | |
+|---|---|
+| Combinación morfológica | Sillón · placa delgada · velcro bajo cojín · sin indicador físico · silicona neutra · botón único recesado · batería con acceso por panel trasero |
+| Instalación | Elegir el sillón de mayor uso → levantar cojín → adherir con velcro → recolocar cojín → confirmar detección de peso en la app |
+| Uso cotidiano | Completamente invisible — el adulto mayor se sienta como siempre, sin saber que el sensor está ahí |
+| Principios activos | Constraints (el velcro solo cabe en una posición) · Costo-beneficio (LED eliminado a propósito, refuerza discreción) · Consistencia (acabado imita la tapicería) |
+| App — normal | Check verde grande + "Todo bien, se ha movido normalmente hoy" |
+| App — alerta | Aviso rojo + "No detectamos actividad desde las 2:00pm" |
+| App — omisión deliberada | No revela bajo qué cojín específico está el sensor (privacidad) |
+| Landing — headline | "Sabrás que está bien sin tener que preguntarle." |
+| Landing — visual | Sillón cómodo y acogedor en una sala familiar, sin ningún dispositivo visible |
+| Landing — CTA | "Ver cómo funciona." |
+
+**Concepto 3 — "El Posavasos Guardián"**
+
+| | |
+|---|---|
+| Combinación morfológica | Taza/posavasos · cápsula removible · adhesivo/magnético · anillo luminoso tenue · acabado cerámico · touch capacitivo oculto · batería sellada |
+| Instalación | Colocar el posavasos donde se toma café/té → tocar el centro una vez → confirmar anillo luminoso → vincular en la app |
+| Uso cotidiano | Se usa como cualquier posavasos; el anillo se ilumina tenue al detectar uso, sin delatar su función real |
+| Principios activos | Affordances (forma circular invita a poner la taza, sin instrucción) · Confirmación (anillo inmediato pero ambiguo a propósito) · Contour bias (completamente circular) |
+| App — normal | Taza llena en verde + "Desayunó esta mañana, como siempre" |
+| App — alerta | Taza vacía/gris + "Hoy no ha usado su posavasos todavía" |
+| App — omisión deliberada | No muestra conteo de usos en el día — solo el primero relevante |
+| Landing — headline | "Un café, una señal de que todo está bien." |
+| Landing — visual | Taza humeante sobre el posavasos en una cocina cálida, luz de mañana |
+| Landing — CTA | "Empezar hoy." |
 
 ### 3. Matriz de Pugh
-*(ver tabla completa arriba, en Prompt 5 — deseabilidad 50% / factibilidad 50%, ganador: Reposabrazos Centinela con +80 puntos)*
+
+**Datum: Concepto 1 — "El Bastón Centinela"**
+
+**Criterios y pesos** — Deseabilidad (50%): facilidad de instalación (15%) · discreción/no parecer dispositivo médico (15%) · confianza del material (10%) · tamaño apropiado (10%). Factibilidad (50%): costo de manufactura (15%) · complejidad de ensamble (10%) · disponibilidad de materiales (10%) · compatibilidad JLCPCB (10%) · facilidad de mantenimiento (5%).
+
+| Criterio (peso) | C1 — Bastón (datum) | C2 — Sillón | C3 — Taza |
+|---|:--:|:--:|:--:|
+| Instalación sin instrucciones (15%) | datum | + | + |
+| Discreción (15%) | datum | + | + |
+| Confianza del material (10%) | datum | S | S |
+| Tamaño — ¿cabe SIM7600+18650? (10%) | datum | + | – |
+| Costo de manufactura (15%) | datum | + | + |
+| Complejidad de ensamble (10%) | datum | + | + |
+| Disponibilidad de materiales (10%) | datum | S | S |
+| Compatibilidad JLCPCB (10%) | datum | + | + |
+| Facilidad de mantenimiento (5%) | datum | + | – |
+
+**Puntuación ponderada:** C2 (Sillón) = **+80** · C3 (Taza) = +60 · C1 (datum) = 0
+
+**Concepto ganador:** Concepto 2 — "El Reposabrazos Centinela" — domina los dos criterios de deseabilidad de mayor peso y resuelve mejor la restricción física real del proyecto: el volumen del SIM7600E-H + batería 18650 cabe con holgura en un sillón, apretado en un bastón o un posavasos.
+
+**Riesgo principal:** el diseño asume que el adulto mayor se sienta siempre en el mismo sillón — si no es así, el periodo de aprendizaje de rutina (RF-03) puede confundirse con falsos positivos.
+
+**Iteración recomendada:** adoptar del Concepto 1 el acabado cálido (imitar la tela del sillón en vez de silicona técnica) y del Concepto 3 el diseño de cápsula de batería fácilmente removible.
 
 ### 4. Boceto técnico del concepto elegido
 
@@ -332,9 +408,26 @@ botón único de acción, sin gráficas técnicas.
 
 | Pantalla | Estado normal | Estado de alerta |
 |---|---|---|
-| Principal | Check verde + "Todo bien, se ha movido normalmente hoy" | Aviso rojo + "No detectamos actividad desde las 2:00pm" |
+| Principal | Check verde grande + "Todo bien, se ha movido normalmente hoy" | Aviso rojo + "No detectamos actividad desde las 2:00pm" |
 | Acción principal | "Ver detalle" | "Ver detalle" / "Llamar ahora" |
-| Flujo de instalación | Elegir sillón → adherir módulo → confirmar detección en la app (3 pasos) | — |
+| Qué NO muestra | Gráficas técnicas, datos crudos de sensor, ni bajo qué cojín específico está instalado (privacidad y para no generar ansiedad por "¿se habrá movido el sensor?") | — |
+
+**Flujo de instalación (primeros 3 pasos, lenguaje del usuario):**
+1. "Elige el sillón donde pasa más tiempo tu mamá/papá"
+2. "Levanta el cojín y pega el módulo con el velcro incluido"
+3. "Regresa el cojín a su lugar y confirma en la app que detectamos el peso al sentarse"
+
+---
+
+### 6. Resumen de problemas pendientes antes de CAD *(de la crítica técnica, Prompt 6)*
+
+| Problema | Solución propuesta |
+|---|---|
+| Sin confirmación física en el momento de instalación | LED temporal 2 min en el primer encendido, luego se apaga permanentemente |
+| Asume un único sillón de uso consistente | Validar con observación real antes de fabricar, o detectar "zona" en vez de peso en un cojín específico |
+| Tornillos de seguridad dificultan el mantenimiento del hijo/a | Mecanismo de apertura sin herramienta pero no obvio (pestaña a presión oculta) |
+
+**Listo para CAD:** ⚠️ con ajustes — resolubles sin rediseñar el concepto, pero pendientes antes de modelar.
 
 ---
 
