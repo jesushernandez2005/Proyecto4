@@ -99,6 +99,7 @@ Aquí se registrará:
 | 4 | [Mercado, Valor y Propuesta de Valor](actividades/actividad-04.md) | 17/09/2026 | 🟢 Completado |
 | 5 | [Product Design Specification y Arquitectura del Sistema](actividades/actividad-05.md) | 24/09/2026 | 🟢 Completado |
 | 6 | [Generación y Selección de Concepto de Diseño](actividades/actividad-06.md) | 01/10/2026 | 🟢 Completado |
+| 7 | [Viabilidad Técnica y Económica](actividades/actividad-07.md) | 08/10/2026 | 🟡 En progreso |
 ---
 
 ##  GitHub
