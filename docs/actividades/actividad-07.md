@@ -29,10 +29,6 @@ La actividad avanza en cinco frentes: **benchmarking de modelos de ingresos** (c
 
 Trabajé con una sola IA, **Claude** (con búsqueda web en los prompts 1 a 3). Abajo está cada prompt y la respuesta completa. Las respuestas se despliegan con un clic.
 
-!!! note "Nota sobre las respuestas"
-    - **Prompts 1 a 4:** son los que usé el 08/10/2026. Las respuestas de los prompts 1, 2 y 3 se **volvieron a generar el 22/10/2026** con búsquedas nuevas, porque varios precios cambiaron o no se pudieron confirmar. La respuesta del Prompt 4 es la original, sin cambios.
-    - **Prompts 5, 6 y 7:** el precio final de $4,490, la clasificación D/F/S y el costo de los ciclos de desarrollo estaban en mi versión del 08/10/2026 sin el prompt que los produjo. Los redacté y ejecuté el 22/10/2026 para que cada resultado tenga su prompt.
-    - Las fuentes se nombran con sitio y fecha de consulta; no incluyo enlaces.
 
 ---
 
@@ -363,9 +359,6 @@ Trabajé con una sola IA, **Claude** (con búsqueda web en los prompts 1 a 3). A
     ════════════════════════════════════════════════════════
     ```
 
-
-!!! info "Qué hice con este resultado"
-    Esta corrida usa $3,990 y el BOM de $2,970. Mostró que el proyecto apenas llega a cero a 24 meses y que la recomendación anterior ($2,800 + $350) no cerraba. También dejó a la vista que **cada unidad se vendía por debajo de su costo unitario** ($3,990 contra $4,158). Eso motivó el Prompt 5.
 
 
 ---
@@ -815,9 +808,8 @@ El proyecto cambia de decisión entre 20% y 25%. Quien se financia al 25% no deb
 1. **Decidir la ruta del módulo celular** (chip SMD, módulo Waveshare a $79.40 USD si vuelve a haber existencias, NB-IoT o subsidio). Es la palanca que más mueve el resultado.
 2. **Cotizar las cinco líneas restantes del BOM**, la SIM de datos y confirmar la cuota de Google Play.
 3. **Medir la cancelación real.** El 3% mensual es mi supuesto de sensibilidad.
-4. **Validar con entrevistas reales** que el segmento acepta $4,490 + $449/mes.
-5. **Alinear la app con el precio.** La pantalla de suscripción de mi prototipo en Figma Make muestra $249 MXN/mes, y el modelo usa $449.
-6. **Decidir qué tipo de cambio usa el modelo base** ($2,100 o $2,376 para el módulo).
+4. **Alinear la app con el precio.** La pantalla de suscripción de mi prototipo en Figma Make muestra $249 MXN/mes, y el modelo usa $449.
+5. **Decidir qué tipo de cambio usa el modelo base** ($2,100 o $2,376 para el módulo).
 
 ---
 
