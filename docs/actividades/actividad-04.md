@@ -18,8 +18,6 @@ La actividad avanzó en cuatro frentes:
 3. **Mapa competitivo y lienzo estratégico Blue Ocean.**
 4. **Propuesta de valor**, evaluada con IDEO y la Pirámide de Valor de Bain.
 
-!!! info "Actualización (18/09/2026)"
-    Esta semana hicimos las tres entrevistas de validación que estaban pendientes (Mariana, Lupita, Ricardo). Sus resultados están integrados en cada bloque, marcados como ✅ CONFIRMADO, ⚠️ CONFIRMADO CON MATIZ o 🔧 AJUSTE DE DISEÑO. El detalle completo está en la sección **5. Validación con usuarios — Semana 3**.
 
 ---
 
@@ -36,8 +34,6 @@ La actividad avanzó en cuatro frentes:
 
 Encadené distintos "roles" de IA: Claude para el perfil de segmento, el lienzo Blue Ocean y la propuesta de valor; Perplexity para el dimensionamiento de mercado y el mapa competitivo, porque esos dos bloques necesitaban fuentes y precios reales. Abajo está cada prompt tal como lo escribí y la respuesta completa. Las respuestas se despliegan con un clic.
 
-!!! note "Nota sobre los prompts 5 y 6"
-    Esos dos prompts los envié a Claude como **archivo adjunto** (las plantillas del taller ya llenas), y los archivos no se conservan en el historial del chat. Por eso el recuadro del prompt muestra lo que le pedí; las respuestas sí están completas.
 
 ---
 

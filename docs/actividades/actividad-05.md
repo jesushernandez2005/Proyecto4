@@ -24,8 +24,6 @@ Esta semana el enfoque cambia de mercado a diseño técnico: traducir todo lo va
 
 Trabajé toda la semana con una sola IA, **Claude**, en una misma conversación. Abajo está cada prompt tal como lo escribí (incluidos mis errores de dedazo) y la respuesta completa que recibí. Las respuestas se despliegan con un clic.
 
-!!! note "Nota sobre los archivos adjuntos"
-    En los prompts 2 y 5 adjunté archivos (la guía de la semana 5 y la plantilla oficial del PDS). Los archivos no se conservan en el historial del chat, así que el recuadro del prompt muestra lo que escribí; las respuestas sí están completas.
 
 ---
 

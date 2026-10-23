@@ -26,8 +26,6 @@ La actividad sigue un flujo de 6 prompts en secuencia: tabla morfológica → an
 
 Trabajé con una sola IA, **Claude**. Abajo está cada prompt tal como lo usé y la respuesta completa que recibí. Las respuestas se despliegan con un clic.
 
-!!! note "Nota sobre las respuestas"
-    En los prompts que llevan una tabla o una descripción "adjunta" (2, 3 y 5), el recuadro del prompt incluye el contenido que pegué. Las respuestas completas de los prompts 1 a 6 se volvieron a generar el 22/10/2026 con estos mismos prompts, porque el chat original solo me dejó un resumen de cada resultado. El contenido (variantes, conceptos, criterios, problemas) es el mismo que ya había documentado el 01/10/2026; la única corrección está en la puntuación del Posavasos en la Matriz de Pugh (ver Prompt 5).
 
 ---
 
@@ -78,7 +76,6 @@ Trabajé con una sola IA, **Claude**. Abajo está cada prompt tal como lo usé y
 
     ════════════════════════════════════════════════════════
 
-El parámetro "objeto anfitrión" no venía en la plantilla del curso, pero lo agregué como séptimo parámetro porque el producto nunca había decidido entre bastón, sillón o taza.
 
 ---
 
@@ -173,7 +170,6 @@ El parámetro "objeto anfitrión" no venía en la plantilla del curso, pero lo a
     **Viene de:** la base de carga del cepillo eléctrico
     ════════════════════════════════════════════════════════
 
-De esta respuesta tomé la variante nueva de la fuente de energía y la agregué a la tabla morfológica antes del Prompt 3.
 
 ---
 
@@ -418,8 +414,6 @@ De esta respuesta tomé la variante nueva de la fuente de energía y la agregué
     3. **Confirmación:** ¿el indicador (LED verde, anillo tenue, o ninguno) se ve discreto y no como alarma ni como dispositivo médico?
     ════════════════════════════════════════════════════════
 
-!!! info "Qué hice con estos prompts"
-    Estos prompts quedaron listos para copiar y pegar en Midjourney e Imagen 3, pero **no los ejecuté en esas herramientas**. Las imágenes que aparecen en la sección 4.2 vienen del Prompt 7 (renders 3D conceptuales).
 
 ---
 
@@ -523,8 +517,7 @@ De esta respuesta tomé la variante nueva de la fuente de energía y la agregué
     **ITERACIÓN RECOMENDADA:** adoptar del Concepto 1 el acabado cálido (imitar la tela del sillón en vez de silicona técnica) y del Concepto 3 el diseño de cápsula de batería fácilmente removible.
     ════════════════════════════════════════════════════════
 
-!!! warning "Corrección respecto a la versión del 01/10/2026"
-    En la versión anterior de esta página el Posavasos aparecía con **+60**. La suma correcta con los mismos signos y pesos es **+50** (15 + 15 – 10 + 15 + 10 + 10 – 5). El concepto ganador y el orden no cambian: Sillón (+80) > Posavasos (+50) > Bastón (0).
+
 
 ---
 
@@ -728,8 +721,7 @@ Hice dos intentos. El primero fue un prompt de render en estilo Midjourney, pega
 
     Archivos modificados: `src/App.tsx`, `src/index.css`.
 
-!!! info "Qué es y qué no es esto"
-    El prototipo es clicable en Figma Make (incluye el flujo crítico: inicio crítico → alerta → "Ya lo revisé" → inicio normal). Aquí solo se muestran capturas de sus pantallas, porque la página no puede incluir el enlace.
+
 
 ---
 
