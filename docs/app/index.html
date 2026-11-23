@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF8F3">
+<title>DistanciaCero — App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700;6..12,800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --verde:#3F8A5A; --verde-bg:#E5F1E8; --verde-borde:#C8E2D0;
+  --ambar:#B7791F; --ambar-txt:#875A12; --ambar-bg:#FBF0DA; --ambar-borde:#F0DBB0;
+  --rojo:#B04A42; --rojo-bg:#F6E3E0; --rojo-borde:#EBC6C1;
+  --gris:#7A7F84; --gris-bg:#EEEBE6;
+  --fondo:#FBF8F3; --tarjeta:#FFFFFF; --texto:#2E3236; --texto-2:#5D6368; --borde:#EAE4DA;
+  --primario:#2E6B57; --primario-hover:#255A49;
+  --r-tarjeta:20px; --h-boton:56px;
+  --sombra:0 1px 2px rgba(46,50,54,.05),0 4px 14px rgba(46,50,54,.06);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{font-family:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--texto);background:#E9E4DB;font-size:16px;line-height:1.45}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid #7FB89A;outline-offset:2px}
+
+/* ---------- Layout: panel + teléfono ---------- */
+.stage{min-height:100%;display:flex;align-items:center;justify-content:center;gap:40px;padding:32px}
+.panel{width:290px;align-self:center;background:#FFFDF9;border:1px solid var(--borde);border-radius:24px;padding:22px;box-shadow:var(--sombra);max-height:calc(100vh - 64px);overflow:auto}
+.panel h1{font-size:20px;margin:0 0 2px;font-weight:800}
+.panel .sub{color:var(--texto-2);font-size:14px;margin:0 0 16px}
+.panel h3{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--texto-2);margin:18px 0 8px;font-weight:800}
+.pnav{display:flex;flex-direction:column;gap:4px}
+.pnav button{display:flex;align-items:center;gap:10px;text-align:left;border:0;background:transparent;border-radius:12px;padding:9px 10px;font-weight:600;font-size:15px}
+.pnav button:hover{background:var(--gris-bg)}
+.pnav button.on{background:var(--verde-bg);color:var(--primario)}
+.pnav svg{width:20px;height:20px;flex:none}
+.seg{display:flex;background:var(--gris-bg);border-radius:14px;padding:4px;gap:4px}
+.seg button{flex:1;border:0;background:transparent;border-radius:10px;padding:8px 6px;font-weight:700;font-size:14px;color:var(--texto-2)}
+.seg button.on{background:#fff;color:var(--texto);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.seg.estado button.on.normal{color:var(--verde)} .seg.estado button.on.atencion{color:var(--ambar-txt)} .seg.estado button.on.critico{color:var(--rojo)}
+.pnote{font-size:13px;color:var(--texto-2);margin:8px 0 0}
+.plink{border:0;background:none;color:var(--primario);font-weight:700;padding:6px 0;font-size:14px;text-decoration:underline}
+.conn-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--gris);margin-right:6px;vertical-align:middle}
+.conn-dot.ok{background:var(--verde)} .conn-dot.wait{background:var(--ambar)} .conn-dot.err{background:var(--rojo)}
+
+.phone{width:390px;height:844px;border-radius:54px;background:#1F2225;padding:12px;box-shadow:0 30px 60px rgba(46,50,54,.25),0 0 0 2px #3A3E42 inset;flex:none;position:relative}
+.screen{width:100%;height:100%;border-radius:43px;overflow:hidden;background:var(--fondo);position:relative;display:flex;flex-direction:column}
+.statusbar{height:47px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:6px 30px 0 34px;font-weight:700;font-size:15px;position:relative;z-index:5}
+.statusbar .island{position:absolute;left:50%;top:10px;transform:translateX(-50%);width:120px;height:34px;background:#111;border-radius:20px}
+.statusbar .sicons{display:flex;gap:6px;align-items:center}
+.statusbar svg{width:18px;height:18px}
+.menu-fab{display:none}
+
+@media (max-width:860px){
+  .panel{display:none;position:fixed;inset:auto 12px 12px 12px;width:auto;max-height:78vh;z-index:60;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .panel.open{display:block}
+  .stage{padding:0;display:block}
+  .phone{width:100%;height:100vh;height:100dvh;border-radius:0;padding:0;background:var(--fondo);box-shadow:none}
+  .screen{border-radius:0;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+  .statusbar{display:none}
+  .menu-fab{display:flex;position:fixed;top:calc(10px + env(safe-area-inset-top));right:10px;z-index:55;width:38px;height:38px;border-radius:50%;border:1px solid var(--borde);background:rgba(255,253,249,.92);align-items:center;justify-content:center;box-shadow:var(--sombra)}
+  .menu-fab svg{width:20px;height:20px}
+  .topbar,.greet{padding-right:58px}
+  .scrim{position:fixed;inset:0;background:rgba(30,32,34,.35);z-index:58;display:none}
+  .scrim.open{display:block}
+}
+
+/* ---------- Contenido de pantalla ---------- */
+.content{flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 20px 28px;scrollbar-width:none}
+.content::-webkit-scrollbar{display:none}
+.topbar{display:flex;align-items:center;gap:8px;padding:6px 14px 6px 10px;min-height:52px;flex:none}
+.topbar h2{font-size:20px;margin:0;font-weight:800;flex:1}
+.iconbtn{width:44px;height:44px;border-radius:14px;border:0;background:transparent;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.iconbtn:hover{background:var(--gris-bg)}
+.iconbtn svg{width:24px;height:24px}
+.greet{display:flex;align-items:center;justify-content:space-between;padding:10px 20px 4px;flex:none}
+.greet .who{font-size:15px;color:var(--texto-2);font-weight:600}
+.greet .who b{display:block;color:var(--texto);font-size:20px;font-weight:800}
+
+h1.t{font-size:30px;line-height:1.15;margin:0 0 8px;font-weight:800;letter-spacing:-.01em}
+h2.t{font-size:22px;line-height:1.2;margin:0 0 6px;font-weight:800}
+.muted{color:var(--texto-2)}
+.small{font-size:14px}
+.sec-title{font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--texto-2);margin:24px 4px 10px}
+
+.card{background:var(--tarjeta);border-radius:var(--r-tarjeta);box-shadow:var(--sombra);padding:18px;border:1px solid #F1ECE4}
+.card+.card{margin-top:12px}
+.row{display:flex;align-items:center;gap:14px}
+.row .grow{flex:1;min-width:0}
+.list{background:var(--tarjeta);border-radius:var(--r-tarjeta);box-shadow:var(--sombra);border:1px solid #F1ECE4;overflow:hidden}
+.li{display:flex;align-items:center;gap:14px;padding:15px 16px;border:0;background:transparent;width:100%;text-align:left;min-height:64px}
+.li+.li{border-top:1px solid #F2EDE6}
+button.li:hover{background:#FCFAF6}
+.li .ico{width:40px;height:40px;border-radius:12px;background:var(--gris-bg);display:flex;align-items:center;justify-content:center;flex:none;color:var(--texto)}
+.li .ico svg{width:22px;height:22px}
+.li .t1{font-weight:700}
+.li .t2{font-size:14px;color:var(--texto-2)}
+.li .chev{width:20px;height:20px;color:#A7ABAF;flex:none}
+
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;height:var(--h-boton);border-radius:16px;border:0;font-weight:800;font-size:17px;padding:0 18px;transition:transform .08s,background .15s}
+.btn:active{transform:scale(.985)}
+.btn svg{width:22px;height:22px}
+.btn.primary{background:var(--primario);color:#fff}
+.btn.primary:hover{background:var(--primario-hover)}
+.btn.danger{background:var(--rojo);color:#fff}
+.btn.danger:hover{background:#9A3F38}
+.btn.secondary{background:#fff;color:var(--texto);border:2px solid var(--borde)}
+.btn.secondary:hover{border-color:#D8D0C4}
+.btn.ghost{background:transparent;color:var(--primario);height:48px}
+.btn.okline{background:#fff;color:var(--verde);border:2px solid var(--verde-borde)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.stack{display:flex;flex-direction:column;gap:12px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:4px 11px;font-size:13px;font-weight:700;background:var(--gris-bg);color:var(--texto-2);white-space:nowrap}
+.chip svg{width:15px;height:15px}
+.chip.v{background:var(--verde-bg);color:var(--verde)} .chip.a{background:var(--ambar-bg);color:var(--ambar-txt)} .chip.r{background:var(--rojo-bg);color:var(--rojo)}
+
+.choice{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:2px solid var(--borde);background:#fff;border-radius:18px;padding:16px;min-height:64px;font-weight:700}
+.choice+.choice{margin-top:10px}
+.choice:hover{border-color:#D6CEC2}
+.choice.on{border-color:var(--primario);background:#F3F9F5}
+.choice .radio{width:24px;height:24px;border-radius:50%;border:2px solid #C9C2B8;flex:none;display:flex;align-items:center;justify-content:center}
+.choice.on .radio{border-color:var(--primario)}
+.choice.on .radio::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--primario)}
+.choice .ico{width:44px;height:44px;border-radius:14px;background:var(--gris-bg);display:flex;align-items:center;justify-content:center;flex:none}
+.choice.on .ico{background:var(--verde-bg);color:var(--primario)}
+.choice .ico svg{width:26px;height:26px}
+.choice small{display:block;font-weight:600;color:var(--texto-2);font-size:14px}
+
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{border:2px solid var(--borde);background:#fff;border-radius:999px;padding:9px 16px;font-weight:700;font-size:15px;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.pill svg{width:18px;height:18px}
+.pill.on{border-color:var(--primario);background:#F3F9F5;color:var(--primario)}
+
+.field{display:block;margin-bottom:14px}
+.field span{display:block;font-weight:700;font-size:15px;margin:0 0 6px 2px}
+.input{width:100%;height:52px;border-radius:14px;border:2px solid var(--borde);background:#fff;padding:0 14px;font-size:17px}
+.input:focus{border-color:var(--primario);outline:none}
+.input.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:15px}
+
+.switch{position:relative;width:52px;height:32px;flex:none}
+.switch input{opacity:0;width:100%;height:100%;margin:0;position:absolute;cursor:pointer;z-index:1}
+.switch i{position:absolute;inset:0;background:#D7D1C8;border-radius:999px;transition:.2s}
+.switch i::after{content:"";position:absolute;left:3px;top:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:.2s}
+.switch input:checked+i{background:var(--primario)}
+.switch input:checked+i::after{transform:translateX(20px)}
+
+.check{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:16px;background:#fff;border:2px solid var(--borde);cursor:pointer;font-weight:600}
+.check+.check{margin-top:10px}
+.check input{width:24px;height:24px;margin:0;accent-color:var(--primario);flex:none}
+
+/* Estado grande */
+.hero{text-align:center;padding:26px 8px 8px}
+.hero .ring{width:132px;height:132px;border-radius:50%;margin:0 auto 22px;display:flex;align-items:center;justify-content:center;position:relative}
+.hero .ring svg{width:64px;height:64px;stroke-width:2.6}
+.hero .ring::before{content:"";position:absolute;inset:-12px;border-radius:50%;opacity:.45}
+.hero.normal .ring{background:var(--verde-bg);color:var(--verde)} .hero.normal .ring::before{border:2px solid var(--verde-borde)}
+.hero.atencion .ring{background:var(--ambar-bg);color:var(--ambar)} .hero.atencion .ring::before{border:2px solid var(--ambar-borde)}
+.hero.critico .ring{background:var(--rojo-bg);color:var(--rojo)} .hero.critico .ring::before{border:2px solid var(--rojo-borde);animation:pulse 1.8s ease-out infinite}
+.hero.pausa .ring,.hero.espera .ring{background:var(--gris-bg);color:var(--gris)}
+@keyframes pulse{0%{transform:scale(.92);opacity:.8}100%{transform:scale(1.12);opacity:0}}
+.hero h1{font-size:31px;margin:0 0 8px;font-weight:800;line-height:1.15}
+.hero p{margin:0 auto;max-width:300px;font-size:17px;color:var(--texto-2)}
+.hero .last{margin-top:14px;font-size:14px;color:var(--texto-2);display:inline-flex;gap:6px;align-items:center}
+.hero .last svg{width:16px;height:16px}
+
+.devcard{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;background:#fff;border:1px solid #F1ECE4;box-shadow:var(--sombra);margin:22px 0 18px;width:100%;text-align:left}
+.devcard .ico{width:40px;height:40px;border-radius:12px;background:var(--gris-bg);display:flex;align-items:center;justify-content:center}
+.devcard svg{width:22px;height:22px}
+.devcard .s{display:flex;flex-wrap:wrap;gap:2px 12px;align-items:center;font-size:14px;color:var(--texto-2);font-weight:600}
+.devcard .s span{display:inline-flex;gap:5px;align-items:center;white-space:nowrap}
+.devcard .s svg{width:16px;height:16px}
+
+/* Tabs */
+.tabbar{flex:none;display:flex;border-top:1px solid var(--borde);background:rgba(255,253,249,.96);padding:6px 6px 10px}
+.tabbar button{flex:1;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 0;font-size:12px;font-weight:700;color:#8A8F94;min-height:54px;position:relative}
+.tabbar button svg{width:26px;height:26px}
+.tabbar button.on{color:var(--primario)}
+.tabbar .badge{position:absolute;top:4px;left:calc(50% + 6px);width:10px;height:10px;border-radius:50%;background:var(--rojo);border:2px solid #fff}
+
+/* Onboarding */
+.progress{display:flex;gap:6px;padding:0 20px 4px;flex:none}
+.progress i{flex:1;height:6px;border-radius:6px;background:#E4DED4}
+.progress i.on{background:var(--primario)}
+.stepnum{font-size:14px;font-weight:700;color:var(--texto-2);margin:10px 0 4px}
+.onb-foot{padding:12px 20px 18px;flex:none;display:flex;flex-direction:column;gap:8px;background:linear-gradient(to top,var(--fondo) 75%,rgba(251,248,243,0))}
+.welcome-art{margin:16px auto 22px;width:220px;height:170px}
+.qrbox{width:220px;height:220px;margin:12px auto 18px;border-radius:28px;background:#2E3236;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.qrbox .corner{position:absolute;width:38px;height:38px;border:5px solid #fff;border-radius:6px}
+.qrbox .c1{top:22px;left:22px;border-right:0;border-bottom:0}.qrbox .c2{top:22px;right:22px;border-left:0;border-bottom:0}
+.qrbox .c3{bottom:22px;left:22px;border-right:0;border-top:0}.qrbox .c4{bottom:22px;right:22px;border-left:0;border-top:0}
+.qrbox .scan{position:absolute;left:30px;right:30px;height:3px;background:#8FD3AB;box-shadow:0 0 12px #8FD3AB;animation:scan 2s ease-in-out infinite alternate}
+@keyframes scan{from{top:34px}to{top:184px}}
+.qrbox svg.qr{width:110px;height:110px;color:#fff;opacity:.9}
+.qrbox.done{background:var(--verde-bg)} .qrbox.done svg{color:var(--verde)}
+.waiting{display:flex;gap:8px;justify-content:center;margin:6px 0}
+.waiting i{width:10px;height:10px;border-radius:50%;background:var(--primario);animation:dot 1.2s infinite}
+.waiting i:nth-child(2){animation-delay:.2s}.waiting i:nth-child(3){animation-delay:.4s}
+@keyframes dot{0%,80%,100%{opacity:.25;transform:scale(.8)}40%{opacity:1;transform:scale(1)}}
+
+/* Alerta */
+.push{position:absolute;left:10px;right:10px;top:52px;z-index:40;background:rgba(255,255,255,.97);border-radius:22px;padding:12px 14px;box-shadow:0 12px 30px rgba(0,0,0,.18);display:flex;gap:12px;animation:drop .45s cubic-bezier(.2,.9,.3,1.2)}
+@media (max-width:860px){.push{top:calc(10px + env(safe-area-inset-top))}}
+.push .app{width:38px;height:38px;border-radius:10px;background:var(--primario);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.push .app svg{width:22px;height:22px}
+.push .h{display:flex;justify-content:space-between;font-size:13px;color:var(--texto-2);font-weight:700}
+.push .b{font-size:15px;font-weight:600;line-height:1.3}
+@keyframes drop{from{transform:translateY(-120%);opacity:0}to{transform:none;opacity:1}}
+.alert-head{background:var(--rojo-bg);border-radius:24px;padding:22px 18px;text-align:center;margin-top:6px}
+.alert-head .ring{width:72px;height:72px;border-radius:50%;background:#fff;color:var(--rojo);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.alert-head .ring svg{width:38px;height:38px;stroke-width:2.8}
+.alert-head h1{font-size:26px;line-height:1.2;margin:0 0 6px;color:#7E302A;font-weight:800}
+.alert-head p{margin:0;color:#6E4440}
+.who-list .li{min-height:58px}
+.avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;flex:none;font-size:15px}
+.esc{display:flex;gap:10px;align-items:flex-start;background:var(--ambar-bg);color:var(--ambar-txt);border-radius:16px;padding:14px;font-weight:600;font-size:15px;margin-top:12px}
+.esc svg{width:20px;height:20px;flex:none;margin-top:1px}
+.esc.done{background:var(--verde-bg);color:var(--verde)}
+
+/* Detalle */
+.timeline{position:relative;padding-left:22px}
+.timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:#E7E0D5}
+.tl{position:relative;padding:4px 0 16px}
+.tl::before{content:"";position:absolute;left:-21px;top:10px;width:12px;height:12px;border-radius:50%;background:var(--verde);border:3px solid var(--fondo)}
+.tl.a::before{background:var(--ambar)} .tl.r::before{background:var(--rojo)} .tl.g::before{background:#B5B0A8}
+.tl .h{font-size:14px;color:var(--texto-2);font-weight:700}
+.tl .x{font-weight:600}
+
+/* Privacidad */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.col{border-radius:18px;padding:14px}
+.col h3{margin:0 0 10px;font-size:16px;display:flex;gap:6px;align-items:center}
+.col h3 svg{width:20px;height:20px}
+.col ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.col li{display:flex;gap:8px;align-items:center;font-weight:700;font-size:15px}
+.col li svg{width:18px;height:18px;flex:none}
+.col.si{background:var(--verde-bg);color:#2D6A44} .col.no{background:#F1EEE9;color:var(--texto)}
+
+/* Adulto mayor */
+.elder{padding:24px 20px;display:flex;flex-direction:column;gap:16px;flex:1;min-height:0;overflow:auto}
+.elder h1{font-size:38px;margin:4px 0 0;font-weight:800;line-height:1.1}
+.elder p.lead{font-size:22px;margin:0 0 6px;color:var(--texto-2);font-weight:600}
+.bigbtn{flex:1;min-height:120px;border:0;border-radius:28px;display:flex;align-items:center;gap:18px;padding:0 20px;font-size:26px;line-height:1.1;font-weight:800;text-align:left;box-shadow:0 2px 0 rgba(0,0,0,.06)}
+.bigbtn svg{width:54px;height:54px;flex:none;stroke-width:2.6}
+.bigbtn.ok{background:var(--verde-bg);color:#24583A;border:3px solid var(--verde-borde)}
+.bigbtn.call{background:var(--ambar-bg);color:#6E4A0E;border:3px solid var(--ambar-borde)}
+.bigbtn.help{background:var(--rojo);color:#fff}
+.elder-done{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px}
+.elder-done .ring{width:150px;height:150px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.elder-done .ring svg{width:80px;height:80px;stroke-width:2.8}
+.elder-done h1{font-size:36px}
+.elder-done p{font-size:24px;margin:0;color:var(--texto-2);font-weight:600;max-width:300px}
+
+/* Sistema visual */
+.sw{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.sw div{border-radius:16px;height:74px;padding:8px 10px;display:flex;flex-direction:column;justify-content:flex-end;font-size:12px;font-weight:700;color:#fff}
+.sw div span{opacity:.85;font-weight:600}
+
+/* Modal / toast */
+.modal-wrap{position:absolute;inset:0;background:rgba(30,32,34,.42);z-index:50;display:flex;align-items:flex-end;animation:fade .2s}
+.modal{background:var(--fondo);width:100%;border-radius:28px 28px 0 0;padding:10px 20px 24px;max-height:88%;overflow:auto;animation:up .28s cubic-bezier(.2,.9,.3,1)}
+.modal .grab{width:44px;height:5px;border-radius:4px;background:#D7D0C6;margin:0 auto 14px}
+.modal h2{font-size:22px;margin:0 0 8px;font-weight:800}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.toast{position:absolute;left:16px;right:16px;bottom:96px;z-index:45;background:#2E3236;color:#fff;border-radius:16px;padding:14px 16px;font-weight:600;font-size:15px;display:flex;gap:10px;align-items:center;animation:fade .2s}
+.toast svg{width:20px;height:20px;flex:none;color:#9BD8B2}
+.quote{background:#fff;border:2px dashed var(--borde);border-radius:16px;padding:14px;font-size:15px}
+pre.code{background:#2E3236;color:#E9F2EC;border-radius:14px;padding:12px;font-size:12px;overflow:auto;max-height:220px;margin:0}
+.note{display:flex;gap:10px;background:#F1EEE9;border-radius:16px;padding:12px 14px;font-size:14px;color:var(--texto-2)}
+.note svg{width:20px;height:20px;flex:none;margin-top:1px}
+.note.warn{background:var(--ambar-bg);color:var(--ambar-txt)}
+.note.err{background:var(--rojo-bg);color:#7E302A}
+.note.ok{background:var(--verde-bg);color:#2D6A44}
+.ord{display:flex;align-items:center;gap:10px;padding:10px 10px 10px 14px}
+.ord+.ord{border-top:1px solid #F2EDE6}
+.ord .n{width:28px;height:28px;border-radius:50%;background:var(--gris-bg);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex:none}
+.ord .iconbtn{width:40px;height:40px}
+.ord .iconbtn[disabled]{opacity:.25}
+.steps-ill{display:flex;flex-direction:column;gap:12px}
+.steps-ill .card{display:flex;gap:14px;align-items:center}
+.steps-ill svg.ill{width:110px;height:84px;flex:none;border-radius:14px;background:#F6F2EB}
+svg{flex:none}
+.row > svg,.card > svg{width:24px;height:24px}
+svg{fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+</style>
+</head>
+<body>
+<div class="stage">
+  <aside class="panel" id="panel"></aside>
+  <div class="phone">
+    <div class="screen" id="screen"></div>
+  </div>
+</div>
+<button class="menu-fab" id="fab" aria-label="Abrir menú del prototipo"></button>
+<div class="scrim" id="scrim"></div>
+
+<script>
+/* =========================================================================
+   DistanciaCero — app (prototipo + modo dispositivo real por MQTT)
+   Proyecto 4 · Jesús y Andrea
+   ========================================================================= */
+
+/* ---------- Íconos de línea ---------- */
+const P = {
+  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+  excl:'<path d="M12 6.5v7"/><path d="M12 17.5v.01"/>',
+  home:'<path d="M4 11l8-7 8 7"/><path d="M6 10v9.5h12V10"/><path d="M10 19.5v-5h4v5"/>',
+  users:'<circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.8 5.5-4.8s4.9 1.8 5.5 4.8"/><path d="M16 5.2a3 3 0 010 5.6"/><path d="M17.5 14.5c1.6.6 2.7 2.2 3 4.5"/>',
+  bell:'<path d="M6 16v-5a6 6 0 0112 0v5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 004 0"/>',
+  sliders:'<path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>',
+  phone:'<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a1 1 0 01-1 1A16 16 0 014 5a1 1 0 011-1z"/>',
+  eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  eyeoff:'<path d="M3 3l18 18"/><path d="M10.6 5.1A10 10 0 0112 5c6.4 0 10 7 10 7a17 17 0 01-3 3.9M6.6 6.6C3.8 8.4 2 12 2 12s3.6 7 10 7a9.6 9.6 0 004.4-1"/><path d="M9.9 9.9a3 3 0 004.2 4.2"/>',
+  battery:'<rect x="3" y="7" width="16" height="10" rx="2.5"/><path d="M21 10.5v3"/><path d="M6.5 10.5v3M9.5 10.5v3M12.5 10.5v3"/>',
+  batlow:'<rect x="3" y="7" width="16" height="10" rx="2.5"/><path d="M21 10.5v3"/><path d="M6.5 10.5v3"/>',
+  wifi:'<path d="M2.5 9a14 14 0 0119 0"/><path d="M5.5 12.5a9.5 9.5 0 0113 0"/><path d="M8.7 16a5 5 0 016.6 0"/><path d="M12 19.5h.01"/>',
+  wifioff:'<path d="M3 3l18 18"/><path d="M8.7 16a5 5 0 016.6 0"/><path d="M5.5 12.5a9.5 9.5 0 014-2.3M2.5 9a14 14 0 014.3-2.8M14.5 10.4a9.5 9.5 0 014 2.1M17.5 6.3A14 14 0 0121.5 9"/><path d="M12 19.5h.01"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  moon:'<path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/>',
+  pause:'<path d="M9 6v12M15 6v12"/>',
+  play:'<path d="M8 5.5v13l10-6.5z"/>',
+  plane:'<path d="M3 13.5l7-1.5 4.5-7.5c.6-1 2-1.3 2.6-.7s.3 2-.7 2.6L9 10.5"/><path d="M10 12l7.5 5.5-1.5 1.5-8-3.5"/><path d="M4.5 16.5l2 1 1 2"/>',
+  hospital:'<rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 8v8M8 12h8"/>',
+  door:'<path d="M6 21V4h10v17"/><path d="M3 21h18"/><path d="M13 12.5h.01"/>',
+  sofa:'<path d="M5 11V8a3 3 0 013-3h8a3 3 0 013 3v3"/><path d="M3 13a2 2 0 014 0v2h10v-2a2 2 0 014 0v4H3z"/><path d="M5 17v2M19 17v2"/>',
+  cane:'<path d="M10 21V8.5a4 4 0 018 0v1.5"/><path d="M8 21h4"/>',
+  cup:'<path d="M5 8h11v5a5 5 0 01-5 5h-1a5 5 0 01-5-5z"/><path d="M16 9.5h1.5a2.5 2.5 0 010 5H16"/><path d="M3 21h16"/>',
+  qr:'<rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2h-2zM14 19h2M19 14h1"/>',
+  shield:'<path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
+  download:'<path d="M12 4v11M7 10l5 5 5-5"/><path d="M5 20h14"/>',
+  trash:'<path d="M4 7h16"/><path d="M9 7V4h6v3"/><path d="M6 7l1 13h10l1-13"/>',
+  userx:'<circle cx="10" cy="8" r="3.5"/><path d="M3.5 20c.7-3.5 3.3-5.5 6.5-5.5 1.3 0 2.5.3 3.5.9"/><path d="M16 15l5 5M21 15l-5 5"/>',
+  card:'<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18"/><path d="M7 15h3"/>',
+  chev:'<path d="M9 5l7 7-7 7"/>',
+  back:'<path d="M15 5l-7 7 7 7"/>',
+  up:'<path d="M6 15l6-6 6 6"/>',
+  down:'<path d="M6 9l6 6 6-6"/>',
+  plus:'<path d="M12 5v14M5 12h14"/>',
+  copy:'<rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 00-2-2H6a2 2 0 00-2 2v8a2 2 0 002 2h2"/>',
+  refresh:'<path d="M20 11a8 8 0 10-2.3 5.7"/><path d="M20 5v6h-6"/>',
+  help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 114 2c-1 .6-1.5 1.2-1.5 2.2"/><path d="M12 17h.01"/>',
+  heart:'<path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/>',
+  siren:'<path d="M7 18v-6a5 5 0 0110 0v6"/><path d="M5 21h14"/><path d="M12 3v2M4 7l1.5 1.5M20 7l-1.5 1.5"/>',
+  x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+  lock:'<rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 018 0v2.5"/>',
+  plug:'<path d="M9 7V3M15 7V3"/><path d="M6 7h12v4a6 6 0 01-12 0z"/><path d="M12 17v4"/>',
+  palette:'<path d="M12 21a9 9 0 110-18c5 0 9 3.6 9 8 0 2.8-2.2 4-4.5 4H15a2 2 0 00-1.4 3.4A1.6 1.6 0 0112 21z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="11" cy="7.5" r="1.2"/><circle cx="15.5" cy="8.5" r="1.2"/>',
+  send:'<path d="M4 12l16-8-6 16-2.5-6.5z"/><path d="M11.5 13.5L20 4"/>',
+  walk:'<circle cx="13" cy="4.5" r="1.8"/><path d="M10 21l2-6 3 3v3M12 15l-1-5 4 1 2 3M11 10l-3 2v3"/>',
+  exit:'<path d="M14 4h4a2 2 0 012 2v12a2 2 0 01-2 2h-4"/><path d="M10 8l-4 4 4 4M6 12h10"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M4 7l8 6 8-6"/>',
+  menu:'<path d="M4 7h16M4 12h16M4 17h16"/>',
+  calendar:'<rect x="3.5" y="5" width="17" height="15" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/>',
+  signal:'<path d="M5 19v-3M10 19v-7M15 19V9M20 19V5"/>',
+  sparkle:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M6 18l2.5-2.5M15.5 8.5L18 6"/>'
+};
+const ic = (n, cls='') => `<svg viewBox="0 0 24 24" class="${cls}" aria-hidden="true">${P[n]||''}</svg>`;
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ---------- Estado ---------- */
+const KEY = 'distanciacero-app-v1';
+const AV_COLORS = ['#2E6B57','#8A5A9E','#C0703A','#3D6E9E','#9E4F6B','#5B7A3A'];
+const DEFAULTS = {
+  view:'onboarding', tab:'inicio', sub:null, step:1,
+  yo:'Jesús', elder:{rel:'mamá', nombre:'Rosa'}, visitas:'aveces', objeto:'sillon',
+  deviceId:'', scanned:false, detectado:false, consent1:false, consent2:false, onboarded:false,
+  demoState:'normal', mode:'demo', broker:'wss://broker.hivemq.com:8884/mqtt',
+  avisoModo:'ambas', confirmHora:'10:00', umbralMin:240, dnd:{on:true, desde:'23:00', hasta:'07:00'}, resumen:true,
+  pausa:null, pausaMotivo:'De viaje',
+  circle:[
+    {id:'yo', nombre:'Jesús', rel:'Tú', rol:'alertas', tel:'', estado:'visto'},
+    {id:'luis', nombre:'Luis', rel:'Vecino', rol:'alertas', tel:'222 123 4567', estado:'pendiente', local:true},
+    {id:'ana', nombre:'Ana', rel:'Hermana', rol:'alertas', tel:'55 9876 5432', estado:'pendiente'},
+    {id:'tere', nombre:'Tere', rel:'Tía', rol:'ver', tel:'', estado:'pendiente'}
+  ],
+  orden:['yo','luis','ana'],
+  ackAt:0, ackBy:'', alertStart:0, escalado:false, avisadoLocal:false,
+  events:[], lastAct:0, dev:{}, conexion:'', sub_cuenta:'activa',
+  cuidadorId:'luis', elderDone:null
+};
+let S;
+try { S = Object.assign(structuredClone(DEFAULTS), JSON.parse(localStorage.getItem(KEY)||'{}')); } catch(e){ S = structuredClone(DEFAULTS); }
+// transitorios (no se guardan)
+const T = { modal:null, toast:null, push:null, conn:'off', connErr:'', panelOpen:false, scanning:false, waitDetect:false, onbWaitSince:0, lastKey:'', exportTxt:'' };
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+const OBJ = {
+  sillon:{nombre:'Sillón', icon:'sofa', lugar:'el sillón', del:'del sillón', donde:'Sillón de la sala', pedir:'que se siente en su sillón un momento', placa:'la placa bajo el cojín'},
+  baston:{nombre:'Bastón', icon:'cane', lugar:'el bastón', del:'del bastón', donde:'Su bastón', pedir:'que tome su bastón y camine unos pasos', placa:'el módulo dentro del bastón'},
+  portavasos:{nombre:'Portavasos', icon:'cup', lugar:'el portavasos', del:'del portavasos', donde:'Portavasos de la mesa', pedir:'que levante su taza del portavasos', placa:'la cápsula bajo el portavasos'}
+};
+const fem = () => S.elder.rel !== 'papá';
+const g = (f,m) => fem() ? f : m;
+const rel = () => S.elder.rel;
+const Rel = () => rel().charAt(0).toUpperCase() + rel().slice(1);
+const nom = () => S.elder.nombre || Rel();
+const tu = () => 'tu ' + rel();
+const obj = () => OBJ[S.objeto] || OBJ.sillon;
+const person = id => S.circle.find(p => p.id === id);
+const initials = n => (n||'?').trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+const avColor = id => AV_COLORS[Math.abs([...id].reduce((a,c)=>a+c.charCodeAt(0),0)) % AV_COLORS.length];
+const hora = t => new Date(t).toLocaleTimeString('es-MX',{hour:'numeric', minute:'2-digit'}).replace(/\s?a\.\s?m\./,' am').replace(/\s?p\.\s?m\./,' pm');
+function hace(ms){
+  const m = Math.round(ms/60000);
+  if (m < 1) return 'hace un momento';
+  if (m < 60) return `hace ${m} min`;
+  const h = Math.floor(m/60), r = m%60;
+  if (h < 24) return r ? `hace ${h} h ${r} min` : `hace ${h} h`;
+  const d = Math.floor(h/24); return d===1 ? 'hace un día' : `hace ${d} días`;
+}
+function cuando(t){
+  const d = new Date(t), hoy = new Date();
+  const ayer = new Date(); ayer.setDate(hoy.getDate()-1);
+  if (d.toDateString() === hoy.toDateString()) return 'hoy, ' + hora(t);
+  if (d.toDateString() === ayer.toDateString()) return 'ayer, ' + hora(t);
+  return d.toLocaleDateString('es-MX',{day:'numeric', month:'short'}) + ', ' + hora(t);
+}
+const umbralTxt = () => S.umbralMin >= 60 ? `${S.umbralMin/60} horas` : `${S.umbralMin} min`;
+
+/* ---------- Lógica de estado (el corazón de la app) ---------- */
+function demoLastAct(){
+  const now = Date.now();
+  if (S.demoState === 'normal') return now - 14*60000;
+  if (S.demoState === 'atencion') return now - Math.round(S.umbralMin*0.7)*60000;
+  return S.critSince || (now - (S.umbralMin+35)*60000);
+}
+function lastActivity(){ return S.mode === 'demo' ? demoLastAct() : S.lastAct; }
+function devOnline(){
+  if (S.mode === 'demo') return true;
+  if (S.conexion === 'offline') return false;
+  return S.dev.seen && (Date.now() - S.dev.seen) < 3*60000;
+}
+/* Devuelve: normal | atencion | critico | pausa | espera | sinconexion */
+function estado(){
+  if (S.pausa) return 'pausa';
+  if (ayudaActiva()) return 'critico';
+  if (S.mode === 'demo') return S.demoState;
+  if (T.conn !== 'ok' && !S.dev.seen) return 'espera';
+  if (!S.lastAct && !S.dev.seen) return 'espera';
+  if (!devOnline()) return 'sinconexion';
+  if (!S.lastAct) return 'espera';
+  const ref = Math.max(S.lastAct, S.ackAt || 0);
+  const min = (Date.now() - ref) / 60000;
+  if (min >= S.umbralMin) return 'critico';
+  if (min >= S.umbralMin * 0.6) return 'atencion';
+  return 'normal';
+}
+const ayudaActiva = () => S.ayuda && S.ayuda > (S.ackAt||0) && Date.now() - S.ayuda < 6*3600000;
+let prevEstado = null;
+function vigilar(){
+  const e = estado();
+  if (e === 'critico' && prevEstado !== 'critico'){
+    if (!S.alertStart) S.alertStart = Date.now();
+    S.escalado = false; S.avisadoLocal = false;
+    S.circle.forEach(p => p.estado = p.id==='yo' ? 'pendiente' : 'pendiente');
+    if (prevEstado !== null && !ayudaActiva()) avisar(`No detectamos actividad de ${nom()} desde las ${hora(lastActivity())}.`);
+  }
+  if (e !== 'critico') { if (prevEstado === 'critico') S.alertStart = 0; }
+  if (e === 'sinconexion' && prevEstado && prevEstado !== 'sinconexion') avisar(`Perdimos contacto con el sensor de ${nom()}.`);
+  // escalamiento a los 15 min sin respuesta
+  if (e === 'critico' && S.alertStart && !S.escalado){
+    const nadie = !S.circle.some(p => ['camino','revisado'].includes(p.estado));
+    if (nadie && Date.now() - S.alertStart >= 15*60000){ S.escalado = true; const sig = siguienteContacto(); if (sig){ sig.estado='avisado'; toast(`Nadie respondió. Avisamos a ${sig.nombre}.`); } }
+  }
+  prevEstado = e;
+}
+function siguienteContacto(){
+  const ids = S.orden.filter(id => id !== 'yo' && !(person(id)?.local));
+  return person(ids[0]);
+}
+function contactoLocal(){ return S.circle.find(p => p.local) || person(S.orden.find(id=>id!=='yo')); }
+function avisar(msg){
+  T.push = msg; setTimeout(()=>{ if (T.push === msg){ T.push=null; render(); } }, 6000);
+  try { if ('Notification' in window && Notification.permission === 'granted') new Notification('DistanciaCero', {body: msg}); } catch(e){}
+}
+function toast(msg){ T.toast = msg; render(); clearTimeout(toast._t); toast._t = setTimeout(()=>{ T.toast=null; render(); }, 3200); }
+function logEvent(txt, tipo='v', t=Date.now()){ S.events.unshift({t, txt, tipo}); S.events = S.events.slice(0, 40); }
+
+/* ---------- MQTT (modo dispositivo real) ---------- */
+let client = null; const myId = 'dc-app-' + Math.random().toString(16).slice(2,8);
+const base = () => `distanciacero/${(S.deviceId||'').trim().toUpperCase()}`;
+function loadMqtt(){
+  if (window.mqtt) return Promise.resolve();
+  return new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/mqtt@5.16.1/dist/mqtt.min.js';
+    s.onload = res; s.onerror = () => rej(new Error('No se pudo cargar la librería MQTT'));
+    document.head.appendChild(s);
+  });
+}
+async function conectar(){
+  desconectar(true);
+  if (!S.deviceId){ T.conn='err'; T.connErr='Falta el código del dispositivo.'; render(); return; }
+  T.conn = 'wait'; T.connErr = ''; render();
+  try { await loadMqtt(); } catch(e){ T.conn='err'; T.connErr=e.message; render(); return; }
+  try {
+    client = mqtt.connect(S.broker, {clientId: myId, clean:true, connectTimeout:8000, reconnectPeriod:6000});
+  } catch(e){ T.conn='err'; T.connErr = e.message; render(); return; }
+  const timer = setTimeout(() => { if (T.conn !== 'ok'){ T.conn='err'; T.connErr = enVisorClaude() ? 'El visor de Claude bloquea conexiones externas. Abre la app desde GitHub Pages para usar el dispositivo real.' : 'No se pudo conectar con el servidor MQTT. Revisa tu internet o la dirección del broker.'; render(); } }, 9000);
+  client.on('connect', () => {
+    clearTimeout(timer); T.conn = 'ok'; T.connErr = '';
+    client.subscribe(base() + '/#', {qos:0});
+    if (S.view === 'familiar') enviarCmd({accion:'umbral', min:S.umbralMin});
+    render();
+  });
+  client.on('reconnect', () => { if (T.conn !== 'err'){ T.conn = 'wait'; render(); } });
+  client.on('offline', () => { if (T.conn === 'ok'){ T.conn = 'wait'; render(); } });
+  client.on('error', e => { T.connErr = e?.message || 'Error de conexión'; });
+  client.on('message', (topic, payload) => onMsg(topic.slice(base().length+1), payload.toString()));
+}
+function desconectar(silent){ if (client){ try{ client.end(true); }catch(e){} client = null; } T.conn = 'off'; if (!silent) render(); }
+function enVisorClaude(){ return /claude|anthropic|usercontent/i.test(location.hostname) || location.protocol === 'about:' || window.self !== window.top; }
+function publicar(sub, obj, retain=false){ if (client && T.conn === 'ok') client.publish(`${base()}/${sub}`, JSON.stringify(Object.assign({from:myId}, obj)), {qos:0, retain}); }
+function enviarCmd(obj){ publicar('cmd', obj); }
+function onMsg(sub, txt){
+  vigilar();
+  let d = null; try { d = JSON.parse(txt); } catch(e){}
+  const now = Date.now();
+  if (sub === 'conexion'){ S.conexion = (d && d.estado) || txt; }
+  else if (sub === 'estado' && d){
+    S.dev = Object.assign({}, S.dev, {bat:d.bat, rssi:d.rssi, obj:d.obj, fw:d.fw, seen:now});
+    S.conexion = 'online';
+    if (typeof d.inactivoSeg === 'number' && d.inactivoSeg >= 0 && d.huboActividad !== false){
+      // Si el ESP32 tiene hora (NTP), usamos su marca de tiempo: así un mensaje retenido viejo no engaña.
+      const t = (d.t > 1700000000 && Math.abs(d.t*1000 - now) < 7*86400000) ? (d.t - d.inactivoSeg)*1000 : now - d.inactivoSeg*1000;
+      S.lastAct = Math.min(now, Math.max(S.lastAct||0, t));
+    }
+    if (d.obj && OBJ[d.obj] && !S.onboarded) S.objeto = d.obj;
+  }
+  else if (sub === 'actividad'){
+    const primera = !S.lastAct || (now - S.lastAct) > 20*60000;
+    S.lastAct = now; S.dev.seen = now; S.conexion = 'online';
+    if (primera || !S.events.length || now - S.events[0].t > 5*60000) logEvent(`Movimiento en ${OBJ[d?.obj||S.objeto]?.lugar || 'el sensor'}`);
+    if (T.waitDetect && now >= T.onbWaitSince){ T.waitDetect = false; S.detectado = true; }
+  }
+  else if (sub === 'app' && d && d.from !== myId){ aplicarEventoRemoto(d); }
+  else return;
+  vigilar(); render();
+}
+function aplicarEventoRemoto(d){
+  if (d.tipo === 'ack'){ S.ackAt = d.t || Date.now(); S.ackBy = d.quien || ''; S.alertStart = 0; logEvent(`${d.quien||'Alguien'} confirmó que todo está bien`); }
+  if (d.tipo === 'cuidador'){ const p = person(d.id); if (p){ p.estado = d.estado; logEvent(`${p.nombre}: ${ESTADOS_P[d.estado]?.txt || d.estado}`, d.estado==='nopuede'?'a':'v'); toast(`${p.nombre}: ${ESTADOS_P[d.estado]?.txt}`); } }
+  if (d.tipo === 'adulto'){ recibirAdulto(d.boton, true); }
+}
+
+/* ---------- Acciones ---------- */
+const ESTADOS_P = {
+  visto:{txt:'Visto', cls:'v'}, camino:{txt:'Va en camino', cls:'v'}, revisado:{txt:'Ya revisó', cls:'v'},
+  avisado:{txt:'Avisado', cls:'a'}, pendiente:{txt:'Sin respuesta', cls:''}, nopuede:{txt:'No puede ir', cls:'r'}
+};
+function ir(view, opts={}){ S.view = view; S.sub = opts.sub ?? null; if (opts.tab) S.tab = opts.tab; T.modal = null; T.panelOpen = false; render(); }
+function confirmarRevisado(quien){
+  T.push = null;
+  S.ackAt = Date.now(); S.ackBy = quien; S.alertStart = 0; S.escalado = false;
+  if (S.mode === 'demo') S.demoState = 'normal';
+  logEvent(`${quien} confirmó que todo está bien`);
+  publicar('app', {tipo:'ack', quien, t:S.ackAt});
+}
+function recibirAdulto(boton, remoto){
+  const n = nom();
+  if (boton === 'bien'){ if (S.mode==='demo'){ S.demoState='normal'; S.ackAt=Date.now(); } else { S.lastAct = Date.now(); } logEvent(`${n} tocó “Estoy bien”`); if (remoto || S.view!=='adulto') avisar(`${n} te avisa que está bien.`); }
+  if (boton === 'llamame'){ logEvent(`${n} pidió que le llames`, 'a'); if (remoto || S.view!=='adulto') avisar(`${n} pidió que le llames.`); }
+  if (boton === 'ayuda'){ logEvent(`${n} pidió ayuda`, 'r'); S.ayuda = Date.now(); S.alertStart = Date.now(); S.escalado=false; S.avisadoLocal=false; S.circle.forEach(p=>p.estado='pendiente'); if (S.mode==='demo') S.demoState='critico'; if (remoto || S.view!=='adulto') avisar(`${n} pidió ayuda. Llámale ahora.`); }
+}
+const A = {
+  nav:(v)=>ir(v, v==='familiar'?{tab:S.tab||'inicio'}:{}),
+  tab:(t)=>{ S.tab=t; S.sub=null; render(); },
+  sub:(s)=>{ S.sub=s; render(); },
+  back:()=>{ S.sub = (S.sub==='como-abrir') ? 'dispositivo' : null; render(); },
+  demo:(st)=>{ T.panelOpen=false; if (S.mode==='real'){ S.mode='demo'; desconectar(true); } S.pausa=null; S.demoState=st; S.ackAt=0; S.ayuda=0;
+    if (st==='critico'){ S.alertStart=Date.now(); S.critSince=Date.now()-(S.umbralMin+35)*60000; S.escalado=false; S.avisadoLocal=false; S.circle.forEach(p=>p.estado='pendiente'); }
+    else { S.alertStart=0; T.push=null; }
+    if (S.view==='onboarding' || S.view==='sistema') { S.view='familiar'; S.tab='inicio'; S.sub=null; }
+    if (S.view==='familiar' && S.sub && S.sub!=='alerta') S.sub=null;
+    if (st==='critico' && S.view==='familiar'){ S.tab='inicio'; S.sub=null; setTimeout(()=>avisar(`No detectamos actividad de ${nom()} desde las ${hora(lastActivity())}.`), 400); }
+    prevEstado = st; render(); },
+  modo:(m)=>{ S.mode=m; if (m==='real') conectar(); else desconectar(); prevEstado=null; render(); },
+  adelantar:()=>{ if (S.alertStart){ S.alertStart -= 15*60000; vigilar(); render(); } },
+  reset:()=>{ T.modal='reset'; render(); },
+  doReset:()=>{ const keepMode = {broker:S.broker}; S = Object.assign(structuredClone(DEFAULTS), keepMode); desconectar(true); T.modal=null; prevEstado=null; save(); render(); },
+  panel:()=>{ T.panelOpen=!T.panelOpen; renderPanel(); },
+  // Onboarding
+  onbNext:()=>{ if (S.step===4 && !S.detectado) return; S.step=Math.min(5,S.step+1); if (S.step===4) prepararDeteccion(); render(); },
+  onbBack:()=>{ S.step=Math.max(1,S.step-1); T.waitDetect=false; render(); },
+  rel:(r)=>{ S.elder.rel=r; render(); },
+  visitas:(v)=>{ S.visitas=v; S.avisoModo = v==='si' ? 'excepciones' : 'ambas'; S.umbralMin = v==='no' ? 180 : 240; render(); },
+  objeto:(o)=>{ S.objeto=o; render(); },
+  scan:()=>{ T.scanning=true; render(); setTimeout(()=>{ T.scanning=false; S.scanned=true; if(!S.deviceId) S.deviceId='DC-7F3A'; render(); if (S.mode==='real') conectar(); }, 1600); },
+  seSento:()=>{ T.waitDetect=true; render(); if (S.mode==='demo') setTimeout(()=>{ if(T.waitDetect){ T.waitDetect=false; S.detectado=true; render(); } }, 2200); },
+  saltarDeteccion:()=>{ T.waitDetect=false; S.detectado=true; S.step=5; render(); },
+  empezar:()=>{ if(!(S.consent1&&S.consent2)) return; S.onboarded=true; S.view='familiar'; S.tab='inicio'; S.sub=null; S.circle[0].nombre = S.yo || 'Tú'; toast(`Listo. Te avisaremos solo si algo cambia en la rutina de ${nom()}.`); },
+  // Familiar
+  detalle:()=>{ S.sub='detalle'; render(); },
+  alerta:()=>{ S.sub='alerta'; render(); },
+  llamar:(id)=>{ T.modal = {tipo:'llamar', id: id||'elder'}; render(); },
+  avisarLocal:()=>{ const p = contactoLocal(); if(!p) return; p.estado='avisado'; S.avisadoLocal=true; logEvent(`Avisaste a ${p.nombre}`,'a'); toast(`Le avisamos a ${p.nombre}.`);
+    publicar('app',{tipo:'aviso', id:p.id});
+    if (S.mode==='demo') setTimeout(()=>{ if (p.estado==='avisado'){ p.estado='camino'; logEvent(`${p.nombre} va en camino`); toast(`${p.nombre} va en camino.`); } }, 3500); },
+  revisado:()=>{ confirmarRevisado(S.yo||'Tú'); S.sub=null; S.tab='inicio'; render(); toast('Gracias. Marcamos que todo está bien.'); },
+  falsa:()=>{ T.modal='falsa'; render(); },
+  falsaMotivo:(m)=>{ confirmarRevisado(S.yo||'Tú'); logEvent(`Falsa alarma: ${m}`, 'g'); T.modal=null; S.sub=null; S.tab='inicio'; render(); toast('Gracias. Esto nos ayuda a aprender su rutina.'); },
+  invitar:()=>{ T.modal={tipo:'invitar', nombre:'', tel:'', rol:'alertas'}; render(); },
+  invRol:(r)=>{ T.modal.rol=r; render(); },
+  enviarInv:()=>{ const m=T.modal; if(!m.nombre.trim()) { toast('Escribe el nombre de la persona.'); return; }
+    const id='p'+Date.now().toString(36); S.circle.push({id, nombre:m.nombre.trim(), rel:'Invitación pendiente', rol:m.rol, tel:m.tel, estado:'pendiente', invitado:true});
+    if (m.rol==='alertas') S.orden.push(id); T.modal=null; render(); toast(`Invitación lista para ${m.nombre.trim()}.`); },
+  copiar:(txt)=>{ const t = txt || T.copyTxt || ''; try{ navigator.clipboard.writeText(t).then(()=>toast('Copiado.'), ()=>toast('No se pudo copiar; selecciona el texto.')); }catch(e){ toast('No se pudo copiar; selecciona el texto.'); } },
+  rol:(id)=>{ T.modal={tipo:'rol', id}; render(); },
+  setRol:(arg)=>{ const [id,r]=arg.split('|'); const p=person(id); p.rol=r; if (r==='alertas' && !S.orden.includes(id)) S.orden.push(id); if (r==='ver') S.orden=S.orden.filter(x=>x!==id); T.modal=null; render(); },
+  quitar:(id)=>{ S.circle=S.circle.filter(p=>p.id!==id); S.orden=S.orden.filter(x=>x!==id); T.modal=null; render(); toast('Se quitó del círculo.'); },
+  ordUp:(i)=>{ i=+i; if(i<=0) return; [S.orden[i-1],S.orden[i]]=[S.orden[i],S.orden[i-1]]; render(); },
+  ordDown:(i)=>{ i=+i; if(i>=S.orden.length-1) return; [S.orden[i+1],S.orden[i]]=[S.orden[i],S.orden[i+1]]; render(); },
+  avisoModo:(m)=>{ S.avisoModo=m; render(); },
+  umbral:(m)=>{ S.umbralMin=+m; enviarCmd({accion:'umbral', min:S.umbralMin}); prevEstado=estado(); render(); },
+  pausaMotivo:(m)=>{ S.pausaMotivo=m; render(); },
+  pausar:()=>{ T.push=null; S.pausa={motivo:S.pausaMotivo, desde:Date.now()}; logEvent(`Avisos en pausa: ${S.pausaMotivo}`,'g'); render(); toast('Avisos en pausa. Puedes reanudarlos cuando quieras.'); },
+  reanudar:()=>{ S.pausa=null; logEvent('Avisos reanudados','g'); prevEstado=estado(); render(); toast('Avisos reanudados.'); },
+  notif:()=>{ try{ Notification.requestPermission().then(p=>{ toast(p==='granted'?'Notificaciones activadas en este navegador.':'El navegador no dio permiso.'); }); }catch(e){ toast('Este navegador no permite notificaciones aquí.'); } },
+  reiniciarDev:()=>{ if (S.mode==='real' && T.conn==='ok'){ enviarCmd({accion:'reiniciar'}); toast('Enviamos la orden de reinicio al sensor.'); } else toast('El sensor se reinició (simulado).'); },
+  identificar:()=>{ enviarCmd({accion:'identificar'}); toast('Enviamos la orden; revisa el monitor serie del ESP32.'); },
+  soporte:()=>{ T.modal='soporte'; render(); },
+  exportar:()=>{ T.exportTxt = JSON.stringify({persona:{nombre:nom(), relacion:rel()}, objeto:obj().nombre, avisos:{modo:S.avisoModo, umbral:umbralTxt(), noMolestar:S.dnd, resumenSemanal:S.resumen}, circulo:S.circle.map(p=>({nombre:p.nombre, rol:p.rol})), historial:S.events.map(e=>({fecha:new Date(e.t).toISOString(), evento:e.txt}))}, null, 2); T.copyTxt=T.exportTxt; T.modal='exportar'; render(); },
+  borrar:()=>{ T.modal='borrar'; render(); },
+  doBorrar:()=>{ S.events=[]; S.lastAct = S.mode==='real' ? S.lastAct : 0; T.modal=null; render(); toast('Borramos el historial de actividad.'); },
+  revocar:()=>{ T.modal='revocar'; render(); },
+  doRevocar:()=>{ S.consent1=false; S.consent2=false; S.onboarded=false; S.view='onboarding'; S.step=5; T.modal=null; render(); },
+  cancelarSub:()=>{ T.modal='cancelar'; render(); },
+  doCancelar:()=>{ S.sub_cuenta='cancelada'; T.modal=null; render(); toast('Suscripción cancelada. Sin cargos extra.'); },
+  reactivar:()=>{ S.sub_cuenta='activa'; render(); toast('Suscripción reactivada.'); },
+  conectar:()=>{ S.mode='real'; conectar(); },
+  desconectar:()=>{ desconectar(); },
+  cerrar:()=>{ T.modal=null; render(); },
+  // Cuidador
+  cuid:(est)=>{ const p = person(S.cuidadorId) || contactoLocal(); if(!p) return; p.estado=est; logEvent(`${p.nombre}: ${ESTADOS_P[est].txt}`, est==='nopuede'?'a':'v');
+    publicar('app',{tipo:'cuidador', id:p.id, estado:est});
+    if (est==='revisado'){ confirmarRevisado(p.nombre); toast('Gracias. Le avisamos a la familia que todo está bien.'); }
+    else toast(est==='camino' ? `Le avisamos a ${S.yo} que vas en camino.` : `Le avisamos a ${S.yo}. Buscaremos a alguien más.`);
+    if (est==='nopuede' && !S.escalado){ const sig = siguienteContacto(); if (sig){ sig.estado='avisado'; S.escalado=true; } }
+    render(); },
+  // Adulto mayor
+  adulto:(b)=>{ T.push=null; S.elderDone={b, t:Date.now()}; recibirAdulto(b,false); publicar('app',{tipo:'adulto', boton:b}); render(); clearTimeout(A._et); A._et=setTimeout(()=>{ S.elderDone=null; render(); }, 7000); },
+  adultoVolver:()=>{ S.elderDone=null; render(); }
+};
+
+/* ---------- Componentes ---------- */
+function topbar(title, backAct='back'){ return `<div class="topbar"><button class="iconbtn" data-act="${backAct}" aria-label="Regresar">${ic('back')}</button><h2>${esc(title)}</h2></div>`; }
+function avatar(p, size=40){ return `<div class="avatar" style="width:${size}px;height:${size}px;background:${avColor(p.id)}">${esc(initials(p.nombre))}</div>`; }
+function heroData(e){
+  const n = nom(), la = lastActivity();
+  switch(e){
+    case 'normal': return {icon:'check', t: S.ackAt && Date.now()-S.ackAt < 3600000 ? 'Todo bien' : 'Todo bien', s: S.ackAt && Date.now()-S.ackAt < 3600000 ? `${esc(S.ackBy==='Tú'||S.ackBy===S.yo?'Lo revisaste':S.ackBy+' lo revisó')} a las ${hora(S.ackAt)}.` : g('Se ha movido normalmente hoy.','Se ha movido normalmente hoy.')};
+    case 'atencion': return {icon:'excl', t: g('Más tranquila de lo usual','Más tranquilo de lo usual'), s:`Hoy ${n} se ha movido menos que otros días. No es una alarma; si quieres, márcale.`};
+    case 'critico': return ayudaActiva() ? {icon:'siren', t:`${esc(n)} pidió ayuda`, s:`Tocó “Necesito ayuda” a las ${hora(S.ayuda)}.`} : {icon:'excl', t:'No detectamos actividad', s:`desde las ${hora(la)}. Te avisamos a ti primero.`};
+    case 'pausa': return {icon:'pause', t:'Avisos en pausa', s:`Motivo: ${esc(S.pausa.motivo)}. No enviaremos alertas hasta que los reanudes.`};
+    case 'sinconexion': return {icon:'wifioff', t:'Perdimos contacto con el sensor', s:`Su última señal fue ${S.dev.seen?hace(Date.now()-S.dev.seen):'hace tiempo'}. Puede ser la batería o el internet de la casa.`};
+    default: return {icon:'clock', t:'Esperando al sensor', s: T.conn==='ok' ? `Conectado. Cuando ${n} use ${obj().lugar}, aquí lo verás.` : 'Conecta el dispositivo en Ajustes → Conexión al dispositivo.'};
+  }
+}
+function heroCls(e){ return e==='sinconexion' ? 'atencion' : e; }
+function hero(e){
+  const h = heroData(e), la = lastActivity();
+  const last = (e!=='espera' && e!=='pausa' && la) ? `<div class="last">${ic('clock')} Última actividad: ${cuando(la)}</div>` : '';
+  return `<div class="hero ${heroCls(e)}"><div class="ring">${ic(h.icon)}</div><h1>${h.t}</h1><p>${h.s}</p>${last}</div>`;
+}
+function devWords(){
+  if (S.mode==='demo') return {bat:'Batería bien', batIc:'battery', con:'Conectado', conIc:'wifi', ok:true, ult:'hace 2 min'};
+  const b = S.dev.bat, r = S.dev.rssi, online = devOnline();
+  const bat = (b==null||b<0) ? 'Batería sin medir' : b < 20 ? 'Batería baja' : b < 45 ? 'Batería a la mitad' : 'Batería bien';
+  const con = !online ? 'Sin conexión' : (r!=null && r < -80) ? 'Señal débil' : 'Conectado';
+  return {bat, batIc: (b!=null && b>=0 && b<20)?'batlow':'battery', con, conIc: online?'wifi':'wifioff', ok: online && !(b>=0 && b<20), ult: S.dev.seen ? hace(Date.now()-S.dev.seen) : 'nunca'};
+}
+function devcard(){
+  const d = devWords();
+  return `<button class="devcard" data-act="sub" data-arg="dispositivo"><div class="ico">${ic(obj().icon)}</div><div class="grow"><div style="font-weight:700">${esc(obj().donde)}</div>
+    <div class="s"><span>${ic(d.conIc)}${d.con}</span><span>${ic(d.batIc)}${d.bat}</span></div></div>${ic('chev','chev')}</button>`;
+}
+function modoBadge(){
+  if (S.mode !== 'real') return '';
+  const m = {ok:['ok','En vivo'], wait:['wait','Conectando…'], err:['err','Sin conexión'], off:['','Desconectado']}[T.conn] || ['',''];
+  return `<button class="chip" data-act="sub" data-arg="conexion" style="border:0"><span class="conn-dot ${m[0]}"></span>${m[1]}</button>`;
+}
+
+/* ---------- Vistas: Onboarding ---------- */
+function vOnboarding(){
+  const s = S.step;
+  const prog = `<div class="progress">${[1,2,3,4,5].map(i=>`<i class="${i<=s?'on':''}"></i>`).join('')}</div>`;
+  const head = s>1 ? `<div class="topbar">${`<button class="iconbtn" data-act="onbBack" aria-label="Regresar">${ic('back')}</button>`}<h2></h2><span class="small muted" style="padding-right:8px;font-weight:700">Paso ${s} de 5</span></div>` : `<div class="topbar"><h2></h2><span class="small muted" style="padding-right:8px;font-weight:700">Paso 1 de 5</span></div>`;
+  let body='', foot='';
+  if (s===1){
+    body = `<div class="welcome-art">${artWelcome()}</div>
+      <h1 class="t">Sabrás que está bien sin tener que preguntarle.</h1>
+      <p class="muted" style="font-size:17px;margin:0 0 22px">DistanciaCero aprende la rutina de tu familiar y solo te avisa si algo se sale de lo normal.</p>
+      <label class="field"><span>¿Cómo te llamas?</span><input class="input" data-bind="yo" value="${esc(S.yo)}" autocomplete="given-name"></label>
+      <div class="field"><span>¿A quién vas a cuidar?</span><div class="pills">${['mamá','papá'].map(r=>`<button class="pill ${S.elder.rel===r?'on':''}" data-act="rel" data-arg="${r}">${r==='mamá'?'Mi mamá':'Mi papá'}</button>`).join('')}</div></div>
+      <label class="field"><span>Su nombre</span><input class="input" data-bind="elder.nombre" value="${esc(S.elder.nombre)}"></label>`;
+    foot = `<button class="btn primary" data-act="onbNext">Comenzar</button>`;
+  }
+  if (s===2){
+    const op = [['si','Sí, alguien lo visita seguido','Un vecino o familiar pasa casi todos los días','door'],['aveces','A veces','Hay visitas, pero no diario','calendar'],['no',`No, vive ${g('sola','solo')} sin nadie cerca`,'Nadie pasa con frecuencia','home']];
+    const cfg = {si:`Solo te avisaremos por excepción, y tu contacto local podrá responder primero.`, aveces:`Te avisaremos por excepción y además te mandaremos una confirmación diaria.`, no:`Usaremos un tiempo de aviso más corto (3 horas) y la confirmación diaria.`}[S.visitas];
+    body = `<p class="stepnum">Su situación</p><h1 class="t">¿Alguien más visita seguido a ${tu()}?</h1><p class="muted" style="margin:0 0 18px">Con esto ajustamos cómo y cuándo avisarte. Lo puedes cambiar después.</p>
+      ${op.map(o=>`<button class="choice ${S.visitas===o[0]?'on':''}" data-act="visitas" data-arg="${o[0]}"><div class="ico">${ic(o[3])}</div><div class="grow">${esc(o[1])}<small>${o[2]}</small></div><div class="radio"></div></button>`).join('')}
+      <div class="note ok" style="margin-top:16px">${ic('sparkle')}<div>${cfg}</div></div>`;
+    foot = `<button class="btn primary" data-act="onbNext">Continuar</button>`;
+  }
+  if (s===3){
+    body = `<p class="stepnum">Vincular el dispositivo</p><h1 class="t">Escanea el código del sensor</h1><p class="muted" style="margin:0">Está en la parte de atrás de ${obj().placa}.</p>
+      <div class="qrbox ${S.scanned?'done':''}">${S.scanned ? ic('check','qr') : `<span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>${T.scanning?'<span class="scan"></span>':''}${ic('qr','qr')}`}</div>
+      ${S.scanned ? `<p style="text-align:center;margin:-4px 0 14px;font-weight:700;color:var(--verde)">Sensor ${esc(S.deviceId)} vinculado</p>` : `<button class="btn secondary" data-act="scan" ${T.scanning?'disabled':''}>${ic('qr')} ${T.scanning?'Escaneando…':'Escanear código'}</button>`}
+      <label class="field" style="margin-top:14px"><span>¿No puedes escanear? Escribe el código</span><input class="input mono" data-bind="deviceId" data-upper placeholder="DC-XXXX" value="${esc(S.deviceId)}"></label>
+      <div class="field"><span>¿Dónde lo vas a poner?</span>${Object.entries(OBJ).map(([k,o])=>`<button class="choice ${S.objeto===k?'on':''}" data-act="objeto" data-arg="${k}"><div class="ico">${ic(o.icon)}</div><div class="grow">${o.nombre}<small>${k==='sillon'?'El que más usa (recomendado)':k==='baston'?'Si lo usa todos los días':'Junto a su taza de siempre'}</small></div><div class="radio"></div></button>`).join('')}</div>`;
+    foot = `<button class="btn primary" data-act="onbNext" ${(S.scanned||S.deviceId.trim().length>=4)?'':'disabled'}>Continuar</button>`;
+  }
+  if (s===4){
+    const real = S.mode==='real';
+    body = `<p class="stepnum">Confirmar que funciona</p><h1 class="t">Pídele a ${tu()} ${obj().pedir}.</h1>
+      <div class="hero ${S.detectado?'normal':'espera'}" style="padding-top:10px"><div class="ring">${ic(S.detectado?'check':obj().icon)}</div>
+      ${S.detectado ? `<h1>¡Lo detectamos!</h1><p>El sensor ${obj().del} ya está funcionando.</p>` : T.waitDetect ? `<h1 style="font-size:24px">Esperando movimiento…</h1><div class="waiting"><i></i><i></i><i></i></div><p>${real?(T.conn==='ok'?'Conectado al sensor. Mueve el objeto.':'Conectando con el sensor…'):'Esto toma unos segundos.'}</p>` : `<p>Cuando lo haga, toca el botón de abajo y comprobaremos la señal.</p>`}</div>
+      ${real && T.conn==='err' ? `<div class="note err">${ic('info')}<div>${esc(T.connErr)}</div></div>` : ''}`;
+    foot = S.detectado ? `<button class="btn primary" data-act="onbNext">Continuar</button>` : `<button class="btn primary" data-act="seSento" ${T.waitDetect?'disabled':''}>Ya ${S.objeto==='sillon'?g('se sentó','se sentó'):S.objeto==='baston'?'caminó':'levantó la taza'}</button><button class="btn ghost" data-act="saltarDeteccion">Lo haré después</button>`;
+  }
+  if (s===5){
+    body = `<p class="stepnum">Consentimiento</p><h1 class="t">Esto es lo que ve el sensor</h1>
+      ${privCols()}
+      <p class="muted small" style="margin:14px 2px">No hay cámaras ni micrófonos. Solo sabemos si ${nom()} usó ${obj().lugar} y a qué hora.</p>
+      <label class="check"><input type="checkbox" data-bind="consent1" ${S.consent1?'checked':''} data-rerender> <span>Le expliqué a ${tu()} qué hace el sensor y ${g('está de acuerdo','está de acuerdo')}.</span></label>
+      <label class="check"><input type="checkbox" data-bind="consent2" ${S.consent2?'checked':''} data-rerender> <span>Acepto el aviso de privacidad de DistanciaCero.</span></label>`;
+    foot = `<button class="btn primary" data-act="empezar" ${(S.consent1&&S.consent2)?'':'disabled'}>Empezar</button>`;
+  }
+  return `${head}${prog}<div class="content">${body}</div><div class="onb-foot">${foot}</div>`;
+}
+function prepararDeteccion(){ S.detectado=false; T.onbWaitSince=Date.now(); T.waitDetect = S.mode==='real'; }
+function privCols(){
+  return `<div class="cols"><div class="col si"><h3>${ic('eye')} Qué ve</h3><ul><li>${ic('check')}Presencia</li><li>${ic('check')}Movimiento</li><li>${ic('check')}Hora de actividad</li></ul></div>
+  <div class="col no"><h3>${ic('eyeoff')} Qué NO ve</h3><ul><li>${ic('x')}Audio</li><li>${ic('x')}Video</li><li>${ic('x')}Ubicación</li></ul></div></div>`;
+}
+function artWelcome(){
+  return `<svg viewBox="0 0 220 170" style="width:100%;height:100%;stroke-width:3">
+    <circle cx="110" cy="85" r="78" fill="#EFE9DF" stroke="none"/>
+    <g stroke="#2E6B57"><path d="M52 112v-22a12 12 0 0112-12h32a12 12 0 0112 12v22" fill="#fff"/><path d="M40 118a9 9 0 0118 0v8h44v-8a9 9 0 0118 0v18H40z" fill="#E5F1E8"/><path d="M46 136v8M114 136v8"/></g>
+    <g stroke="#2E3236"><rect x="140" y="54" width="44" height="78" rx="10" fill="#fff"/><path d="M155 62h14"/></g>
+    <circle cx="162" cy="96" r="13" fill="#E5F1E8" stroke="#3F8A5A"/><path d="M156 96.5l4 4 8-8.5" stroke="#3F8A5A"/>
+    <path d="M118 70c8-10 16-12 24-10" stroke="#B7791F" stroke-dasharray="2 7"/>
+  </svg>`;
+}
+
+/* ---------- Vistas: Familiar ---------- */
+function vFamiliar(){
+  const e = estado();
+  if (S.sub === 'alerta' && e !== 'critico') S.sub = null;
+  let inner;
+  if (S.sub==='alerta') inner = scAlerta();
+  else if (S.sub==='detalle') inner = scDetalle();
+  else if (S.sub==='dispositivo') inner = scDispositivo();
+  else if (S.sub==='como-abrir') inner = scComoAbrir();
+  else if (S.sub==='privacidad') inner = scPrivacidad();
+  else if (S.sub==='cuenta') inner = scCuenta();
+  else if (S.sub==='conexion') inner = scConexion();
+  else inner = ({inicio:scInicio, circulo:scCirculo, avisos:scAvisos, ajustes:scAjustes}[S.tab]||scInicio)();
+  const tabs = [['inicio','Inicio','home'],['circulo','Círculo','users'],['avisos','Avisos','bell'],['ajustes','Ajustes','sliders']];
+  const bar = `<nav class="tabbar">${tabs.map(t=>`<button class="${S.tab===t[0]&&!['alerta'].includes(S.sub)?'on':''}" data-act="tab" data-arg="${t[0]}">${ic(t[2])}${t[1]}${t[0]==='inicio'&&e==='critico'&&S.tab!=='inicio'?'<span class="badge"></span>':''}</button>`).join('')}</nav>`;
+  return inner + bar;
+}
+function scInicio(){
+  const e = estado();
+  const btns = e==='critico'
+    ? `<button class="btn danger" data-act="alerta">${ic('bell')} Ver alerta</button><button class="btn secondary" data-act="llamar">${ic('phone')} Llamar a ${esc(nom())}</button>`
+    : e==='espera' || e==='sinconexion'
+    ? `<button class="btn primary" data-act="sub" data-arg="${S.mode==='real'?'conexion':'dispositivo'}">${ic(S.mode==='real'?'plug':'refresh')} ${S.mode==='real'?'Revisar conexión':'Revisar sensor'}</button><button class="btn secondary" data-act="llamar">${ic('phone')} Llamar</button>`
+    : e==='pausa'
+    ? `<button class="btn primary" data-act="reanudar">${ic('play')} Reanudar avisos</button><button class="btn secondary" data-act="llamar">${ic('phone')} Llamar</button>`
+    : `<div class="two"><button class="btn primary" data-act="detalle">Ver detalle</button><button class="btn secondary" data-act="llamar">${ic('phone')} Llamar</button></div>`;
+  return `<div class="greet"><div class="who">Hola, ${esc(S.yo||'')}<b>${esc(nom())} · ${esc(Rel())}</b></div>${modoBadge()}</div>
+    <div class="content">${hero(e)}${devcard()}<div class="stack">${btns}</div>
+    ${e==='atencion' ? `<p class="small muted" style="text-align:center;margin:16px 8px 0">Si sigue así ${S.umbralMin>=60?`hasta cumplir ${umbralTxt()}`:'un poco más'} sin moverse, te mandaremos una alerta.</p>`:''}
+    </div>`;
+}
+function scDetalle(){
+  const e = estado(); const n = nom();
+  let items;
+  if (S.mode==='demo'){
+    const now = Date.now(), d = (m)=>now-m*60000;
+    items = [];
+    if (e==='critico') items.push({t:d(1), txt:`Sin actividad desde las ${hora(lastActivity())}`, tipo:'r'});
+    if (e==='atencion') items.push({t:d(5), txt:'Menos movimiento que otros días', tipo:'a'});
+    items.push(...S.events.filter(x=>Date.now()-x.t<86400000 && !/^Movimiento/.test(x.txt)).slice(0,4));
+    const baseL = lastActivity();
+    items.push({t:baseL, txt:`Se movió en ${obj().lugar}`, tipo:'v'},{t:baseL-95*60000, txt:'Estuvo un rato en la sala', tipo:'v'},{t:baseL-210*60000, txt:'Se levantó y empezó su día', tipo:'v'});
+    items.sort((a,b)=>b.t-a.t);
+  } else {
+    items = S.events.slice(0,12);
+    if (!items.length && S.lastAct) items = [{t:S.lastAct, txt:`Movimiento en ${obj().lugar}`, tipo:'v'}];
+  }
+  const resumen = e==='critico' ? 'Hoy hubo menos actividad de lo normal.' : e==='atencion' ? 'Hoy está siendo un día más tranquilo.' : 'Un día como cualquier otro, sin sorpresas.';
+  return `${topbar('Detalle de hoy')}<div class="content">
+    <div class="card" style="display:flex;gap:14px;align-items:center"><div class="avatar" style="background:${avColor('elder')};width:52px;height:52px;font-size:18px">${esc(initials(n))}</div><div><div style="font-weight:800;font-size:18px">${esc(n)}</div><div class="muted small">${esc(resumen)}</div></div></div>
+    <p class="sec-title">Hoy</p>
+    ${items.length ? `<div class="timeline">${items.map(i=>`<div class="tl ${i.tipo==='v'?'':i.tipo}"><div class="h">${hora(i.t)}</div><div class="x">${esc(i.txt)}</div></div>`).join('')}</div>` : `<div class="note">${ic('info')}<div>Todavía no hay actividad registrada hoy.</div></div>`}
+    <p class="sec-title">Esta semana</p>
+    <div class="card"><div class="row"><div class="li ico" style="padding:0;width:44px;height:44px;border-radius:14px;background:var(--verde-bg);color:var(--verde);display:flex;align-items:center;justify-content:center">${ic('calendar')}</div><div class="grow"><div style="font-weight:700">Una semana tranquila</div><div class="small muted">${esc(n)} mantuvo su rutina casi todos los días. Te mandamos el resumen el domingo.</div></div></div></div>
+  </div>`;
+}
+function scAlerta(){
+  const n = nom(), la = lastActivity(), loc = contactoLocal(), sig = siguienteContacto();
+  const resp = S.circle.filter(p => p.rol==='alertas');
+  const mins = S.alertStart ? Math.max(0, 15 - Math.floor((Date.now()-S.alertStart)/60000)) : 15;
+  const alguien = S.circle.some(p => ['camino','revisado'].includes(p.estado));
+  const escTxt = alguien ? `${esc(S.circle.find(p=>['camino','revisado'].includes(p.estado)).nombre)} ya respondió. No hace falta escalar.` :
+    S.escalado ? `Nadie respondió a tiempo. Ya avisamos a ${esc(sig?.nombre||'tu siguiente contacto')}.` :
+    `Si nadie responde en 15 minutos, avisaremos a ${esc(sig?.nombre||'tu siguiente contacto')}${S.alertStart?` (faltan ${mins} min)`:''}.`;
+  const ayuda = ayudaActiva();
+  const titulo = ayuda ? `${esc(n)} pidió ayuda` : `No detectamos actividad desde las ${hora(la)}`;
+  return `${topbar('Alerta')}<div class="content">
+    <div class="alert-head"><div class="ring">${ic(ayuda?'siren':'excl')}</div><h1>${titulo}</h1><p>${ayuda?`Tocó “Necesito ayuda” en su pantalla.`:`Lo normal es que a esta hora ya ${g('se haya movido','se haya movido')} en ${obj().lugar}.`}</p></div>
+    <div class="stack" style="margin-top:16px">
+      <button class="btn danger" style="height:62px;font-size:19px" data-act="llamar">${ic('phone')} Llamar ahora</button>
+      <button class="btn secondary" data-act="avisarLocal" ${S.avisadoLocal||!loc?'disabled':''}>${ic('send')} ${S.avisadoLocal?`Ya avisaste a ${esc(loc?.nombre)}`:`Avisar a mi contacto local${loc?` (${esc(loc.nombre)})`:''}`}</button>
+      <button class="btn okline" data-act="revisado">${ic('check')} Ya lo revisé, todo bien</button>
+      <button class="btn ghost" data-act="falsa">Falsa alarma</button>
+    </div>
+    <p class="sec-title">Quién ya se enteró</p>
+    <div class="list who-list">${resp.map(p=>{ const st = p.id==='yo' ? ESTADOS_P.visto : (ESTADOS_P[p.estado]||ESTADOS_P.pendiente); return `<div class="li">${avatar(p)}<div class="grow"><div class="t1">${esc(p.id==='yo'?'Tú':p.nombre)}</div><div class="t2">${esc(p.id==='yo'?'Recibiste la alerta':p.rel)}</div></div><span class="chip ${st.cls}">${p.estado==='camino'?ic('walk'):''}${st.txt}</span></div>`; }).join('')}</div>
+    <div class="esc ${alguien?'done':''}">${ic(alguien?'check':'clock')}<div>${escTxt}</div></div>
+  </div>`;
+}
+function scCirculo(){
+  const lista = S.circle.map(p=>`<button class="li" data-act="${p.id==='yo'?'':'rol'}" data-arg="${p.id}">${avatar(p)}<div class="grow"><div class="t1">${esc(p.id==='yo'?`${S.yo||'Tú'} (tú)`:p.nombre)}</div><div class="t2">${esc(p.rel)}${p.local?' · Contacto local':''}</div><div style="margin-top:6px"><span class="chip ${p.rol==='alertas'?'v':''}">${p.rol==='alertas'?ic('bell')+'Recibe alertas y confirma':ic('eye')+'Solo ve el estado'}</span></div></div>${p.id==='yo'?'':ic('chev','chev')}</button>`).join('');
+  const orden = S.orden.map((id,i)=>{ const p=person(id); if(!p) return ''; return `<div class="ord"><span class="n">${i+1}</span>${avatar(p,34)}<div class="grow" style="font-weight:700">${esc(p.id==='yo'?'Tú':p.nombre)}</div><button class="iconbtn" data-act="ordUp" data-arg="${i}" ${i===0?'disabled':''} aria-label="Subir">${ic('up')}</button><button class="iconbtn" data-act="ordDown" data-arg="${i}" ${i===S.orden.length-1?'disabled':''} aria-label="Bajar">${ic('down')}</button></div>`; }).join('');
+  return `<div class="greet"><div class="who">Cuidan a ${esc(nom())}<b>Círculo de cuidado</b></div></div><div class="content">
+    <div class="list">${lista}</div>
+    <button class="btn primary" style="margin-top:14px" data-act="invitar">${ic('plus')} Invitar a alguien</button>
+    <p class="sec-title">Orden de escalamiento</p>
+    <p class="small muted" style="margin:-4px 4px 10px">Si una persona no responde en 15 minutos, avisamos a la siguiente.</p>
+    <div class="list">${orden}</div>
+  </div>`;
+}
+function scAvisos(){
+  const modos = [['excepciones','Solo excepciones','Te escribimos solo si algo se sale de lo normal'],['diaria','Confirmación diaria','Un mensaje al día para saber que todo va bien'],['ambas','Ambas','Confirmación diaria y avisos por excepción']];
+  const tiempos = [[180,'3 h'],[240,'4 h'],[360,'6 h']];
+  if (S.mode==='real') tiempos.unshift([1,'1 min (prueba)'],[5,'5 min (prueba)']);
+  const motivos = [['De viaje','plane'],['Hospitalizado/a','hospital'],['Visita en casa','door'],['Cambié de mueble','sofa']];
+  const notifOk = ('Notification' in window);
+  return `<div class="greet"><div class="who">Cómo y cuándo te avisamos<b>Avisos y sensibilidad</b></div></div><div class="content">
+    <p class="sec-title" style="margin-top:10px">Modo de aviso</p>
+    ${modos.map(m=>`<button class="choice ${S.avisoModo===m[0]?'on':''}" data-act="avisoModo" data-arg="${m[0]}"><div class="grow">${m[1]}<small>${m[2]}</small></div><div class="radio"></div></button>`).join('')}
+    ${S.avisoModo!=='excepciones'?`<div class="card row" style="margin-top:10px">${ic('sun')}<div class="grow" style="font-weight:700">Confirmación diaria a las</div><input type="time" class="input" style="width:130px;height:44px" data-bind="confirmHora" value="${esc(S.confirmHora)}"></div>`:''}
+    <p class="sec-title">Tiempo sin actividad antes de avisar</p>
+    <div class="pills">${tiempos.map(t=>`<button class="pill ${S.umbralMin===t[0]?'on':''}" data-act="umbral" data-arg="${t[0]}">${t[1]}</button>`).join('')}</div>
+    <p class="small muted" style="margin:8px 4px 0">Si ${esc(nom())} no se mueve durante ${umbralTxt()} en su horario normal, te mandamos una alerta.</p>
+    <p class="sec-title">Horario de no molestar</p>
+    <div class="card"><div class="row">${ic('moon')}<div class="grow" style="font-weight:700">No molestar de noche</div><label class="switch"><input type="checkbox" data-bind="dnd.on" ${S.dnd.on?'checked':''} data-rerender><i></i></label></div>
+      ${S.dnd.on?`<div class="two" style="margin-top:12px"><label class="field" style="margin:0"><span class="small">Desde</span><input type="time" class="input" data-bind="dnd.desde" value="${esc(S.dnd.desde)}"></label><label class="field" style="margin:0"><span class="small">Hasta</span><input type="time" class="input" data-bind="dnd.hasta" value="${esc(S.dnd.hasta)}"></label></div><p class="small muted" style="margin:10px 0 0">Las alertas críticas siempre te llegan.</p>`:''}</div>
+    <p class="sec-title">Resumen semanal</p>
+    <div class="card row">${ic('calendar')}<div class="grow"><div style="font-weight:700">Recibir resumen los domingos</div><div class="small muted">Una frase sobre cómo fue su semana</div></div><label class="switch"><input type="checkbox" data-bind="resumen" ${S.resumen?'checked':''} data-rerender><i></i></label></div>
+    <p class="sec-title">Pausar avisos</p>
+    ${S.pausa ? `<div class="card"><div class="row">${ic('pause')}<div class="grow"><div style="font-weight:700">En pausa: ${esc(S.pausa.motivo)}</div><div class="small muted">Desde ${cuando(S.pausa.desde)}</div></div></div><button class="btn primary" style="margin-top:14px" data-act="reanudar">${ic('play')} Reanudar avisos</button></div>`
+      : `<div class="pills">${motivos.map(m=>`<button class="pill ${S.pausaMotivo===m[0]?'on':''}" data-act="pausaMotivo" data-arg="${m[0]}">${ic(m[1])}${m[0]}</button>`).join('')}</div><button class="btn secondary" style="margin-top:12px" data-act="pausar">${ic('pause')} Pausar avisos</button>`}
+    ${notifOk ? `<p class="sec-title">Notificaciones de este navegador</p><button class="btn secondary" data-act="notif">${ic('bell')} Activar notificaciones</button>` : ''}
+  </div>`;
+}
+function scAjustes(){
+  const row = (act,arg,icon,t1,t2) => `<button class="li" data-act="${act}" data-arg="${arg}"><div class="ico">${ic(icon)}</div><div class="grow"><div class="t1">${t1}</div><div class="t2">${t2}</div></div>${ic('chev','chev')}</button>`;
+  return `<div class="greet"><div class="who">${esc(nom())} · ${esc(obj().donde)}<b>Ajustes</b></div></div><div class="content">
+    <div class="list">
+      ${row('sub','dispositivo',obj().icon,'Dispositivo','Batería, señal y mantenimiento')}
+      ${row('sub','conexion','plug','Conexión al dispositivo', S.mode==='real' ? (T.conn==='ok'?'En vivo con '+esc(S.deviceId):'Modo dispositivo real') : 'Modo demostración')}
+      ${row('sub','privacidad','shield','Privacidad','Qué ve y qué NO ve el sensor')}
+      ${row('sub','cuenta','card','Cuenta y suscripción', S.sub_cuenta==='activa'?'Plan Tranquilidad':'Cancelada')}
+    </div>
+    <p class="sec-title">Otras vistas</p>
+    <div class="list">
+      ${row('nav','cuidador','walk','Ver como cuidador local','Versión ligera para quien vive cerca')}
+      ${row('nav','adulto','heart',`Pantalla de ${esc(nom())}`,'Tres botones grandes, sin cuenta')}
+      ${row('nav','sistema','palette','Sistema visual','Colores, tipografía y componentes')}
+    </div>
+    <button class="btn ghost" style="margin-top:12px" data-act="reset">${ic('refresh')} Volver a configurar desde cero</button>
+  </div>`;
+}
+function scDispositivo(){
+  const d = devWords();
+  const batTxt = S.mode==='demo' ? 'Bien. Le quedan unas 3 semanas.' : d.bat;
+  return `${topbar('Dispositivo')}<div class="content">
+    <div class="card" style="text-align:center;padding:24px 18px"><div style="width:76px;height:76px;border-radius:24px;background:var(--verde-bg);color:var(--primario);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">${ic(obj().icon).replace('<svg','<svg style="width:42px;height:42px"')}</div>
+      <div style="font-weight:800;font-size:20px">${esc(obj().donde)}</div><div class="muted small">Sensor ${esc(S.deviceId||'DC-7F3A')}</div></div>
+    <div class="list" style="margin-top:12px">
+      <div class="li"><div class="ico">${ic(d.batIc)}</div><div class="grow"><div class="t1">Batería</div><div class="t2">${batTxt}</div></div></div>
+      <div class="li"><div class="ico">${ic(d.conIc)}</div><div class="grow"><div class="t1">Señal</div><div class="t2">${d.con==='Conectado'?'Buena, sin cortes hoy':d.con}</div></div></div>
+      <div class="li"><div class="ico">${ic('clock')}</div><div class="grow"><div class="t1">Última comunicación</div><div class="t2">${d.ult === 'nunca' ? 'Todavía no recibimos señal' : esc(d.ult.charAt(0).toUpperCase()+d.ult.slice(1))}</div></div></div>
+    </div>
+    <div class="card" style="margin-top:12px;background:var(--ambar-bg);border-color:var(--ambar-borde)"><div class="row" style="align-items:flex-start">${ic('battery')}<div class="grow"><div style="font-weight:800;color:var(--ambar-txt)">Revisa la batería cada 15 días</div><div class="small" style="color:var(--ambar-txt)">Toma menos de un minuto.</div></div></div>
+      <button class="btn secondary" style="margin-top:12px" data-act="sub" data-arg="como-abrir">Cómo abrirlo</button></div>
+    <div class="two" style="margin-top:14px"><button class="btn secondary" data-act="reiniciarDev">${ic('refresh')} Reiniciar</button><button class="btn secondary" data-act="soporte">${ic('help')} Soporte</button></div>
+  </div>`;
+}
+function scComoAbrir(){
+  const ill = [
+    `<svg class="ill" viewBox="0 0 110 84"><path d="M18 62a7 7 0 0114 0v6h46v-6a7 7 0 0114 0v12H18z" fill="#E5F1E8" stroke="#2E6B57"/><rect x="30" y="30" width="50" height="14" rx="6" fill="#fff" stroke="#2E6B57" transform="rotate(-10 55 37)"/><path d="M55 26V12M49 18l6-6 6 6" stroke="#B7791F"/><rect x="42" y="58" width="26" height="6" rx="2" fill="#7A7F84" stroke="none"/></svg>`,
+    `<svg class="ill" viewBox="0 0 110 84"><rect x="22" y="26" width="66" height="36" rx="10" fill="#fff" stroke="#2E3236"/><rect x="48" y="30" width="36" height="28" rx="7" fill="#E5F1E8" stroke="#2E6B57"/><path d="M28 44h14M36 38l6 6-6 6" stroke="#B7791F"/></svg>`,
+    `<svg class="ill" viewBox="0 0 110 84"><rect x="20" y="30" width="54" height="26" rx="6" fill="#fff" stroke="#2E3236"/><path d="M74 39v8" stroke="#2E3236"/><rect x="25" y="35" width="30" height="16" rx="3" fill="#8FD3AB" stroke="none"/><path d="M84 36l-6 8h8l-6 8" stroke="#B7791F"/></svg>`
+  ];
+  const pasos = [['Levanta el cojín','La placa gris está pegada con velcro debajo. Despégala con cuidado.'],['Desliza la tapa','Empuja la tapa trasera hacia un lado hasta que se abra.'],['Carga o cambia la batería','Conecta el cable USB-C hasta que la luz interna se apague. Vuelve a cerrar y a colocarla.']];
+  return `${topbar('Cómo abrirlo')}<div class="content"><p class="muted" style="margin:4px 2px 14px">Tres pasos. No necesitas herramientas.</p>
+    <div class="steps-ill">${pasos.map((p,i)=>`<div class="card">${ill[i]}<div><div class="chip v" style="margin-bottom:6px">Paso ${i+1}</div><div style="font-weight:800">${p[0]}</div><div class="small muted">${p[1]}</div></div></div>`).join('')}</div>
+    <button class="btn primary" style="margin-top:16px" data-act="back">Listo</button></div>`;
+}
+function scPrivacidad(){
+  return `${topbar('Privacidad')}<div class="content">
+    <h2 class="t" style="margin-top:6px">Qué ve y qué NO ve</h2><p class="muted" style="margin:0 0 14px">Esto no cambia nunca, aunque cambies de plan.</p>
+    ${privCols()}
+    <div class="note" style="margin-top:14px">${ic('lock')}<div>Solo guardamos si hubo movimiento y a qué hora. No vendemos ni compartimos estos datos.</div></div>
+    <p class="sec-title">Tus datos</p>
+    <div class="list">
+      <button class="li" data-act="exportar"><div class="ico">${ic('download')}</div><div class="grow"><div class="t1">Exportar mis datos</div><div class="t2">Historial y configuración en un archivo</div></div>${ic('chev','chev')}</button>
+      <button class="li" data-act="borrar"><div class="ico">${ic('trash')}</div><div class="grow"><div class="t1">Borrar historial</div><div class="t2">Elimina toda la actividad guardada</div></div>${ic('chev','chev')}</button>
+      <button class="li" data-act="revocar"><div class="ico" style="background:var(--rojo-bg);color:var(--rojo)">${ic('userx')}</div><div class="grow"><div class="t1" style="color:var(--rojo)">Revocar consentimiento</div><div class="t2">Deja de monitorear a ${esc(nom())}</div></div>${ic('chev','chev')}</button>
+    </div></div>`;
+}
+function scCuenta(){
+  const act = S.sub_cuenta==='activa';
+  const fin = new Date(); fin.setMonth(fin.getMonth()+1);
+  return `${topbar('Cuenta y suscripción')}<div class="content">
+    <div class="card"><div class="row"><div class="grow"><div class="small muted" style="font-weight:700">Plan actual</div><div style="font-weight:800;font-size:22px">Tranquilidad</div></div><span class="chip ${act?'v':'a'}">${act?'Activo':'Cancelado'}</span></div>
+      <div style="margin-top:10px;font-size:28px;font-weight:800">$449 <span class="small muted" style="font-weight:700">MXN al mes</span></div>
+      <div class="small muted">${act?`Siguiente cobro: ${fin.toLocaleDateString('es-MX',{day:'numeric',month:'long'})}`:`El servicio sigue hasta el ${fin.toLocaleDateString('es-MX',{day:'numeric',month:'long'})}`}</div></div>
+    <div class="list" style="margin-top:12px">
+      <div class="li"><div class="ico">${ic('card')}</div><div class="grow"><div class="t1">Método de pago</div><div class="t2">Tarjeta terminada en 4242</div></div></div>
+      <div class="li"><div class="ico">${ic('mail')}</div><div class="grow"><div class="t1">Correo de la cuenta</div><div class="t2">${esc((S.yo||'familia').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,''))}@ejemplo.com</div></div></div>
+      <div class="li"><div class="ico">${ic(obj().icon)}</div><div class="grow"><div class="t1">Incluye</div><div class="t2">1 sensor, alertas ilimitadas y hasta 5 personas en el círculo</div></div></div>
+    </div>
+    ${act?`<button class="btn secondary" style="margin-top:16px;color:var(--rojo)" data-act="cancelarSub">Cancelar suscripción</button><p class="small muted" style="text-align:center;margin:8px 0 0">Un solo paso. Sin llamadas ni penalizaciones.</p>`:`<button class="btn primary" style="margin-top:16px" data-act="reactivar">Reactivar suscripción</button>`}
+    <p class="small muted" style="text-align:center;margin-top:14px">Precio del modelo de negocio (Actividad 7), sin IVA. Datos de pago de ejemplo.</p>
+  </div>`;
+}
+function scConexion(){
+  const real = S.mode==='real';
+  const st = {ok:['ok','Conectado en vivo'], wait:['wait','Conectando…'], err:['err','No se pudo conectar'], off:['','Desconectado']}[T.conn];
+  return `${topbar('Conexión al dispositivo')}<div class="content">
+    <div class="seg" style="margin:6px 0 14px"><button class="${!real?'on':''}" data-act="modo" data-arg="demo">Demostración</button><button class="${real?'on':''}" data-act="modo" data-arg="real">Dispositivo real</button></div>
+    ${!real ? `<div class="note">${ic('info')}<div>En modo demostración los estados se cambian desde el panel del prototipo. Cambia a <b>Dispositivo real</b> para escuchar a tu ESP32.</div></div>` : `
+    <div class="card"><div class="row"><span class="conn-dot ${st[0]}"></span><div class="grow" style="font-weight:800">${st[1]}</div></div>
+      ${T.conn==='err'?`<div class="note err" style="margin-top:12px">${ic('info')}<div>${esc(T.connErr)}</div></div>`:''}
+      ${T.conn==='ok'?`<div class="small muted" style="margin-top:8px">${S.dev.seen?`Última señal del sensor: ${hace(Date.now()-S.dev.seen)}.`:'Conectado al servidor. Esperando el primer mensaje del sensor…'}</div>`:''}</div>
+    <label class="field" style="margin-top:14px"><span>Código del dispositivo</span><input class="input mono" data-bind="deviceId" data-upper placeholder="DC-XXXX" value="${esc(S.deviceId)}"></label>
+    <label class="field"><span>Servidor MQTT (WebSocket seguro)</span><input class="input mono" data-bind="broker" value="${esc(S.broker)}"></label>
+    <div class="two"><button class="btn primary" data-act="conectar">${ic('plug')} ${T.conn==='ok'?'Reconectar':'Conectar'}</button><button class="btn secondary" data-act="desconectar">Desconectar</button></div>
+    ${T.conn==='ok'?`<button class="btn ghost" data-act="identificar">Probar: enviar orden al sensor</button>`:''}
+    <div class="note" style="margin-top:14px">${ic('info')}<div>El código aparece en el monitor serie del ESP32 al encenderlo (por ejemplo <b>DC-7F3A</b>). Para pruebas, elige 1 min en Avisos para ver la alerta rápido.</div></div>
+    ${enVisorClaude()?`<div class="note warn" style="margin-top:10px">${ic('info')}<div>Estás viendo la app dentro de Claude, que bloquea conexiones externas. Para el modo real, abre la versión publicada en tu GitHub Pages.</div></div>`:''}`}
+  </div>`;
+}
+
+/* ---------- Vistas: Cuidador ---------- */
+function vCuidador(){
+  const p = person(S.cuidadorId) || contactoLocal() || {nombre:'Cuidador', id:'c'};
+  const e = estado();
+  const yaResp = ['camino','revisado','nopuede'].includes(p.estado);
+  let accion = '';
+  if (e==='critico'){
+    accion = `<div class="card" style="margin-top:18px;border-color:var(--rojo-borde)"><div style="font-weight:800;font-size:18px;margin-bottom:4px">${esc(S.yo)} necesita tu ayuda</div><div class="muted small" style="margin-bottom:14px">Vives cerca. ¿Puedes pasar a ver a ${esc(nom())}?</div>
+      ${yaResp ? `<div class="note ok">${ic('check')}<div>Respondiste: <b>${ESTADOS_P[p.estado].txt}</b>. Ya le avisamos a ${esc(S.yo)}.</div></div>${p.estado==='camino'?`<button class="btn okline" style="margin-top:12px" data-act="cuid" data-arg="revisado">${ic('check')} Ya lo revisé, todo bien</button>`:''}`
+      : `<div class="stack"><button class="btn danger" data-act="cuid" data-arg="camino">${ic('walk')} Voy en camino</button><button class="btn okline" data-act="cuid" data-arg="revisado">${ic('check')} Ya lo revisé, todo bien</button><button class="btn secondary" data-act="cuid" data-arg="nopuede">No puedo ir ahora</button></div>`}</div>`;
+  }
+  return `<div class="greet"><div class="who">Hola, ${esc(p.nombre)}<b>Cuidas a ${esc(nom())}</b></div><span class="chip">${ic('walk')}Cuidador local</span></div>
+    <div class="content">${hero(e)}
+    ${accion}
+    <div class="stack" style="margin-top:18px"><button class="btn secondary" data-act="llamar">${ic('phone')} Llamar a ${esc(nom())}</button><button class="btn ghost" data-act="llamar" data-arg="yo">Llamar a ${esc(S.yo)}</button></div>
+    <p class="small muted" style="text-align:center;margin-top:14px">Solo te escribiremos cuando ${esc(S.yo)} o el sensor necesiten tu ayuda.</p>
+    </div>
+    <nav class="tabbar"><button class="on">${ic('home')}Inicio</button><button data-act="nav" data-arg="familiar">${ic('exit')}Salir</button></nav>`;
+}
+
+/* ---------- Vistas: Adulto mayor ---------- */
+function vAdulto(){
+  const n = nom();
+  if (S.elderDone){
+    const m = {bien:['ok','check','Gracias',`${S.yo} ya sabe que estás bien.`], llamame:['call','phone','Listo',`Le avisamos a ${S.yo}. Te va a llamar pronto.`], ayuda:['help','siren','Ya avisamos',`${S.yo} y ${esc(contactoLocal()?.nombre||'tu vecino')} ya saben. La ayuda va en camino.`]}[S.elderDone.b];
+    const bg = {ok:'var(--verde-bg);color:var(--verde)', call:'var(--ambar-bg);color:var(--ambar)', help:'var(--rojo-bg);color:var(--rojo)'}[m[0]];
+    return `<div class="elder"><div class="elder-done"><div class="ring" style="background:${bg}">${ic(m[1])}</div><h1>${m[2]}</h1><p>${esc(m[3])}</p></div><button class="btn secondary" style="height:72px;font-size:22px" data-act="adultoVolver">Volver</button></div>`;
+  }
+  const saludo = new Date().getHours() < 12 ? 'Buenos días' : new Date().getHours() < 19 ? 'Buenas tardes' : 'Buenas noches';
+  return `<div class="elder"><div><p class="lead">${saludo},</p><h1>${esc(n)}</h1></div>
+    <button class="bigbtn ok" data-act="adulto" data-arg="bien">${ic('check')}Estoy bien</button>
+    <button class="bigbtn call" data-act="adulto" data-arg="llamame">${ic('phone')}Llámame</button>
+    <button class="bigbtn help" data-act="adulto" data-arg="ayuda">${ic('siren')}Necesito ayuda</button>
+    <button class="btn ghost" style="height:40px;font-size:14px;opacity:.7" data-act="nav" data-arg="familiar">Salir de esta pantalla</button></div>`;
+}
+
+/* ---------- Vistas: Sistema visual ---------- */
+function vSistema(){
+  const sw = [['--verde','#3F8A5A','Verde · normal'],['--ambar','#B7791F','Ámbar · atención'],['--rojo','#B04A42','Rojo · crítico'],['--primario','#2E6B57','Primario'],['--texto','#2E3236','Gris carbón'],['--fondo','#FBF8F3','Blanco cálido']];
+  const mini = (cls,icon,t,s) => `<div class="card" style="padding:14px"><div class="hero ${cls}" style="padding:0;display:flex;gap:14px;align-items:center;text-align:left"><div class="ring" style="width:56px;height:56px;margin:0;flex:none">${ic(icon).replace('<svg','<svg style="width:30px;height:30px"')}</div><div><div style="font-weight:800;font-size:18px">${t}</div><div class="small muted">${s}</div></div></div></div>`;
+  return `${topbar('Sistema visual','nav" data-arg="familiar')}<div class="content">
+    <p class="sec-title" style="margin-top:4px">Colores (variables CSS)</p>
+    <div class="sw">${sw.map(c=>`<div style="background:${c[1]};${c[1]==='#FBF8F3'?'color:#2E3236;border:1px solid var(--borde)':''}">${c[2]}<span>${c[0]}</span></div>`).join('')}</div>
+    <p class="sec-title">Tipografía · Nunito Sans</p>
+    <div class="card"><div style="font-size:31px;font-weight:800;line-height:1.1">Todo bien</div><div class="small muted">Título de estado · 28–32 pt · ExtraBold</div><div style="font-size:16px;margin-top:10px">Se ha movido normalmente hoy.</div><div class="small muted">Cuerpo · mínimo 16 pt</div></div>
+    <p class="sec-title">Estados (variantes)</p>
+    <div class="stack">${mini('normal','check','Normal','Todo bien')}${mini('atencion','excl','Atención','Más tranquila de lo usual')}${mini('critico','excl','Crítico','No detectamos actividad')}</div>
+    <p class="sec-title">Botones · 56 px</p>
+    <div class="stack"><button class="btn primary">Primario</button><button class="btn secondary">Secundario</button><button class="btn danger">${ic('phone')} Crítico</button><button class="btn okline">${ic('check')} Confirmación</button></div>
+    <p class="sec-title">Chips e íconos</p>
+    <div class="pills"><span class="chip v">Visto</span><span class="chip v">${ic('walk')}Va en camino</span><span class="chip">Sin respuesta</span><span class="chip a">Avisado</span><span class="chip r">No puede ir</span></div>
+    <div class="pills" style="margin-top:14px;gap:14px">${['home','users','bell','sliders','phone','sofa','cane','cup','shield','battery','wifi','moon'].map(n=>`<span style="width:44px;height:44px;border-radius:12px;background:#fff;border:1px solid var(--borde);display:inline-flex;align-items:center;justify-content:center">${ic(n).replace('<svg','<svg style="width:24px;height:24px"')}</span>`).join('')}</div>
+    <p class="sec-title">Reglas</p>
+    <div class="note">${ic('info')}<div>Tarjetas de 20 px de radio · contraste AA · <b>silencio = tranquilidad</b>: sin gráficas, tablas ni números de sensores.</div></div>
+  </div>`;
+}
+
+/* ---------- Modales ---------- */
+function vModal(){
+  const m = T.modal; if (!m) return '';
+  const wrap = (inner) => `<div class="modal-wrap" data-act="cerrar" data-self><div class="modal" role="dialog" aria-modal="true"><div class="grab"></div>${inner}</div></div>`;
+  if (m.tipo === 'llamar'){
+    const p = m.id==='elder' ? {nombre:nom(), tel:'222 555 0142'} : person(m.id) || {nombre:S.yo, tel:'222 555 0199'};
+    const num = (p.tel||'222 555 0142');
+    return wrap(`<h2>Llamar a ${esc(p.nombre)}</h2><p class="muted" style="margin:0 0 14px">Número: <b>${esc(num)}</b> (de ejemplo)</p><div class="stack"><a class="btn danger" style="text-decoration:none" href="tel:${num.replace(/\s/g,'')}">${ic('phone')} Llamar</a><button class="btn secondary" data-act="cerrar">Cancelar</button></div>`);
+  }
+  if (m === 'falsa'){
+    return wrap(`<h2>¿Qué pasó?</h2><p class="muted" style="margin:0 0 14px">Nos ayuda a no avisarte de más.</p>${['Salió de casa','Estuvo en otro cuarto','Tenía visita','Otra razón'].map(x=>`<button class="choice" data-act="falsaMotivo" data-arg="${x}"><div class="grow">${x}</div>${ic('chev','chev')}</button>`).join('')}<button class="btn ghost" style="margin-top:8px" data-act="cerrar">Cancelar</button>`);
+  }
+  if (m.tipo === 'invitar'){
+    const msg = `Hola${m.nombre?' '+m.nombre.trim():''}, te invito a ser parte del círculo de cuidado de ${nom()}. Tú sigues cuidando, esto solo te avisa antes.`;
+    T.copyTxt = msg;
+    return wrap(`<h2>Invitar a alguien</h2>
+      <label class="field"><span>Nombre</span><input class="input" data-bind-modal="nombre" value="${esc(m.nombre)}" placeholder="Por ejemplo, Luis"></label>
+      <label class="field"><span>Teléfono (WhatsApp)</span><input class="input" data-bind-modal="tel" value="${esc(m.tel)}" inputmode="tel" placeholder="222 123 4567"></label>
+      <div class="field"><span>Qué podrá hacer</span><div class="pills"><button class="pill ${m.rol==='alertas'?'on':''}" data-act="invRol" data-arg="alertas">Recibe alertas y confirma</button><button class="pill ${m.rol==='ver'?'on':''}" data-act="invRol" data-arg="ver">Solo ve el estado</button></div></div>
+      <div class="field"><span>Vista previa del mensaje</span><div class="quote" id="invPrev">${esc(msg)}</div></div>
+      <div class="two"><button class="btn secondary" data-act="copiar">${ic('copy')} Copiar</button><button class="btn primary" data-act="enviarInv">${ic('send')} Invitar</button></div>`);
+  }
+  if (m.tipo === 'rol'){
+    const p = person(m.id);
+    return wrap(`<div class="row" style="margin-bottom:14px">${avatar(p,48)}<div><h2 style="margin:0">${esc(p.nombre)}</h2><div class="muted small">${esc(p.rel)}${p.tel?' · '+esc(p.tel):''}</div></div></div>
+      <button class="choice ${p.rol==='alertas'?'on':''}" data-act="setRol" data-arg="${p.id}|alertas"><div class="grow">Recibe alertas y confirma<small>Entra al orden de escalamiento</small></div><div class="radio"></div></button>
+      <button class="choice ${p.rol==='ver'?'on':''}" data-act="setRol" data-arg="${p.id}|ver"><div class="grow">Solo ve el estado<small>No recibe alertas</small></div><div class="radio"></div></button>
+      <div class="stack" style="margin-top:14px">${p.local||p.rol==='alertas'?`<button class="btn secondary" data-act="nav" data-arg="cuidador">${ic('eye')} Ver su pantalla</button>`:''}<button class="btn ghost" style="color:var(--rojo)" data-act="quitar" data-arg="${p.id}">Quitar del círculo</button></div>`);
+  }
+  if (m === 'soporte') return wrap(`<h2>Pedir soporte</h2><p class="muted">Escríbenos y te respondemos el mismo día.</p><div class="list"><div class="li"><div class="ico">${ic('phone')}</div><div class="grow"><div class="t1">WhatsApp</div><div class="t2">222 000 0000 (de ejemplo)</div></div></div><div class="li"><div class="ico">${ic('mail')}</div><div class="grow"><div class="t1">Correo</div><div class="t2">soporte@distanciacero.mx (de ejemplo)</div></div></div></div><button class="btn primary" style="margin-top:14px" data-act="cerrar">Entendido</button>`);
+  if (m === 'exportar') return wrap(`<h2>Exportar mis datos</h2><p class="muted" style="margin:0 0 10px">Esto es todo lo que DistanciaCero guarda.</p><pre class="code">${esc(T.exportTxt)}</pre><div class="two" style="margin-top:14px"><button class="btn secondary" data-act="cerrar">Cerrar</button><button class="btn primary" data-act="copiar">${ic('copy')} Copiar</button></div>`);
+  if (m === 'borrar') return wrap(`<h2>¿Borrar el historial?</h2><p class="muted">Se elimina toda la actividad guardada de ${esc(nom())}. No se puede deshacer. El sensor sigue funcionando.</p><div class="stack"><button class="btn danger" data-act="doBorrar">${ic('trash')} Borrar historial</button><button class="btn secondary" data-act="cerrar">Cancelar</button></div>`);
+  if (m === 'revocar') return wrap(`<h2>¿Revocar el consentimiento?</h2><p class="muted">Dejaremos de monitorear a ${esc(nom())} y nadie del círculo recibirá alertas.</p><div class="stack"><button class="btn danger" data-act="doRevocar">Revocar</button><button class="btn secondary" data-act="cerrar">Cancelar</button></div>`);
+  if (m === 'cancelar') return wrap(`<h2>¿Cancelar tu suscripción?</h2><p class="muted">Dejarás de recibir alertas al terminar el mes pagado. Puedes volver cuando quieras.</p><div class="stack"><button class="btn danger" data-act="doCancelar">Sí, cancelar</button><button class="btn secondary" data-act="cerrar">Mantener mi plan</button></div>`);
+  if (m === 'reset') return wrap(`<h2>¿Empezar desde cero?</h2><p class="muted">Se borra la configuración del prototipo en este navegador y vuelves al paso 1.</p><div class="stack"><button class="btn danger" data-act="doReset">Empezar desde cero</button><button class="btn secondary" data-act="cerrar">Cancelar</button></div>`);
+  return '';
+}
+
+/* ---------- Panel del prototipo ---------- */
+function renderPanel(){
+  const pages = [['sistema','Sistema visual','palette'],['onboarding','Onboarding','sparkle'],['familiar','Familiar','home'],['cuidador','Cuidador','walk'],['adulto','Adulto mayor','heart']];
+  const e = estado();
+  const st = {ok:['ok','En vivo'], wait:['wait','Conectando…'], err:['err','Sin conexión'], off:['','Desconectado']}[T.conn];
+  const panel = document.getElementById('panel');
+  panel.className = 'panel' + (T.panelOpen ? ' open' : '');
+  panel.innerHTML = `<h1>DistanciaCero</h1><p class="sub">App de la familia · Proyecto 4</p>
+    <h3>Páginas</h3><div class="pnav">${pages.map(p=>`<button class="${S.view===p[0]?'on':''}" data-act="nav" data-arg="${p[0]}">${ic(p[2])}${p[1]}</button>`).join('')}</div>
+    <h3>Fuente de datos</h3><div class="seg"><button class="${S.mode==='demo'?'on':''}" data-act="modo" data-arg="demo">Demo</button><button class="${S.mode==='real'?'on':''}" data-act="modo" data-arg="real">Dispositivo</button></div>
+    ${S.mode==='demo' ? `<h3>Estado (demo)</h3><div class="seg estado">${[['normal','Normal'],['atencion','Atención'],['critico','Crítico']].map(s=>`<button class="${S.demoState===s[0]&&!S.pausa?'on '+s[0]:''}" data-act="demo" data-arg="${s[0]}">${s[1]}</button>`).join('')}</div>
+      <p class="pnote">Flujo de alerta: pon <b>Crítico</b> → Ver alerta → “Ya lo revisé” → vuelve a Normal.</p>
+      ${e==='critico'&&S.alertStart&&!S.escalado?`<button class="plink" data-act="adelantar">Adelantar 15 min (escalamiento)</button>`:''}`
+      : `<p class="pnote"><span class="conn-dot ${st[0]}"></span>${st[1]} · ${esc(S.deviceId||'sin código')}</p><button class="plink" data-act="irConexion">Configurar conexión</button>`}
+    <h3>Prototipo</h3><button class="plink" data-act="reset">Reiniciar desde cero</button>`;
+  document.getElementById('scrim').className = 'scrim' + (T.panelOpen ? ' open' : '');
+}
+
+/* ---------- Render ---------- */
+const $screen = document.getElementById('screen');
+let rendering = false;
+function render(){
+  if (rendering) return; rendering = true;
+  try { vigilar(); } finally { rendering = false; }
+  const key = S.view + '|' + S.tab + '|' + S.sub + '|' + S.step;
+  const sc = $screen.querySelector('.content'); const prevTop = sc ? sc.scrollTop : 0;
+  let body;
+  if (S.view === 'onboarding') body = vOnboarding();
+  else if (S.view === 'familiar') body = vFamiliar();
+  else if (S.view === 'cuidador') body = vCuidador();
+  else if (S.view === 'adulto') body = vAdulto();
+  else body = vSistema();
+  const status = `<div class="statusbar"><span>${new Date().toLocaleTimeString('es-MX',{hour:'numeric',minute:'2-digit',hour12:false})}</span><span class="island"></span><span class="sicons">${ic('signal')}${ic('wifi')}${ic('battery')}</span></div>`;
+  const push = T.push && ['familiar','cuidador'].includes(S.view) ? `<div class="push" data-act="pushTap"><div class="app">${ic('heart')}</div><div class="grow"><div class="h"><span>DistanciaCero</span><span>ahora</span></div><div class="b">${esc(T.push)}</div></div></div>` : '';
+  const toastH = T.toast ? `<div class="toast" role="status">${ic('check')}<span>${esc(T.toast)}</span></div>` : '';
+  $screen.innerHTML = status + body + push + toastH + vModal();
+  const nc = $screen.querySelector('.content');
+  if (nc && key === T.lastKey) nc.scrollTop = prevTop;
+  T.lastKey = key;
+  renderPanel(); save();
+}
+A.irConexion = () => { S.view='familiar'; S.tab='ajustes'; S.sub='conexion'; T.panelOpen=false; render(); };
+A.pushTap = () => { T.push = null; if (estado()==='critico' && S.view==='familiar'){ S.sub='alerta'; } render(); };
+
+/* ---------- Eventos ---------- */
+document.addEventListener('click', ev => {
+  const el = ev.target.closest('[data-act]'); if (!el) return;
+  if (el.hasAttribute('data-self') && ev.target !== el) return;
+  const act = el.getAttribute('data-act'); if (!act || !A[act]) return;
+  if (el.tagName === 'A') return;
+  ev.preventDefault();
+  A[act](el.getAttribute('data-arg'), el);
+});
+function setPath(path, val){ const ks = path.split('.'); let o = S; ks.slice(0,-1).forEach(k => o = o[k]); o[ks.at(-1)] = val; }
+document.addEventListener('input', ev => {
+  const el = ev.target;
+  if (el.dataset.bind){ let v = el.type==='checkbox' ? el.checked : el.value; if (el.hasAttribute('data-upper')){ v = v.toUpperCase(); const p = el.selectionStart; el.value = v; el.setSelectionRange(p,p); } setPath(el.dataset.bind, v); save(); if (el.hasAttribute('data-rerender')) render(); }
+  if (el.dataset.bindModal && T.modal){ T.modal[el.dataset.bindModal] = el.value; const prev = document.getElementById('invPrev'); if (prev){ const msg = `Hola${T.modal.nombre?' '+T.modal.nombre.trim():''}, te invito a ser parte del círculo de cuidado de ${nom()}. Tú sigues cuidando, esto solo te avisa antes.`; prev.textContent = msg; T.copyTxt = msg; } }
+});
+document.addEventListener('change', ev => { const el = ev.target; if (el.dataset.bind === 'deviceId' && S.mode==='real' && S.deviceId.length >= 4) conectar(); if (el.dataset.bind==='broker' && S.mode==='real') conectar(); });
+document.getElementById('fab').innerHTML = ic('menu');
+document.getElementById('fab').addEventListener('click', A.panel);
+document.getElementById('scrim').addEventListener('click', A.panel);
+document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && T.modal){ T.modal = null; render(); } });
+
+// Reloj: recalcula estados cada 15 s (sin interrumpir si estás escribiendo)
+setInterval(() => { vigilar(); const a = document.activeElement; if (a && (a.tagName === 'INPUT') ) return; render(); }, 15000);
+
+if (S.mode === 'real') conectar();
+prevEstado = null; vigilar();
+render();
+</script>
+</body>
+</html>
