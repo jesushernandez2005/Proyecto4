@@ -101,6 +101,7 @@ Aquí se registrará:
 | 6 | [Generación y Selección de Concepto de Diseño](actividades/actividad-06.md) | 01/10/2026 | 🟢 Completado |
 | 7 | [Viabilidad Técnica y Económica](actividades/actividad-07.md) | 08/10/2026 | 🟢 Completado |
 | 8 | [Prototipado y Diseño para Manufactura](actividades/actividad-08.md) | 05/11/2026 | 🟢 Completado |
+| 9 | [Integración, Go-to-Market y Pitch](actividades/actividad-09.md) | 13/11/2026 | 🟢 Completado |
 ---
 
 ##  GitHub
