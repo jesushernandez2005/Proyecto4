@@ -54,7 +54,10 @@ nav:
       - Actividad 8 - Prototipado y Diseño para Manufactura: actividades/actividad-08.md
       - Actividad 9 - Integración, Go-to-Market y Pitch: actividades/actividad-09.md
   - DistanciaCero:
-      - Resumen ejecutivo - Resumen ejecutivo: Resumen_ejecutivo.md
+      - "Proyecto final (memoria)": DistanciaCero/Proyecto_final.md
+      - "Landing: sillón": https://jesushernandez2005.github.io/Proyecto4/DistanciaCero/landing/
+      - "Landing: bastón": https://jesushernandez2005.github.io/Proyecto4/DistanciaCero/landing/baston/
+      - "Landing: portavasos": https://jesushernandez2005.github.io/Proyecto4/DistanciaCero/landing/portavasos/
   - Proyecto final:
       - "Proyecto final: DistanciaCero": proyecto-final-distanciacero/index.md
       - Anexos: proyecto-final-distanciacero/anexos.md
