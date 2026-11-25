@@ -117,6 +117,8 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 | H2. Prefieren el silencio a una confirmación diaria | **Ajustada:** depende del perfil; debe ser configurable |
 | H3. Pagarían $300–600 al mes | **Confirmada:** $450 a $700 al mes, sin pensarlo |
 
+**Encuesta en línea (25/11/2026, n = 47):** H2 se sostiene: solo 9 de 47 prefieren el modo silencioso; 15 quieren un resumen diario y 15 quieren elegir el modo. H3 se debilita: solo 5 de 47 pagarían $350–500 al mes y 22 pagarían menos de $200. Detalle en la [sección 18](#18-pruebas-con-usuarios).
+
 **Segmento en cuatro capas:** *Demográfica:* 1.7 millones de personas de 60+ viven solas en México (**VERIFICADO**, INEGI, ENADID 2018); hijo o hija de 35–55 años (**HIPÓTESIS**). *Conductual:* llamada casi diaria; 1 de 3 ya abandonó un botón SOS (**VERIFICADO**, n = 3). *Psicográfica:* alerta constante cuando no hay red local (**VERIFICADO**, n = 3). *Económica:* $450–700 al mes (**VERIFICADO**, n = 3); quién paga entre hermanos (**HIPÓTESIS**).
 
 **Hipótesis críticas pendientes:** cómo avisar cuando no hay quien llegue rápido; cómo obtener el consentimiento del adulto mayor sin que se sienta vigilado; y el del cuidador local, que puede vetar la compra.
@@ -314,7 +316,7 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 
 | Prototipo | Pregunta | Tipo · resolución | Qué se construyó | Evidencia | Aprendizaje → cambio |
 |---|---|---|---|---|---|
-| Landing (semana 8 → hoy) | ¿Alguien reserva viendo el precio real? | Negocio · baja | Landing de 4 páginas | **0 sesiones** | Hay que conectar el formulario para medir |
+| Landing (semana 8 → hoy) | ¿Alguien reserva viendo el precio real? | Negocio · baja | Landing de 4 páginas | **0 sesiones** | Formulario conectado el 25/11 (Google Sheets); falta medir |
 | Carcasa A/B | ¿Cabe y cierra sin herramientas? | Forma · alta (digital) | Modelo 3D, planos y 4 STL | Mallas cerradas; **sin imprimir** | La 18650 no cabía → LiPo plana |
 | Circuito | ¿El MPU6050 lee movimiento real? | Funcional · media | ESP32 + MPU6050 por USB | \|a\| = 1.00 g en reposo | Sí lee; falta probar el aviso |
 | App web | ¿Se entiende el estado y el aviso? | Interacción · alta | 16 pantallas, modo demo y modo real | Publicada en este sitio | Del Figma Make a una app real |
@@ -373,6 +375,8 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 
 **Cómo ejecutarla:** abrir la URL; para probar sin hardware, `python sim_dispositivo.py --id DC-SIM1` ([simulador](anexos/firmware/sim_dispositivo.py)).
 
+**Encuesta (25/11/2026, solo las 33 personas que sí la probaron):** facilidad **4.58/5** · diseño **4.42/5** · 27 de 33 entendieron a simple vista si el familiar está bien · 23 de 33 la usarían y 9 "probablemente". La función más valiosa fue la alerta de posible caída (16 de 33). 2 personas no pudieron abrirla. Ver [sección 18](#18-pruebas-con-usuarios).
+
 **Limitaciones:** el broker público lo puede leer cualquiera que conozca el código; si nadie tiene la app abierta, el estado no se calcula; teléfonos, tarjeta y correo de la app son ficticios. **Los commits del repositorio no siguen las sesiones de trabajo** (mensajes como "actualiza"; ver [Anexo B](anexos.md#b-repositorio-readme-y-bitacoras)).
 
 ---
@@ -414,7 +418,7 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 | **Decisión** | $3,990 por el equipo (por debajo del piso de $4,158) y $449/mes (59 % del camino entre el piso y el techo). |
 | **Evidencia** | [Excel](DistanciaCero_costos_y_calculos.xlsx): Costos_DFS, IA_costo, Desarrollo, Precio_rango, Flujo_24m, Resumen. |
 | **Qué cambió** | Se unificó el precio en la landing, el Excel y la presentación. |
-| **Qué falta** | **Medir el costo de la IA con tokens reales**; cotizar 5 de las 6 líneas del BOM. |
+| **Qué falta** | **Medir el costo de la IA con tokens reales**; cotizar 5 de las 6 líneas del BOM; **revisar el precio con el segmento** (la encuesta lo ve caro). |
 
 | Indicador | Valor | Hoja |
 |---|---|---|
@@ -428,6 +432,8 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 | Flujo acumulado a 12 meses | −$72,319 | Flujo_24m |
 | VPN a 12 / 24 meses (15 % anual) | −$72,414 / **+$3,175** | Resumen |
 
+**Encuesta (25/11/2026, n = 47):** 32 de 47 ven caro $3,990 + $449/mes (26 "un poco caro", 6 "muy caro") y 15 lo ven justo. 46 de 47 pagarían menos de $4,000 por el kit y 35 de 47 menos de $350 al mes. 17 prefieren un pago único sin mensualidad. Es la primera evidencia en contra del precio, pero la muestra es joven (27 de 47 tienen menos de 25 años), así que hay que repetirla con el segmento antes de cambiarlo.
+
 **Tasa del 15 %:** la que fija la guía de la Actividad 7 para un proyecto en etapa temprana. **Lectura:** el VPN a 24 meses es casi cero y el modelo no incluye *churn*.
 
 ---
@@ -440,7 +446,7 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 | **Decisión** | Empezar con un piloto sin costo de 10 familias en Puebla (unos 60 días) para medir *churn*, instalación y disposición a pagar el equipo. |
 | **Evidencia** | [Actividad 9, sección 4.3](../actividades/actividad-09.md); [Excel, hojas Economia_unitaria, Churn y Sensibilidad](DistanciaCero_costos_y_calculos.xlsx). |
 | **Qué cambió** | Con $3,990 el payback pasa de 2.4 a 3.8 meses. |
-| **Qué falta** | Medir CAC y *churn*; conectar el formulario de la landing. |
+| **Qué falta** | Medir CAC y *churn*; medir pre-registros (el formulario ya está conectado). |
 
 **Cliente número 1 (HIPÓTESIS, n = 1):** hija o hijo que vive fuera de Puebla, con su mamá o papá de 65+ que vive solo en Puebla y sin un cuidador que pase a diario (perfil de Lupita).
 
@@ -530,11 +536,11 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 
 | Campo | Contenido |
 |---|---|
-| **Versión** | v1.0 · 24/11/2026 (origen: semana 9) |
+| **Versión** | v1.1 · 25/11/2026 (origen: semana 9) |
 | **Decisión** | Probar con hijos e hijas adultos, no con personas mayores. Se graba solo con consentimiento. |
-| **Evidencia** | [Actividad 9, sección 4.2 (protocolo y hoja)](../actividades/actividad-09.md). |
-| **Qué cambió** | Nada: **no se ha hecho ninguna sesión.** |
-| **Qué falta** | Las 5 sesiones (3 del segmento y 2 de otros equipos). |
+| **Evidencia** | [Actividad 9, sección 4.2 (protocolo y hoja)](../actividades/actividad-09.md); [encuesta en línea, 47 respuestas (Google Sheets)](https://docs.google.com/spreadsheets/d/1eeBf3EU33XPdDGuRwuHZk6xZu-9kGYs7PMgu7OJc9qk/edit?usp=sharing). |
+| **Qué cambió** | Se hizo una encuesta en línea (25/11/2026, n = 47) sobre el producto, el precio, la landing y la app. Las sesiones moderadas **siguen sin hacerse.** |
+| **Qué falta** | Las 5 sesiones (3 del segmento y 2 de otros equipos); repetir la encuesta solo con hijos de 35–55 años que tengan un papá o mamá que vive solo. |
 
 **Protocolo de 30 min:** guion fijo (0–3) · T1, instalar y vincular (3–10) · T2, interpretar una alerta (10–20) · T3, encontrar el precio y pre-registrarse en la landing (20–25) · entrevista de cierre (25–30).
 
@@ -543,7 +549,42 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 | 1–3 (segmento) | pendiente | pendiente | pendiente | — | — |
 | 4–5 (otro equipo) | pendiente | pendiente | pendiente | — | — |
 
-**Señal de negocio:** pre-registros reales = **0** (el formulario aún no está conectado). Las 3 entrevistas de la semana 3 son opiniones, no compromisos.
+### Encuesta en línea (25/11/2026, n = 47)
+
+Google Forms anónimo con 33 preguntas de opción múltiple y un comentario opcional, en seis bloques: perfil, producto, precio, landing, app y cierre. [Respuestas completas](https://docs.google.com/spreadsheets/d/1eeBf3EU33XPdDGuRwuHZk6xZu-9kGYs7PMgu7OJc9qk/edit?usp=sharing).
+
+**Quién respondió:** 27 de 47 tienen menos de 25 años y solo 7 tienen entre 35 y 55 (el segmento). 15 tienen un familiar de 65+ que vive solo y 16 viven en otra ciudad o en otro país. **La muestra no es el segmento:** sirve para encontrar problemas, no para validar la demanda.
+
+| Pregunta | Resultado (de 47) |
+|---|---|
+| Preocupación por una caída (1–5) | **4.38** en promedio; 29 eligieron 5 |
+| Qué usan hoy para saber que está bien | Solo llamadas o mensajes 36 · cuidador o vecino 7 · otro 3 · cámaras 1 |
+| ¿Se entendió la descripción? | Muy claro 30 · más o menos 13 · poco claro 3 · no 1 |
+| Utilidad de la idea (1–5) | **4.53** en promedio |
+| Objeto más útil (varias respuestas) | Bastón **34** · sillón 24 · portavasos 10 · ninguno 6 |
+| Cómo recibir los avisos | Resumen diario 15 · elegir el modo 15 · solo si algo está mal 9 · avisos frecuentes 8 |
+| Lo que más preocupa (varias respuestas) | **Que falle o no avise 33** · precio 17 · batería 15 · que el familiar no lo use 15 · privacidad 11 · instalación 10 · nada 3 |
+| ¿Qué tan invasivo es? | Nada 17 · poco 26 · algo 4 · muy 0 |
+| ¿Lo aceptaría el familiar? | Sí 15 · probablemente 21 · no estoy seguro 11 |
+| ¿Pagarías? | Sí 20 · probablemente 20 · no estoy seguro 6 · no 1 |
+| $3,990 + $449/mes | Justo 15 · **un poco caro 26** · muy caro 6 |
+| Kit, pago único | < $2,000: 14 · $2,000–3,000: 17 · $3,000–4,000: 15 · $4,000–5,000: 1 |
+| Mensualidad | < $200: **22** · $200–350: 13 · $350–500: 5 · no pagaría: 7 |
+| Forma de pago | Pago único sin mensualidad 17 · kit + mensualidad 13 · anual con descuento 11 · kit rentado 6 |
+| Recomendación (0–10) | **8.15** en promedio · NPS **+38** (24 promotores, 17 pasivos, 6 detractores) |
+| ¿Lo probarías cuando esté listo? | Sí 29 · tal vez 17 · no 1 |
+
+Los resultados de la landing están en la [sección 19](#19-landing-page) y los de la app en la [sección 12](#12-aplicacion-conectada). Solo cuentan a quien sí abrió cada una, porque el formulario dejaba contestar esas preguntas sin haberlas visto (un participante lo señaló en los comentarios).
+
+**Qué aprendimos:**
+
+1. **El precio es el problema.** 40 de 47 dicen que pagarían, pero 32 de 47 ven caro el precio real. Solo 1 pagaría más de $4,000 por el kit y solo 5 pagarían $350–500 al mes. Entre los 15 que tienen un familiar que vive solo pasa lo mismo: 11 de 15 lo ven caro. → [Sección 14](#14-costos-precio-y-viabilidad-financiera).
+2. **El miedo es que falle, no la privacidad** (33 contra 11). La landing y la app tienen que mostrar que el sensor sigue vivo (batería y conexión).
+3. **El modo silencioso no gana.** Solo 9 de 47 lo prefieren. Confirma que el aviso debe ser configurable ([sección 3](#3-usuario-y-evidencia-de-campo)); que el resumen diario sea la opción por defecto es **HIPÓTESIS**.
+4. **El bastón es el objeto más pedido** (34 de 47) y el portavasos el menos (10). En los comentarios, alguien dice que no le quedó claro el del agua y que no sabe si su familiar cambiaría su sillón por uno nuevo.
+5. **Ideas de los comentarios:** un sensor en la cama (*"algunos adultos mayores pasan mucho tiempo en su cama"*), conectarlo a un smartwatch o a una cámara, y que sirve cuando la persona mayor no quiere un cuidador.
+
+**Señal de negocio:** pre-registros reales = **0** (el formulario de la landing se conectó el 25/11/2026; todavía no llega ninguno). Las 3 entrevistas de la semana 3 y la encuesta (29 de 47 dijeron que sí lo probarían) son opiniones, no compromisos.
 
 ---
 
@@ -551,11 +592,11 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 
 | Campo | Contenido |
 |---|---|
-| **Versión** | v3.0 · 24/11/2026 (origen: semana 8) |
+| **Versión** | v3.1 · 25/11/2026 (origen: semana 8) |
 | **Decisión** | Una landing general y una página por objeto, con un solo CTA: "Aparta tu lugar en el piloto". |
 | **Evidencia** | [Landing](landing/index.html) · [Sillón](landing/sillon/index.html) · [Bastón](landing/baston/index.html) · [Portavasos](landing/portavasos/index.html) · [Excel, hoja Landing](DistanciaCero_costos_y_calculos.xlsx). |
 | **Qué cambió** | v1, un archivo sin formulario (semana 8). v2, con formulario, centrada en el sillón y con "sin wifi". v3, los tres productos, WiFi, USB-C y $3,990. |
-| **Qué falta** | Conectar `FORM_ENDPOINT` y `GOATCOUNTER`, y poner el correo de contacto. |
+| **Qué falta** | Conectar `GOATCOUNTER` y poner el correo de contacto. **Fotos o video del producto real y testimonios** (lo que más pidió la encuesta). |
 
 **URL:** `https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/` (activa después del push).
 
@@ -566,6 +607,22 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 | Visitas | **sin medir** (GoatCounter sin configurar) |
 | Clics en el CTA | **sin medir** |
 | Pre-registros | **0** |
+
+**Opinión de la landing (encuesta del 25/11/2026, 42 de 47 la vieron):**
+
+| Pregunta | Resultado (de 42) |
+|---|---|
+| ¿Entendiste rápido qué es? | En los primeros segundos **35** · tuve que leer bastante 7 |
+| Diseño (1–5) | **4.14** en promedio |
+| ¿Transmite confianza? | Mucha 21 · algo 18 · poca 3 |
+| ¿Te dieron ganas de saber más o comprar? | Sí, mucho 16 · **un poco 23** · me da igual 1 · no 2 |
+| ¿Qué le falta? (varias respuestas) | **Fotos o video del producto real 23** · testimonios 15 · cómo funciona 10 · privacidad y seguridad 9 · precios más claros 5 · nada 11 |
+
+5 personas no pudieron verla (4 dicen que no abrió). Hay que revisar el link. [Respuestas completas](https://docs.google.com/spreadsheets/d/1eeBf3EU33XPdDGuRwuHZk6xZu-9kGYs7PMgu7OJc9qk/edit?usp=sharing).
+
+**Lectura:** la landing se entiende rápido, pero todavía no convence. "Un poco" de ganas (23) le gana a "mucho" (16), y 21 de 42 no sienten mucha confianza. Lo que piden es prueba: fotos reales del prototipo y testimonios. Los renders conceptuales no bastan.
+
+**Formulario de pre-registro:** conectado el 25/11/2026. `FORM_ENDPOINT` apunta a una app web de Google Apps Script que guarda cada registro (fecha, página, nombre, correo, ciudad, quién vive solo, objeto y consentimiento) en la hoja privada "Pre-registros piloto DistanciaCero" del equipo. Es el mismo endpoint en las cuatro páginas, y cada fila dice desde qué página llegó.
 
 **Prompt con el que se construyó:** v1, Prompt 6 de la [Actividad 8](../actividades/actividad-08.md). v3, en Claude (24/11/2026): *"necesito que cambies el landing de la carpeta que te mande y lo corrigas/adaptes a lo que hemos cambiado, incluye todos los productos"*. La IA comparó la landing con la app y la memoria del proyecto, y quitó lo que ya no era cierto ("sin wifi", base magnética, anillo de luz). Después el equipo corrigió el precio a $3,990.
 
@@ -647,12 +704,12 @@ Lo único documentado del reparto es la frase del guion: "entre los dos hicimos 
 
 | Hipótesis crítica sin verificar | Cómo se verificará |
 |---|---|
-| Alguien paga $3,990 por el equipo | Pre-registros y cierre al final del piloto |
+| Alguien paga $3,990 por el equipo | Pre-registros y cierre al final del piloto (en la encuesta, 32 de 47 lo ven caro) |
 | Churn ≤ 3 % al mes | Piloto de 60 días |
 | El MPU6050 distingue "se sentó", "tomó el bastón" o "levantó la taza" | T4 y T6 en los tres objetos |
 | Se instala sin ayuda en ≤ 10 min | T3 con 5 usuarios |
 | El adulto mayor y el cuidador local aceptan | Consentimiento escrito en el piloto |
 
-**Plan de 90 días:** días 1–15, conectar el formulario, publicar la landing y hacer las 5 sesiones. Días 15–30, pedir $15,000 y fabricar 10 unidades. Días 30–90, piloto con 10 familias en Puebla y medir churn, instalación y pago.
+**Plan de 90 días:** días 1–15, publicar la landing con el formulario conectado y hacer las 5 sesiones. Días 15–30, pedir $15,000 y fabricar 10 unidades. Días 30–90, piloto con 10 familias en Puebla y medir churn, instalación y pago.
 
 **Riesgos principales:** nadie paga el equipo · el sensor confunde movimientos · el broker público expone datos · el módulo celular encarece el producto · el cuidador local veta la compra.

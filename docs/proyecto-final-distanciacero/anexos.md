@@ -87,6 +87,7 @@ El detalle, con fórmulas, está en la hoja **BOM_final** del [Excel](DistanciaC
 
 - [Resultados de validación, semana 3 (PDF)](../actividades/resultados_validacion_semana3.pdf): tres entrevistas con citas.
 - Hoja **Entrevistas** del [Excel](DistanciaCero_costos_y_calculos.xlsx).
+- [Encuesta en línea del 25/11/2026 (Google Sheets, 47 respuestas)](https://docs.google.com/spreadsheets/d/1eeBf3EU33XPdDGuRwuHZk6xZu-9kGYs7PMgu7OJc9qk/edit?usp=sharing): perfil, producto, precio, landing y app. Resumen en la [sección 18](index.md#encuesta-en-linea-25112026-n-47).
 - **Consentimiento de las entrevistas: PENDIENTE documentar** (cómo se pidió y si se puede publicar el nombre de pila).
 - Pruebas con usuarios: **0 sesiones** (protocolo y hoja en la [Actividad 9](../actividades/actividad-09.md)).
 - [Presentación final (PPTX)](anexos/DistanciaCero_presentacion_final.pptx) y [guion de pitch y demo (PDF)](anexos/DistanciaCero_guion_pitch_y_demo.pdf).
