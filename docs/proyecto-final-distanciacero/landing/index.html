@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DistanciaCero · Saber que tu mamá o tu papá está bien, sin llamarle</title>
+<meta name="description" content="Un sensor en su sillón, su bastón o su portavasos aprende su rutina y te avisa solo si algo cambia. No tiene que hacer nada nuevo. Aparta tu lugar en el piloto.">
+<meta name="theme-color" content="#F5F6F2">
+<link rel="canonical" href="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/">
+
+<!-- Open Graph / redes sociales -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="DistanciaCero">
+<meta property="og:title" content="DistanciaCero · Saber que tu mamá o tu papá está bien, sin tener que llamarle">
+<meta property="og:description" content="Un sensor en el objeto que ya usa —sillón, bastón o portavasos— aprende su rutina y te avisa solo si algo cambia.">
+<meta property="og:url" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/">
+<meta property="og:image" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Un sillón, un bastón y una taza sobre un portavasos, con un teléfono que dice: sin avisos hoy.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DistanciaCero · Saber que tu mamá o tu papá está bien, sin tener que llamarle">
+<meta name="twitter:description" content="Un sensor en el objeto que ya usa —sillón, bastón o portavasos— aprende su rutina y te avisa solo si algo cambia.">
+<meta name="twitter:image" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/og.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2321303B'/%3E%3Crect x='14' y='30' width='36' height='8' rx='4' fill='%233E7C5B'/%3E%3Crect x='12' y='20' width='40' height='8' rx='4' fill='%23C7922F'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:opsz,wght@7..72,500;7..72,600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F5F6F2;      /* fondo: gris verdoso muy claro, como luz de sala de día */
+    --ink:#21303B;        /* texto principal: azul pizarra */
+    --ink-2:#4B5A64;      /* texto secundario */
+    --sage:#3E7C5B;       /* "todo bien": el mismo verde de la app */
+    --sage-tint:#E3EDE6;
+    --mustard:#C7922F;    /* tapicería del sillón */
+    --line:#D6DAD3;
+    --white:#FFFFFF;
+    --alert:#A4452B;      /* solo para errores del formulario */
+    --radius-s:8px; --radius-m:14px; --radius-l:28px;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto} *{animation:none!important; transition:none!important} }
+  body{margin:0;background:var(--paper);color:var(--ink);
+       font:400 18px/1.6 "Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Literata",Georgia,serif;font-weight:600;line-height:1.15;margin:0;letter-spacing:-.01em}
+  h1{font-size:clamp(2.1rem,6.4vw,3.6rem)}
+  h2{font-size:clamp(1.6rem,4.2vw,2.3rem);max-width:22ch}
+  h3{font-size:1.2rem;font-weight:500}
+  p{margin:0}
+  a{color:var(--ink)}
+  :focus-visible{outline:3px solid var(--mustard);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  .muted{color:var(--ink-2)}
+  section{padding:72px 0}
+  section + section{border-top:1px solid var(--line)}
+
+  /* Aviso fijo */
+  .notice{position:sticky;top:0;z-index:20;background:var(--ink);color:#E9EEF0;font-size:.92rem;text-align:center;padding:9px 16px}
+  .notice strong{color:#fff}
+
+  /* Encabezado */
+  header.top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;max-width:var(--maxw);margin:0 auto}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Literata",serif;font-weight:600;font-size:1.2rem;text-decoration:none}
+  .brand svg{flex:none}
+
+  /* Botón (CTA único) */
+  .cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;
+       background:var(--sage);color:#fff;font:700 1.05rem/1 "Atkinson Hyperlegible",sans-serif;text-decoration:none;border:0;cursor:pointer;
+       box-shadow:0 1px 0 rgba(33,48,59,.18)}
+  .cta:hover{background:#346a4d}
+  .cta.small{min-height:44px;padding:0 18px;font-size:.95rem}
+  @media (max-width:560px){ header.top .cta.small{display:none} }
+
+  /* Hero */
+  .hero{padding:28px 0 64px;border-top:0}
+  .hero .wrap{display:grid;gap:36px;align-items:center}
+  .hero p.lead{font-size:1.2rem;max-width:34ch;margin-top:18px}
+  .hero .actions{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+  .hero .fine{font-size:.95rem}
+  @media (min-width:900px){ .hero .wrap{grid-template-columns:1.05fr 1fr} .hero{padding:48px 0 88px} }
+
+  /* Ilustración: el momento memorable */
+  .scene{position:relative;max-width:600px;width:100%;justify-self:center}
+  .scene svg{display:block;width:100%;height:auto}
+  .phone{position:absolute;right:0;top:12%;width:36%;min-width:168px;background:var(--white);border:1px solid var(--line);
+         border-radius:22px;padding:14px 14px 16px;box-shadow:0 18px 40px -18px rgba(33,48,59,.35)}
+  .phone .bar{width:38%;height:5px;border-radius:5px;background:var(--line);margin:0 auto 12px}
+  .phone .state{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--sage);font-size:.98rem}
+  .phone .dot{width:10px;height:10px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 4px var(--sage-tint)}
+  .phone .who{font-size:.82rem;color:var(--ink-2);margin-top:2px}
+  .phone .empty{margin-top:14px;border:1px dashed var(--line);border-radius:12px;padding:14px 10px;text-align:center;font-size:.85rem;color:var(--ink-2)}
+  .phone .empty b{display:block;font-family:"Literata",serif;font-size:1.05rem;color:var(--ink);font-weight:600;margin-bottom:2px}
+  .phone .day{display:flex;gap:4px;margin-top:12px;align-items:flex-end;height:28px}
+  .phone .day i{flex:1;background:var(--sage-tint);border-radius:3px}
+  .phone .day i.on{background:var(--sage)}
+  .phone .cap{font-size:.72rem;color:var(--ink-2);margin-top:4px;display:flex;justify-content:space-between}
+  @media (prefers-reduced-motion:no-preference){
+    .cushion{animation:lift 3.2s ease-in-out 0.6s 1 both}
+    .plate-glow{animation:glow 3.2s ease-in-out 0.6s 1 both}
+    @keyframes lift{0%,100%{transform:translateY(0)} 35%,70%{transform:translateY(-16px)}}
+    @keyframes glow{0%,100%{opacity:0} 35%,70%{opacity:1}}
+  }
+
+  /* Beneficios */
+  .benefits{display:grid;gap:28px;margin-top:36px}
+  .benefit{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+  .benefit .ic{width:44px;height:44px;border-radius:12px;background:var(--sage-tint);display:grid;place-items:center;color:var(--sage)}
+  .benefit h3{margin-bottom:4px}
+  @media (min-width:900px){ .benefits{grid-template-columns:repeat(3,1fr);gap:36px} }
+
+  /* Pasos (sí es una secuencia) */
+  .steps{list-style:none;margin:36px 0 0;padding:0;display:grid;gap:0}
+  .steps li{display:grid;grid-template-columns:56px 1fr;gap:16px;padding:20px 0;border-top:1px solid var(--line)}
+  .steps li:last-child{border-bottom:1px solid var(--line)}
+  .steps .n{font-family:"Literata",serif;font-size:2rem;line-height:1;color:var(--mustard)}
+  .steps h3{margin-bottom:4px}
+  @media (min-width:900px){ .steps{grid-template-columns:repeat(3,1fr);gap:32px} .steps li{grid-template-columns:1fr;border-bottom:1px solid var(--line)} }
+
+  /* Qué ve / qué no ve */
+  .seesplit{display:grid;gap:20px;margin-top:32px}
+  .seesplit > div{border-radius:var(--radius-m);padding:22px;border:1px solid var(--line);background:var(--white)}
+  .seesplit h3{margin-bottom:10px}
+  .seesplit ul{margin:0;padding-left:1.1em}
+  .seesplit li{margin:4px 0}
+  .seesplit .no{background:transparent}
+  @media (min-width:900px){ .seesplit{grid-template-columns:1fr 1fr} }
+
+  /* Lo que nos dijeron */
+  .evidence{display:grid;gap:22px;margin-top:32px}
+  .fig{border-left:3px solid var(--mustard);padding:2px 0 2px 18px}
+  .fig b{font-family:"Literata",serif;font-weight:600;font-size:2.1rem;display:block;line-height:1.1}
+  .source{font-size:.88rem;margin-top:20px}
+  @media (min-width:900px){ .evidence{grid-template-columns:1fr 1fr;max-width:820px} }
+
+  /* Precio */
+  .price{margin-top:32px;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-l);padding:28px 24px;max-width:640px}
+  .price .row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .price .row:last-of-type{border-bottom:0}
+  .price .amt{font-family:"Literata",serif;font-weight:600;font-size:1.9rem;white-space:nowrap}
+  .price .amt small{font-family:"Atkinson Hyperlegible",sans-serif;font-size:.95rem;font-weight:400;color:var(--ink-2)}
+  .price .total{background:var(--sage-tint);margin:14px -10px 0;padding:12px 10px;border-radius:10px;border:0}
+  .price .notes{margin-top:16px;font-size:.95rem}
+
+  /* Preguntas */
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line);margin-top:28px}
+  summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-family:"Literata",serif;font-size:1.4rem;line-height:1;color:var(--ink-2)}
+  details[open] summary::after{content:"–"}
+  details p{margin-top:10px;max-width:62ch}
+  .faq{max-width:760px}
+
+  /* Formulario */
+  #apartar{background:var(--ink);color:#EEF2F3;border-top:0}
+  #apartar h2{color:#fff}
+  #apartar .muted{color:#BFCAD0}
+  form{margin-top:28px;display:grid;gap:18px;max-width:560px}
+  label{display:grid;gap:6px;font-weight:700}
+  input[type=text],input[type=email],select{min-height:50px;border-radius:var(--radius-s);border:1px solid #5A6B76;background:#2B3B47;color:#fff;
+       font:400 1.05rem "Atkinson Hyperlegible",sans-serif;padding:0 14px}
+  select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#BFCAD0 50%),linear-gradient(135deg,#BFCAD0 50%,transparent 50%);
+       background-position:calc(100% - 20px) 22px,calc(100% - 14px) 22px;background-size:6px 6px;background-repeat:no-repeat}
+  input::placeholder{color:#93A3AD}
+  .check{grid-template-columns:24px 1fr;align-items:start;font-weight:400;gap:12px}
+  .check input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--sage)}
+  .check a{color:#fff}
+  .form-actions{display:flex;flex-direction:column;align-items:flex-start;gap:10px;margin-top:4px}
+  #apartar .cta{background:#5FA57F;color:#10201A}
+  #apartar .cta:hover{background:#6FB58F}
+  .msg{border-radius:var(--radius-s);padding:12px 14px;font-weight:700;display:none}
+  .msg.ok{display:block;background:#DDEFE4;color:#17402B}
+  .msg.err{display:block;background:#F6E1DA;color:var(--alert)}
+  .hp{position:absolute;left:-9999px}
+
+  /* Pie */
+  footer{padding:40px 0 56px;font-size:.95rem}
+  footer .cols{display:grid;gap:18px}
+  footer details{border:0;padding:0;margin:0}
+  footer details:first-of-type{border:0;margin:0}
+  footer summary{font-size:1rem}
+  footer .legal p{margin-top:8px;max-width:70ch}
+  @media (min-width:900px){ footer .cols{grid-template-columns:1.2fr 1fr} }
+
+  /* ===== Añadido en la versión con los tres productos ===== */
+  .prodnav{max-width:var(--maxw);margin:0 auto;padding:0 20px 6px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.92rem}
+  .prodnav span{color:var(--ink-2);margin-right:4px}
+  .prodnav a{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--line);
+             background:var(--white);text-decoration:none;color:var(--ink)}
+  .prodnav a[aria-current="page"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .prodnav a:hover{border-color:var(--ink-2)}
+
+  .cta.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink);box-shadow:none}
+  .cta.ghost:hover{background:var(--ink);color:#fff}
+
+  .products{display:grid;gap:20px;margin-top:32px}
+  .product{position:relative;display:flex;flex-direction:column;gap:10px;background:var(--white);border:1px solid var(--line);
+           border-radius:var(--radius-m);padding:22px;text-decoration:none;color:var(--ink);transition:border-color .15s, transform .15s}
+  .product:hover{border-color:var(--ink-2);transform:translateY(-2px)}
+  .product .pic{height:120px;display:grid;place-items:center;background:var(--paper);border-radius:10px}
+  .product .pic svg{height:104px;width:auto}
+  .product .tag{align-self:flex-start;font-size:.8rem;font-weight:700;color:var(--sage);background:var(--sage-tint);padding:3px 10px;border-radius:999px}
+  .product .more{margin-top:auto;font-weight:700;color:var(--sage)}
+  @media (min-width:900px){ .products{grid-template-columns:repeat(3,1fr)} }
+
+  .features{display:grid;gap:26px;margin-top:36px}
+  @media (min-width:760px){ .features{grid-template-columns:repeat(2,1fr)} }
+  @media (min-width:1000px){ .features{grid-template-columns:repeat(3,1fr);gap:32px} }
+
+  .apptry{display:grid;gap:24px;align-items:center;margin-top:8px}
+  .apptry .shot{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:16px;max-width:300px;justify-self:center;width:100%;
+                box-shadow:0 18px 40px -22px rgba(33,48,59,.35)}
+  .apptry .shot .row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem}
+  .apptry .shot .row:last-child{border-bottom:0}
+  .pill{font-size:.78rem;font-weight:700;padding:2px 10px;border-radius:999px}
+  .pill.v{background:var(--sage-tint);color:var(--sage)}
+  .pill.a{background:#F5E8CF;color:#8A5B12}
+  .pill.g{background:#ECEEEA;color:var(--ink-2)}
+  .apptry .actions{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  @media (min-width:900px){ .apptry{grid-template-columns:1.2fr 1fr} }
+  .steps li{align-content:start}
+  .note{margin-top:16px;font-size:.95rem;border-left:3px solid var(--line);padding-left:14px;max-width:62ch}
+</style>
+</head>
+<body>
+
+<div class="notice" role="note"><strong>Producto en validación.</strong> Todavía no está a la venta. Apartar tu lugar no cobra nada.</div>
+
+<header class="top">
+  <a class="brand" href="./" aria-label="DistanciaCero, inicio">
+    <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#21303B"/><rect x="12" y="20" width="40" height="8" rx="4" fill="#C7922F"/><rect x="14" y="31" width="36" height="7" rx="3.5" fill="#3E7C5B"/></svg>
+    DistanciaCero
+  </a>
+  <a class="cta small" href="#apartar" data-cta="header">Aparta tu lugar en el piloto</a>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Saber que tu mamá o tu papá está bien, sin tener que llamarle.</h1>
+      <p class="lead muted">Un sensor en algo que ya usa todos los días —su sillón, su bastón o su portavasos— aprende su rutina y te avisa solo si algo cambia. No tiene que hacer nada nuevo.</p>
+      <div class="actions">
+        <a class="cta" href="#apartar" data-cta="hero">Aparta tu lugar en el piloto</a>
+        <p class="fine muted">Piloto con 10 familias en Puebla. Sin costo y sin compromiso.</p>
+      </div>
+    </div>
+
+    <figure class="scene" aria-label="Ilustración: un sillón, un bastón y una taza sobre un portavasos, cada uno con un sensor, y un teléfono que dice que no hay avisos hoy.">
+      <svg viewBox="0 0 600 440" role="img" aria-hidden="true">
+        <ellipse cx="200" cy="390" rx="200" ry="14" fill="#E4E7E0"/>
+        <!-- sillón -->
+        <g transform="translate(-12,196) scale(.5)">
+          <rect x="82" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/>
+          <rect x="350" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/>
+          <path d="M92 120 Q92 70 142 70 L302 70 Q352 70 352 120 L352 250 L92 250 Z" fill="#C7922F"/>
+          <rect x="66" y="262" width="312" height="78" rx="22" fill="#B9862A"/>
+          <rect x="166" y="248" width="112" height="10" rx="5" fill="#3E7C5B"/>
+          <rect x="96" y="214" width="252" height="44" rx="20" fill="#D9A646"/>
+          <rect x="40" y="168" width="62" height="164" rx="28" fill="#C7922F"/>
+          <rect x="342" y="168" width="62" height="164" rx="28" fill="#C7922F"/>
+          <rect x="40" y="168" width="62" height="34" rx="17" fill="#D9A646"/>
+          <rect x="342" y="168" width="62" height="34" rx="17" fill="#D9A646"/>
+          <rect x="166" y="248" width="112" height="10" rx="5" fill="none" stroke="#21303B" stroke-width="3" stroke-dasharray="8 6"/>
+        </g>
+        <!-- bastón recargado en el sillón -->
+        <path d="M232 384 L232 238" stroke="#7A5A2A" stroke-width="11" stroke-linecap="round"/>
+        <path d="M232 241 C232 208, 276 205, 281 231" fill="none" stroke="#7A5A2A" stroke-width="11" stroke-linecap="round"/>
+        <rect x="226" y="272" width="12" height="42" rx="6" fill="#C7922F"/>
+        <rect x="226" y="272" width="12" height="42" rx="6" fill="none" stroke="#21303B" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <!-- mesita con taza y portavasos -->
+        <rect x="282" y="300" width="100" height="12" rx="4" fill="#B9862A"/>
+        <rect x="292" y="312" width="8" height="76" rx="3" fill="#7A5A2A"/>
+        <rect x="364" y="312" width="8" height="76" rx="3" fill="#7A5A2A"/>
+        <ellipse cx="332" cy="297" rx="30" ry="6" fill="#21303B"/>
+        <path d="M313 252 L351 252 L347 294 Q332 299 317 294 Z" fill="#5B7A99"/>
+        <ellipse cx="332" cy="252" rx="19" ry="5" fill="#4A6683"/>
+        <path d="M351 260 C366 261, 366 283, 347 283" fill="none" stroke="#5B7A99" stroke-width="5"/>
+        <path d="M326 242 c-5 -8 5 -12 0 -21 M338 241 c-5 -8 5 -12 0 -21" fill="none" stroke="#9AA8B2" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="20" y="428" font-family="Atkinson Hyperlegible, sans-serif" font-size="17" fill="#21303B">El sensor va en algo que ya usa</text>
+      </svg>
+      <div class="phone" aria-hidden="true">
+        <div class="bar"></div>
+        <div class="state"><span class="dot"></span>Todo bien</div>
+        <div class="who">Mamá · Sillón de la sala<br>Última actividad hace 14 min</div>
+        <div class="empty"><b>Sin avisos hoy</b>Si todo sigue normal, no te vamos a escribir.</div>
+        <div class="day"><i style="height:30%"></i><i class="on" style="height:70%"></i><i class="on" style="height:90%"></i><i style="height:40%"></i><i class="on" style="height:80%"></i><i class="on" style="height:60%"></i><i style="height:25%"></i></div>
+        <div class="cap"><span>8:00</span><span>14:00</span><span>20:00</span></div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="wrap">
+    <h2>Tres objetos, el mismo servicio.</h2>
+    <p class="muted" style="margin-top:12px;max-width:60ch">Elige el que ya forma parte de su día. Los tres usan el mismo sensor, la misma app y el mismo precio.</p>
+    <div class="products">
+      <a class="product" href="sillon/" data-cta="producto_sillon">
+        <div class="pic"><svg viewBox="30 60 390 330" aria-hidden="true"><rect x="82" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/><rect x="350" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/><path d="M92 120 Q92 70 142 70 L302 70 Q352 70 352 120 L352 250 L92 250 Z" fill="#C7922F"/><rect x="66" y="262" width="312" height="78" rx="22" fill="#B9862A"/><rect x="166" y="248" width="112" height="10" rx="5" fill="#3E7C5B"/><rect x="96" y="214" width="252" height="44" rx="20" fill="#D9A646"/><rect x="40" y="168" width="62" height="164" rx="28" fill="#C7922F"/><rect x="342" y="168" width="62" height="164" rx="28" fill="#C7922F"/></svg></div>
+        <span class="tag">El que más usa (recomendado)</span>
+        <h3>Placa para sillón</h3>
+        <p class="muted">Va bajo el cojín de su sillón favorito y registra cuándo se sienta y se levanta.</p>
+        <span class="more">Ver cómo funciona →</span>
+      </a>
+      <a class="product" href="baston/" data-cta="producto_baston">
+        <div class="pic"><svg viewBox="140 50 160 345" aria-hidden="true"><path d="M196 384 L196 120" stroke="#7A5A2A" stroke-width="18" stroke-linecap="round"/><path d="M196 124 C196 70, 268 66, 276 108" fill="none" stroke="#7A5A2A" stroke-width="18" stroke-linecap="round"/><rect x="186" y="180" width="20" height="70" rx="10" fill="#C7922F"/></svg></div>
+        <span class="tag">Si lo usa todos los días</span>
+        <h3>Bastón con sensor</h3>
+        <p class="muted">Un bastón con el sensor adentro: registra cuándo lo toma y sale a caminar.</p>
+        <span class="more">Ver cómo funciona →</span>
+      </a>
+      <a class="product" href="portavasos/" data-cta="producto_portavasos">
+        <div class="pic"><svg viewBox="120 140 170 170" aria-hidden="true"><ellipse cx="200" cy="288" rx="66" ry="12" fill="#21303B"/><path d="M156 196 L244 196 L236 280 Q200 290 164 280 Z" fill="#5B7A99"/><ellipse cx="200" cy="196" rx="44" ry="10" fill="#4A6683"/><path d="M244 212 C 278 214, 278 258, 238 258" fill="none" stroke="#5B7A99" stroke-width="10"/><path d="M186 178 c-8 -12 8 -18 0 -32 M206 176 c-8 -12 8 -18 0 -32" fill="none" stroke="#9AA8B2" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <span class="tag">Junto a su taza de siempre</span>
+        <h3>Portavasos</h3>
+        <p class="muted">Va en la mesa donde toma su café o su té y registra cuándo levanta la taza.</p>
+        <span class="more">Ver cómo funciona →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section id="beneficios">
+  <div class="wrap">
+    <h2>Pensado para que tu familiar siga con su día y tú con el tuyo.</h2>
+    <div class="benefits">
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><h3>Elige el objeto que ya usa</h3><p class="muted">Sillón, bastón o portavasos. Escoges el que forma parte de su día y el sensor se queda ahí, sin cables ni pulseras.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 004 0"/></svg></div><div><h3>Te avisa solo cuando importa</h3><p class="muted">Si su día va como siempre, silencio. Si algo cambia, te llega un aviso en la app y por WhatsApp, a ti y a quien tú elijas.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg></div><div><h3>Sin instalar nada</h3><p class="muted">La app de la familia se abre desde un link en tu teléfono. El sensor se conecta al wifi de su casa.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="wrap">
+    <h2>Cómo funciona</h2>
+    <ol class="steps"><li><span class="n" aria-hidden="true">1</span><div><h3>Eliges y colocas</h3><p class="muted">Escoges sillón, bastón o portavasos, lo colocas en su casa y escaneas el código del sensor con tu teléfono. Toma unos minutos.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><h3>Aprende su rutina</h3><p class="muted">Durante unas dos semanas registra a qué horas suele usar ese objeto. En ese tiempo no manda avisos.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><h3>Te avisa por excepción</h3><p class="muted">Si a la hora en que normalmente ya lo usó no ha pasado, te enteras tú primero.</p></div></li></ol>
+  </div>
+</section>
+
+<!-- AVISOS A TU MEDIDA -->
+<section id="avisos">
+  <div class="wrap">
+    <h2>Tú decides cómo y a quién avisamos.</h2>
+    <div class="features">
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4h12v17"/><path d="M3 21h18"/><path d="M14 12h.01"/></svg></div><div><h3>Se ajusta a quién lo visita</h3><p class="muted">Si un vecino o familiar pasa casi diario, solo te avisamos por excepción. Si vive solo o sola sin nadie cerca, además te mandamos una confirmación diaria y el aviso llega antes.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 4.5a3 3 0 010 6"/><path d="M21 20c0-2.6-1.6-4.8-4-5.6"/></svg></div><div><h3>Tu círculo de cuidado</h3><p class="muted">Suma a tus hermanos o a un vecino de confianza. Quien vive cerca puede responder primero con «Voy en camino» o «Ya lo revisé», y todos se enteran.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="3"/><path d="M9 8h6M9 12h6M9 16h6"/></svg></div><div><h3>Una pantalla opcional para tu familiar</h3><p class="muted">Tres botones grandes en su celular o tableta: Estoy bien, Llámame y Necesito ayuda. Sin cuenta ni contraseña. Si no la quiere, no pasa nada.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg></div><div><h3>Pausa cuando sale de viaje</h3><p class="muted">Si sale unos días de viaje, pausas los avisos y los reanudas al volver. Así no hay falsas alarmas.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z"/></svg></div><div><h3>Horario de no molestar</h3><p class="muted">Tú eliges las horas de la noche en que no quieres recibir mensajes de rutina.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/></svg></div><div><h3>Resumen semanal</h3><p class="muted">Cada semana recibes un resumen corto de cómo fue su rutina. Tus datos los puedes descargar o borrar desde la app.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRUEBA LA APP -->
+<section id="app">
+  <div class="wrap apptry">
+    <div>
+      <h2>Prueba la app de la familia hoy.</h2>
+      <p class="muted" style="margin-top:14px;max-width:52ch">Se abre en el navegador de tu teléfono, sin instalar nada. En modo demostración puedes ver un día normal, cómo llega un aviso y cómo responde tu círculo de cuidado.</p>
+      <div class="actions">
+        <a class="cta ghost js-app" href="https://jesushernandez2005.github.io/Proyecto4/app/" target="_blank" rel="noopener" data-cta="app_demo">Abrir la app de demostración</a>
+      </div>
+    </div>
+    <div class="shot" aria-hidden="true">
+      <div class="row"><b>Estado de hoy</b><span class="pill v">Normal</span></div>
+      <div class="row"><span>Si baja su actividad</span><span class="pill a">Atención</span></div>
+      <div class="row"><span>Luis, vecino</span><span class="pill v">Ya lo revisó</span></div>
+      <div class="row"><span>Ana, hermana</span><span class="pill g">Avisada</span></div>
+      <div class="row"><span>Avisos</span><span class="pill g">En pausa si viaja</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACIDAD -->
+<section id="que-ve">
+  <div class="wrap">
+    <h2>Qué registra el sensor y qué no.</h2>
+    <div class="seesplit">
+      <div><h3>Sí registra</h3><ul><li>Cuándo se mueve el objeto: si se sienta en el sillón, toma el bastón o levanta su taza.</li><li>El nivel de batería y la señal del sensor.</li></ul></div>
+      <div class="no"><h3>No registra</h3><ul><li>Imágenes ni video: no tiene cámara.</li><li>Sonido ni conversaciones: no tiene micrófono.</li><li>Su ubicación: no tiene GPS.</li><li>Qué come o qué toma: solo si el objeto se movió.</li></ul></div>
+    </div>
+    <p class="muted" style="margin-top:20px;max-width:62ch">Antes de instalarlo, tu mamá o tu papá da su autorización por escrito, una sola vez. Puede pausarlo o pedir que lo retiremos cuando quiera.</p>
+  </div>
+</section>
+
+<!-- EVIDENCIA (sin testimonios inventados) -->
+<section id="lo-que-nos-dijeron">
+  <div class="wrap">
+    <h2>Lo que nos dijeron hijas e hijos que cuidan a distancia.</h2>
+    <div class="evidence">
+      <div class="fig"><b>3 de 3</b><span class="muted">personas entrevistadas pagarían una suscripción mensual por saber que su mamá o su papá está bien.</span></div>
+      <div class="fig"><b>$450 a $700</b><span class="muted">al mes es lo que dijeron que pagarían sin pensarlo.</span></div>
+    </div>
+    <!-- Cuando tengan citas textuales con permiso de las personas entrevistadas, agréguenlas aquí. No inventar testimonios. -->
+    <p class="source muted">Fuente: entrevistas del equipo DistanciaCero, 2026, sobre el servicio en general. Son solo tres personas: por eso estamos haciendo un piloto.</p>
+  </div>
+</section>
+
+<!-- PRECIO -->
+<section id="precio">
+  <div class="wrap">
+    <h2>Precio estimado</h2>
+    <div class="price">
+      <div class="row"><span>Equipo: sillón, bastón o portavasos con sensor</span><span class="amt">$3,990</span></div>
+      <div class="row"><span>Plan Tranquilidad: avisos, círculo de cuidado y resumen semanal</span><span class="amt">$449 <small>al mes</small></span></div>
+      <div class="row total"><span>Total del primer año</span><span class="amt">$9,378</span></div>
+      <!-- Cada cifra de esta sección sale de DistanciaCero_costos_y_calculos.xlsx, hoja Landing. -->
+      <!-- POR VERIFICAR (Ley Federal de Protección al Consumidor): antes de vender, el precio debe mostrarse con IVA incluido. -->
+      <p class="notes muted">Precios estimados en pesos mexicanos, más IVA. Pueden cambiar antes del lanzamiento. El precio del equipo es el mismo para los tres objetos. Cancela el servicio cuando quieras. Durante el piloto no se cobra nada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PREGUNTAS -->
+<section id="preguntas">
+  <div class="wrap faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Cuál de los tres me conviene?</summary><p>El que más use tu familiar todos los días. Si pasa buena parte del día en su sillón, la placa para sillón. Si usa bastón para moverse en casa, el bastón. Si empieza cada mañana con su café o su té en la misma mesa, el portavasos. Si no sabes, en el formulario elige «Todavía no sé» y lo vemos contigo.</p></details>
+    <details><summary>¿Puedo poner más de uno?</summary><p>En el piloto instalamos un objeto por familia. Si te interesa tener dos, dínoslo al apartar tu lugar: nos ayuda a decidir si lo ofrecemos.</p></details>
+    <details><summary>¿Necesita internet en su casa?</summary><p>Sí. El sensor se conecta al wifi de su casa. Si el internet o la batería fallan, en la app verás «Perdimos contacto con el sensor», que es distinto de un aviso: no queremos que te asustes por un problema de conexión.</p></details>
+    <details><summary>¿Mi mamá o mi papá tiene que usar algo o aprender algo?</summary><p>No. El sensor trabaja solo. Si quiere, puede tener en su celular o tableta una pantalla con tres botones grandes (Estoy bien, Llámame y Necesito ayuda), sin cuenta ni contraseña. Es opcional.</p></details>
+    <details><summary>¿Detecta caídas? ¿Es un servicio de emergencias?</summary><p>No. DistanciaCero no detecta caídas, no mide signos vitales, no es un dispositivo médico y no llama a servicios de emergencia. El botón «Necesito ayuda» avisa a su círculo de cuidado, no al 911. En una emergencia llama al 911.</p></details>
+    <details><summary>¿En qué etapa está?</summary><p>Estamos armando y probando prototipos de los tres objetos. Los tres usan el mismo módulo: un sensor de movimiento, un microcontrolador con wifi y una batería recargable. La app de la familia ya se puede probar en modo demostración. Todavía no está a la venta.</p></details>
+    <details><summary>¿Qué es el piloto?</summary><p>Instalamos prototipos con 10 familias en Puebla durante unos dos meses, sin costo, para comprobar que funcionan en casas reales. Puedes elegir sillón, bastón o portavasos. Al apartar tu lugar te escribimos para ver si tu familia encaja.</p></details>
+  </div>
+</section>
+
+<!-- FORMULARIO: destino del CTA único -->
+<section id="apartar">
+  <div class="wrap">
+    <h2>Aparta tu lugar en el piloto</h2>
+    <p class="muted" style="margin-top:12px;max-width:52ch">Déjanos tus datos y te escribimos para contarte los siguientes pasos. No se cobra nada.</p>
+    <form id="preregistro" novalidate>
+      <input type="hidden" name="pagina" value="todos">
+      <label>Tu nombre<input type="text" name="nombre" autocomplete="name" required></label>
+      <label>Tu correo<input type="email" name="correo" autocomplete="email" required></label>
+      <label>Ciudad donde vive tu familiar<input type="text" name="ciudad" autocomplete="address-level2" placeholder="Por ejemplo, Puebla" required></label>
+      <label>¿Quién vive solo?
+        <select name="quien" required>
+          <option value="">Elige una opción</option>
+          <option>Mi mamá</option>
+          <option>Mi papá</option>
+          <option>Los dos, juntos</option>
+          <option>Otra persona de mi familia</option>
+        </select>
+      </label>
+      <label>¿Qué objeto usa más tu familiar?
+        <select name="objeto" required>
+          <option value="">Elige una opción</option>
+          <option value="sillon">Su sillón</option>
+          <option value="baston">Su bastón</option>
+          <option value="portavasos">Su taza o portavasos</option>
+          <option value="no-se">Todavía no sé</option>
+        </select>
+      </label>
+      <label class="hp" aria-hidden="true">No llenar<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label>
+      <label class="check"><input type="checkbox" name="consentimiento" required><span>Acepto el <a href="#aviso-privacidad" data-open-privacy>aviso de privacidad</a> y que me contacten sobre el piloto.</span></label>
+      <div class="form-actions">
+        <button class="cta" type="submit" data-cta="form">Apartar mi lugar</button>
+        <div class="msg" id="form-msg" role="status" aria-live="polite"></div>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div class="legal">
+      <details id="aviso-privacidad">
+        <summary>Aviso de privacidad simplificado</summary>
+        <p>El equipo DistanciaCero, proyecto estudiantil de Ingeniería Mecatrónica de la Universidad Iberoamericana Puebla, es responsable de los datos que nos das en este formulario: nombre, correo, ciudad, parentesco y el objeto que te interesa.</p>
+        <p>Los usamos solo para contactarte sobre el piloto y saber cuántas familias están interesadas en cada objeto. No los vendemos ni los compartimos con terceros con fines comerciales. Los borramos al terminar el piloto o antes, si nos lo pides.</p>
+        <p>Para acceder, corregir o borrar tus datos, o para retirar tu autorización, escríbenos a <a class="js-email" href="#">nuestro correo</a>.</p>
+      </details>
+      <p style="margin-top:16px"><strong>No es un dispositivo médico.</strong> No detecta caídas ni sustituye la atención médica o los servicios de emergencia. En una emergencia llama al 911.</p>
+    </div>
+    <div>
+      <p><strong>Productos:</strong> <a href="sillon/">Sillón</a> · <a href="baston/">Bastón</a> · <a href="portavasos/">Portavasos</a> · <a href="./">Los tres</a></p>
+      <p style="margin-top:8px"><strong>Contacto:</strong> <a class="js-email" href="#">nuestro correo</a></p>
+      <p class="muted" style="margin-top:8px">DistanciaCero, proyecto de Proyectos 4 en la IBERO Puebla (2026)</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ======================= CONFIGURACIÓN (llenar antes de publicar) =======================
+   FORM_ENDPOINT: URL que recibe el formulario. Ejemplo con Formspree: "https://formspree.io/f/xxxxxxx"
+                  Si se deja vacío, el formulario muestra un mensaje y no envía nada.
+                  Usen el MISMO endpoint en las cuatro páginas: cada registro lleva "pagina" y "objeto".
+   CONTACT_EMAIL: correo del equipo para el aviso de privacidad y el contacto.
+   GOATCOUNTER:   código de GoatCounter (analítica sin cookies), por ejemplo "distanciacero".
+                  Si se deja vacío, no se carga analítica.
+   APP_URL:       link a la app de la familia (modo demostración).
+========================================================================================== */
+const PRODUCT = "todos";   /* se guarda con cada registro y en la analítica */
+const CONFIG = {
+  FORM_ENDPOINT: "",
+  CONTACT_EMAIL: "",
+  GOATCOUNTER: "",
+  APP_URL: "https://jesushernandez2005.github.io/Proyecto4/app/"
+};
+
+/* Link a la app */
+document.querySelectorAll('.js-app').forEach(a => {
+  if (CONFIG.APP_URL) a.href = CONFIG.APP_URL; else a.closest('section').hidden = true;
+});
+
+/* Correo de contacto */
+document.querySelectorAll('.js-email').forEach(a => {
+  if (CONFIG.CONTACT_EMAIL) { a.href = 'mailto:' + CONFIG.CONTACT_EMAIL; a.textContent = CONFIG.CONTACT_EMAIL; }
+  else { a.removeAttribute('href'); a.textContent = 'correo por confirmar'; }
+});
+
+/* Analítica sin cookies: visitas, clics en el CTA y pre-registros */
+function track(name){
+  try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path: name, title: name, event: true}); } catch(e){}
+}
+if (CONFIG.GOATCOUNTER) {
+  const s = document.createElement('script');
+  s.async = true; s.src = 'https://gc.zgo.at/count.js';
+  s.dataset.goatcounter = 'https://' + CONFIG.GOATCOUNTER + '.goatcounter.com/count';
+  document.head.appendChild(s);
+}
+document.querySelectorAll('[data-cta]').forEach(el => el.addEventListener('click', () => track(PRODUCT + '_click_' + el.dataset.cta)));
+
+/* Abrir el aviso de privacidad desde el formulario */
+document.querySelectorAll('[data-open-privacy]').forEach(a => a.addEventListener('click', () => {
+  const d = document.getElementById('aviso-privacidad'); if (d) d.open = true;
+}));
+
+/* Formulario de pre-registro */
+const form = document.getElementById('preregistro');
+const msg = document.getElementById('form-msg');
+function show(type, text){ msg.className = 'msg ' + type; msg.textContent = text; }
+
+form.addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  const data = new FormData(form);
+  if (data.get('_gotcha')) return;                       // trampa contra bots
+  const missing = [];
+  if (!data.get('nombre').trim()) missing.push('tu nombre');
+  const correo = data.get('correo').trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) missing.push('un correo válido');
+  if (!data.get('ciudad').trim()) missing.push('la ciudad');
+  if (!data.get('quien')) missing.push('quién vive solo');
+  if (!data.get('objeto')) missing.push('qué objeto usa más');
+  if (!data.get('consentimiento')) missing.push('aceptar el aviso de privacidad');
+  if (missing.length) { show('err', 'Falta ' + missing.join(', ') + '.'); return; }
+
+  if (!CONFIG.FORM_ENDPOINT) {
+    show('err', 'El formulario todavía no está conectado. Configura FORM_ENDPOINT en el código de la página.');
+    return;
+  }
+  const btn = form.querySelector('button[type=submit]');
+  btn.disabled = true; btn.textContent = 'Apartando…';
+  try {
+    const res = await fetch(CONFIG.FORM_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    track(PRODUCT + '_submit_preregistro_' + data.get('objeto'));
+    form.reset();
+    show('ok', 'Listo, apartaste tu lugar. Te escribiremos a ' + correo + ' con los siguientes pasos.');
+    btn.textContent = 'Lugar apartado';
+  } catch (e) {
+    show('err', 'No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.');
+    btn.disabled = false; btn.textContent = 'Apartar mi lugar';
+  }
+});
+</script>
+</body>
+</html>
