@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DistanciaCero Bastón · Saber que tu papá está bien sin llamarle</title>
-<meta name="description" content="Un bastón con sensor aprende a qué horas suele caminar tu papá o tu mamá y te avisa solo si algo cambia. Sin botones. Aparta tu lugar en el piloto.">
+<meta name="description" content="Una cápsula con sensor sujeta a su bastón aprende a qué horas suele caminar tu papá o tu mamá y te avisa solo si algo cambia. Sin botones. Aparta tu lugar en el piloto.">
 <meta name="theme-color" content="#F5F6F2">
 <link rel="canonical" href="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/baston/">
 
@@ -13,15 +13,15 @@
 <meta property="og:locale" content="es_MX">
 <meta property="og:site_name" content="DistanciaCero">
 <meta property="og:title" content="DistanciaCero Bastón · Saber que tu papá está bien, sin tener que llamarle">
-<meta property="og:description" content="Un bastón con sensor aprende a qué horas suele caminar y te avisa solo si algo cambia. Él lo usa como siempre.">
+<meta property="og:description" content="Una cápsula con sensor sujeta a su propio bastón aprende a qué horas suele caminar y te avisa solo si algo cambia. Él lo usa como siempre.">
 <meta property="og:url" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/baston/">
 <meta property="og:image" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/baston/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Bastón con un sensor dentro y un teléfono que dice: sin avisos hoy.">
+<meta property="og:image:alt" content="Bastón con la cápsula del sensor sujeta con una abrazadera y un teléfono que dice: sin avisos hoy.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DistanciaCero Bastón · Saber que tu papá está bien, sin tener que llamarle">
-<meta name="twitter:description" content="Un bastón con sensor aprende a qué horas suele caminar y te avisa solo si algo cambia. Él lo usa como siempre.">
+<meta name="twitter:description" content="Una cápsula con sensor sujeta a su propio bastón aprende a qué horas suele caminar y te avisa solo si algo cambia. Él lo usa como siempre.">
 <meta name="twitter:image" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/baston/og.png">
 <link rel="icon" type="image/png" href="../assets/favicon-64.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -228,6 +228,23 @@
   @media (min-width:900px){ .apptry{grid-template-columns:1.2fr 1fr} }
   .steps li{align-content:start}
   .note{margin-top:16px;font-size:.95rem;border-left:3px solid var(--line);padding-left:14px;max-width:62ch}
+
+  /* ===== Prototipo actual: una cápsula, tres bases ===== */
+  .product .pic{height:168px}
+  .product .pic img{max-height:148px;max-width:100%;width:auto;height:auto}
+  .proto{display:grid;gap:32px;align-items:center;margin-top:32px}
+  .proto figure{margin:0;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-l);padding:22px 18px 16px;text-align:center}
+  .proto figure img{max-width:100%;height:auto;max-height:340px}
+  .proto .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+  .proto .pair img{max-height:260px}
+  .proto figcaption{font-size:.88rem;color:var(--ink-2);margin-top:12px}
+  .proto h3{margin:0 0 10px}
+  .proto h3 + .parts{margin-bottom:26px}
+  .parts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .parts li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start}
+  .parts li::before{content:"";width:12px;height:12px;border-radius:3px;margin-top:8px;background:var(--c,#2E5E8C)}
+  .parts li b{font-weight:700}
+  @media (min-width:900px){ .proto{grid-template-columns:1fr 1.05fr;gap:48px} }
 </style>
 </head>
 <body>
@@ -248,26 +265,27 @@
   <div class="wrap">
     <div>
       <h1>Saber que tu papá está bien, sin tener que llamarle.</h1>
-      <p class="lead muted">Un bastón con sensor aprende a qué horas suele levantarse y caminar, y te avisa solo si algo cambia. Él lo usa como siempre.</p>
+      <p class="lead muted">Una cápsula con sensor se sujeta a su propio bastón, aprende a qué horas suele levantarse y caminar, y te avisa solo si algo cambia. Él lo usa como siempre.</p>
       <div class="actions">
         <a class="cta" href="#apartar" data-cta="hero">Aparta tu lugar en el piloto</a>
         <p class="fine muted">Piloto con 10 familias en Puebla. Sin costo y sin compromiso.</p>
       </div>
     </div>
 
-    <figure class="scene" aria-label="Ilustración: un bastón con un sensor dentro y un teléfono que dice que no hay avisos hoy.">
+    <figure class="scene" aria-label="Ilustración: un bastón con la cápsula del sensor sujeta con una abrazadera, y un teléfono que dice que no hay avisos hoy.">
       <svg viewBox="0 0 600 440" role="img" aria-hidden="true">
         <ellipse cx="200" cy="392" rx="150" ry="14" fill="#E4E7E0"/>
-        <!-- bastón (ya sin base de carga: se carga por USB-C) -->
+        <!-- su propio bastón (la cápsula se carga por USB-C) -->
         <path d="M196 384 L196 120" stroke="#7A5A2A" stroke-width="18" stroke-linecap="round"/>
         <path d="M196 124 C196 70, 268 66, 276 108" fill="none" stroke="#7A5A2A" stroke-width="18" stroke-linecap="round"/>
         <rect x="190" y="376" width="12" height="12" rx="4" fill="#21303B"/>
-        <!-- módulo dentro del bastón -->
-        <rect x="186" y="180" width="20" height="70" rx="10" fill="#C7922F"/>
-        <rect x="186" y="180" width="20" height="70" rx="10" fill="none" stroke="#21303B" stroke-width="1.6" stroke-dasharray="4 3"/>
-        <circle cx="196" cy="168" r="4" fill="#3E7C5B"/>
-        <path d="M208 216 C 250 230, 270 290, 250 330" fill="none" stroke="#21303B" stroke-width="1.5" stroke-dasharray="3 4"/>
-        <text x="40" y="428" font-family="Atkinson Hyperlegible, sans-serif" font-size="17" fill="#21303B">El sensor va dentro del bastón</text>
+        <!-- abrazadera de dos piezas + cápsula -->
+        <rect x="181" y="206" width="30" height="40" rx="6" fill="#C7922F"/>
+        <path d="M181 226 h30" stroke="#9C6F1E" stroke-width="2"/>
+        <circle cx="187" cy="215" r="2" fill="#7A5A2A"/><circle cx="187" cy="237" r="2" fill="#7A5A2A"/>
+        <rect x="211" y="198" width="42" height="56" rx="4" fill="#2E5E8C"/><rect x="251" y="196" width="6" height="60" rx="2" fill="#8FC3EA"/><rect x="223.9" y="221.5" width="16.6" height="9.0" rx="2" fill="#1D3F60"/>
+        <path d="M240 256 C 262 290, 262 330, 236 352" fill="none" stroke="#21303B" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text x="40" y="428" font-family="Atkinson Hyperlegible, sans-serif" font-size="17" fill="#21303B">La cápsula va en una abrazadera</text>
       </svg>
       <div class="phone" aria-hidden="true">
         <div class="bar"></div>
@@ -286,7 +304,7 @@
   <div class="wrap">
     <h2>Pensado para que él siga con su día y tú con el tuyo.</h2>
     <div class="benefits">
-      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><h3>Él no aprende nada nuevo</h3><p class="muted">Sin botones ni pantallas. Toma su bastón y camina, como ya lo hace todos los días.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><h3>Él no aprende nada nuevo</h3><p class="muted">Sin botones ni pantallas, y con su mismo bastón: la cápsula se sujeta con una abrazadera. Lo toma y camina, como ya lo hace todos los días.</p></div></div>
       <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 004 0"/></svg></div><div><h3>Te avisa solo cuando importa</h3><p class="muted">Si su día va como siempre, silencio. Si algo cambia, te llega un aviso en la app y por WhatsApp, a ti y a quien tú elijas.</p></div></div>
       <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg></div><div><h3>Sin instalar nada</h3><p class="muted">La app de la familia se abre desde un link en tu teléfono. El sensor se conecta al wifi de su casa.</p></div></div>
     </div>
@@ -297,7 +315,36 @@
 <section id="como-funciona">
   <div class="wrap">
     <h2>Cómo funciona</h2>
-    <ol class="steps"><li><span class="n" aria-hidden="true">1</span><div><h3>Se lo entregas</h3><p class="muted">Le das el bastón y escaneas su código con tu teléfono. Toma unos minutos.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><h3>Aprende su rutina</h3><p class="muted">Durante unas dos semanas registra a qué horas suele tomar el bastón y caminar. En ese tiempo no manda avisos.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><h3>Te avisa por excepción</h3><p class="muted">Si a la hora en que normalmente ya caminó no ha pasado, te enteras tú primero.</p></div></li></ol>
+    <ol class="steps"><li><span class="n" aria-hidden="true">1</span><div><h3>La colocas</h3><p class="muted">Cierras la abrazadera de dos piezas alrededor de su bastón, pones la cápsula y escaneas su código con tu teléfono. Toma unos minutos.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><h3>Aprende su rutina</h3><p class="muted">Durante unas dos semanas registra a qué horas suele tomar el bastón y caminar. En ese tiempo no manda avisos.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><h3>Te avisa por excepción</h3><p class="muted">Si a la hora en que normalmente ya caminó no ha pasado, te enteras tú primero.</p></div></li></ol>
+  </div>
+</section>
+
+<!-- PROTOTIPO -->
+<section id="prototipo">
+  <div class="wrap">
+    <h2>Así es el prototipo.</h2>
+    <p class="muted" style="margin-top:12px;max-width:62ch">Una cápsula con el sensor, la misma que usan el sillón, el bastón y el portavasos, más la abrazadera para bastón, que la sujeta en el lugar correcto.</p>
+    <div class="proto">
+      <figure>
+        <div class="pair">
+          <img src="../assets/prototipo-baston.png" alt="Modelo 3D de la cápsula montada en la abrazadera para bastón" width="352" height="288" loading="lazy">
+          <img src="../assets/prototipo-capsula.png" alt="Vista explotada de la cápsula: tapa, electrónica, batería y cuerpo" width="265" height="559" loading="lazy">
+        </div>
+        <figcaption>Modelo 3D del prototipo que ya armamos. El producto final puede cambiar de forma y color.</figcaption>
+      </figure>
+      <div>
+        <h3>La cápsula</h3>
+        <ul class="parts">
+          <li><span><b>Sensor de movimiento</b> que nota cuándo se usa el objeto.</span></li>
+          <li><span><b>Microcontrolador con wifi</b> que manda la actividad a la app.</span></li>
+          <li><span><b>Batería recargable</b> por USB-C y tapa atornillada.</span></li>
+        </ul>
+        <h3>La base</h3>
+        <ul class="parts">
+          <li style="--c:#C7922F"><span><b>Bastón:</b> una abrazadera de dos piezas que se cierra alrededor de su propio bastón.</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -340,20 +387,20 @@
 <section id="otros">
   <div class="wrap">
     <h2>¿No usa bastón? Hay otras dos opciones.</h2>
-    <p class="muted" style="margin-top:12px;max-width:60ch">Mismo sensor, misma app y mismo precio. Elige el objeto que ya forma parte de su día.</p>
+    <p class="muted" style="margin-top:12px;max-width:60ch">Misma cápsula, misma app y mismo precio: solo cambia la base. Elige el objeto que ya forma parte de su día.</p>
     <div class="products" style="max-width:760px">
       <a class="product" href="../sillon/" data-cta="producto_sillon">
-        <div class="pic"><svg viewBox="30 60 390 330" aria-hidden="true"><rect x="82" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/><rect x="350" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/><path d="M92 120 Q92 70 142 70 L302 70 Q352 70 352 120 L352 250 L92 250 Z" fill="#C7922F"/><rect x="66" y="262" width="312" height="78" rx="22" fill="#B9862A"/><rect x="166" y="248" width="112" height="10" rx="5" fill="#3E7C5B"/><rect x="96" y="214" width="252" height="44" rx="20" fill="#D9A646"/><rect x="40" y="168" width="62" height="164" rx="28" fill="#C7922F"/><rect x="342" y="168" width="62" height="164" rx="28" fill="#C7922F"/></svg></div>
+        <div class="pic"><img src="../assets/prototipo-sillon.png" alt="Modelo 3D: cápsula azul sobre la placa verde para sillón" width="415" height="496" loading="lazy"></div>
         <span class="tag">El que más usa (recomendado)</span>
-        <h3>Placa para sillón</h3>
-        <p class="muted">Va bajo el cojín de su sillón favorito y registra cuándo se sienta y se levanta.</p>
+        <h3>Base para sillón</h3>
+        <p class="muted">Una placa que se fija a su sillón favorito con tornillos o velcro sostiene la cápsula y registra cuándo se sienta y se levanta.</p>
         <span class="more">Ver cómo funciona →</span>
       </a>
       <a class="product" href="../portavasos/" data-cta="producto_portavasos">
-        <div class="pic"><svg viewBox="120 140 170 170" aria-hidden="true"><ellipse cx="200" cy="288" rx="66" ry="12" fill="#21303B"/><path d="M156 196 L244 196 L236 280 Q200 290 164 280 Z" fill="#5B7A99"/><ellipse cx="200" cy="196" rx="44" ry="10" fill="#4A6683"/><path d="M244 212 C 278 214, 278 258, 238 258" fill="none" stroke="#5B7A99" stroke-width="10"/><path d="M186 178 c-8 -12 8 -18 0 -32 M206 176 c-8 -12 8 -18 0 -32" fill="none" stroke="#9AA8B2" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="pic"><img src="../assets/prototipo-portavasos.png" alt="Modelo 3D: portavasos rosa con la cápsula azul al costado como asa" width="401" height="421" loading="lazy"></div>
         <span class="tag">Junto a su taza de siempre</span>
-        <h3>Portavasos</h3>
-        <p class="muted">Va en la mesa donde toma su café o su té y registra cuándo levanta la taza.</p>
+        <h3>Portavasos con asa</h3>
+        <p class="muted">Su vaso o taza de siempre va adentro y la cápsula hace de asa: registra cuándo lo levanta para tomar su café o su té.</p>
         <span class="more">Ver cómo funciona →</span>
       </a>
     </div>
@@ -365,10 +412,10 @@
   <div class="wrap">
     <h2>Qué registra el sensor y qué no.</h2>
     <div class="seesplit">
-      <div><h3>Sí registra</h3><ul><li>Cuándo toma el bastón y camina.</li><li>El nivel de batería y la señal del bastón.</li></ul></div>
+      <div><h3>Sí registra</h3><ul><li>Cuándo toma el bastón y camina.</li><li>El nivel de batería y la señal de la cápsula.</li></ul></div>
       <div class="no"><h3>No registra</h3><ul><li>Imágenes ni video: no tiene cámara.</li><li>Sonido ni conversaciones: no tiene micrófono.</li><li>Su ubicación: no tiene GPS.</li></ul></div>
     </div>
-    <p class="muted" style="margin-top:20px;max-width:62ch">Antes de entregárselo, tu papá o tu mamá da su autorización por escrito, una sola vez. Puede pausar el bastón o devolverlo cuando quiera.</p>
+    <p class="muted" style="margin-top:20px;max-width:62ch">Antes de colocarlo, tu papá o tu mamá da su autorización por escrito, una sola vez. Puede pausarlo o pedir que lo retiremos cuando quiera.</p>
   </div>
 </section>
 
@@ -390,10 +437,10 @@
   <div class="wrap">
     <h2>Precio estimado</h2>
     <div class="price">
-      <div class="row"><span>Bastón con sensor</span><span class="amt">$3,990</span></div>
+      <div class="row"><span>Cápsula con sensor y abrazadera para bastón</span><span class="amt">$3,990</span></div>
       <div class="row"><span>Plan Tranquilidad: avisos, círculo de cuidado y resumen semanal</span><span class="amt">$449 <small>al mes</small></span></div>
       <div class="row total"><span>Total del primer año</span><span class="amt">$9,378</span></div>
-      <!-- SUPUESTO: se usa el mismo precio que la placa para sillón (Actividad 7). Confirmar con el costo real de este producto. -->
+      <!-- SUPUESTO: mismo precio que el sillón (Actividad 7): la cápsula es la misma y solo cambia la base. Confirmar con el costo real de la abrazadera. -->
       <!-- Cada cifra de esta sección sale de DistanciaCero_costos_y_calculos.xlsx, hoja Landing. -->
       <!-- POR VERIFICAR (Ley Federal de Protección al Consumidor): antes de vender, el precio debe mostrarse con IVA incluido. -->
       <p class="notes muted">Precios estimados en pesos mexicanos, más IVA. Pueden cambiar antes del lanzamiento. Cancela el servicio cuando quieras. Durante el piloto no se cobra nada.</p>
@@ -405,12 +452,13 @@
 <section id="preguntas">
   <div class="wrap faq">
     <h2>Preguntas frecuentes</h2>
-    <details><summary>¿Tiene que cargarlo?</summary><p>Sí, con un cable USB-C, por ejemplo en la noche junto a la cama, como un celular. La app te avisa cuando la batería está baja.</p></details>
+    <details><summary>¿Tiene que cargarlo?</summary><p>Sí, con un cable USB-C conectado a la cápsula, por ejemplo en la noche junto a la cama, como un celular. La app te avisa cuando la batería está baja.</p></details>
+    <details><summary>¿Le queda a cualquier bastón?</summary><p>La abrazadera del prototipo está pensada para bastones de tubo redondo, como la mayoría. No hay que comprar un bastón nuevo. Si el suyo es distinto, dínoslo al apartar tu lugar.</p></details>
     <details><summary>¿Qué pasa si un día no lo usa?</summary><p>Si a la hora de siempre no lo ha tomado, te avisamos. Si sabes que no lo va a usar, por ejemplo porque está de viaje, puedes pausar los avisos.</p></details>
     <details><summary>¿Necesita internet en su casa?</summary><p>Sí. El sensor se conecta al wifi de su casa. Si el internet o la batería fallan, en la app verás «Perdimos contacto con el sensor», que es distinto de un aviso: no queremos que te asustes por un problema de conexión.</p></details>
     <details><summary>¿Mi mamá o mi papá tiene que usar algo o aprender algo?</summary><p>No. El sensor trabaja solo. Si quiere, puede tener en su celular o tableta una pantalla con tres botones grandes (Estoy bien, Llámame y Necesito ayuda), sin cuenta ni contraseña. Es opcional.</p></details>
     <details><summary>¿Detecta caídas? ¿Es un servicio de emergencias?</summary><p>No. DistanciaCero no detecta caídas, no mide signos vitales, no es un dispositivo médico y no llama a servicios de emergencia. El botón «Necesito ayuda» avisa a su círculo de cuidado, no al 911. En una emergencia llama al 911.</p></details>
-    <details><summary>¿En qué etapa está?</summary><p>Estamos armando y probando prototipos de los tres objetos. Los tres usan el mismo módulo: un sensor de movimiento, un microcontrolador con wifi y una batería recargable. La app de la familia ya se puede probar en modo demostración. Todavía no está a la venta.</p></details>
+    <details><summary>¿En qué etapa está?</summary><p>Ya armamos el primer prototipo físico: una cápsula con un sensor de movimiento, un microcontrolador con wifi y una batería recargable, y una base distinta para cada objeto (placa para sillón, abrazadera para bastón y portavasos con asa). Lo estamos probando. La app de la familia ya se puede probar en modo demostración. Todavía no está a la venta.</p></details>
     <details><summary>¿Qué es el piloto?</summary><p>Instalamos prototipos con 10 familias en Puebla durante unos dos meses, sin costo, para comprobar que funcionan en casas reales. Puedes elegir sillón, bastón o portavasos. Al apartar tu lugar te escribimos para ver si tu familia encaja.</p></details>
   </div>
 </section>

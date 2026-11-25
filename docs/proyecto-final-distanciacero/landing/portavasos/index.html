@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>DistanciaCero Portavasos · Saber que tu mamá empezó su día</title>
-<meta name="description" content="Un portavasos para su mesa aprende a qué horas suele tomar su taza y te avisa solo si algo cambia. Sin botones. Aparta tu lugar en el piloto.">
+<meta name="description" content="Un portavasos con asa, donde va su taza de siempre, aprende a qué horas suele tomarla y te avisa solo si algo cambia. Sin botones. Aparta tu lugar en el piloto.">
 <meta name="theme-color" content="#F5F6F2">
 <link rel="canonical" href="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/portavasos/">
 
@@ -13,15 +13,15 @@
 <meta property="og:locale" content="es_MX">
 <meta property="og:site_name" content="DistanciaCero">
 <meta property="og:title" content="DistanciaCero Portavasos · Saber que tu mamá empezó su día, sin tener que llamarle">
-<meta property="og:description" content="Un portavasos aprende a qué horas suele tomar su taza y te avisa solo si algo cambia. Ella deja su taza donde siempre.">
+<meta property="og:description" content="Un portavasos con asa, donde va su taza de siempre, aprende a qué horas suele tomarla y te avisa solo si algo cambia.">
 <meta property="og:url" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/portavasos/">
 <meta property="og:image" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/portavasos/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Taza sobre un portavasos con sensor y un teléfono que dice: sin avisos hoy.">
+<meta property="og:image:alt" content="Taza dentro de un portavasos con la cápsula del sensor como asa y un teléfono que dice: sin avisos hoy.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DistanciaCero Portavasos · Saber que tu mamá empezó su día, sin tener que llamarle">
-<meta name="twitter:description" content="Un portavasos aprende a qué horas suele tomar su taza y te avisa solo si algo cambia. Ella deja su taza donde siempre.">
+<meta name="twitter:description" content="Un portavasos con asa, donde va su taza de siempre, aprende a qué horas suele tomarla y te avisa solo si algo cambia.">
 <meta name="twitter:image" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/portavasos/og.png">
 <link rel="icon" type="image/png" href="../assets/favicon-64.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
@@ -228,6 +228,23 @@
   @media (min-width:900px){ .apptry{grid-template-columns:1.2fr 1fr} }
   .steps li{align-content:start}
   .note{margin-top:16px;font-size:.95rem;border-left:3px solid var(--line);padding-left:14px;max-width:62ch}
+
+  /* ===== Prototipo actual: una cápsula, tres bases ===== */
+  .product .pic{height:168px}
+  .product .pic img{max-height:148px;max-width:100%;width:auto;height:auto}
+  .proto{display:grid;gap:32px;align-items:center;margin-top:32px}
+  .proto figure{margin:0;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-l);padding:22px 18px 16px;text-align:center}
+  .proto figure img{max-width:100%;height:auto;max-height:340px}
+  .proto .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+  .proto .pair img{max-height:260px}
+  .proto figcaption{font-size:.88rem;color:var(--ink-2);margin-top:12px}
+  .proto h3{margin:0 0 10px}
+  .proto h3 + .parts{margin-bottom:26px}
+  .parts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .parts li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start}
+  .parts li::before{content:"";width:12px;height:12px;border-radius:3px;margin-top:8px;background:var(--c,#2E5E8C)}
+  .parts li b{font-weight:700}
+  @media (min-width:900px){ .proto{grid-template-columns:1fr 1.05fr;gap:48px} }
 </style>
 </head>
 <body>
@@ -248,31 +265,32 @@
   <div class="wrap">
     <div>
       <h1>Saber que tu mamá empezó su día, sin tener que llamarle.</h1>
-      <p class="lead muted">Un portavasos para su mesa aprende a qué horas suele tomar su taza y te avisa solo si algo cambia. Ella deja su taza donde siempre.</p>
+      <p class="lead muted">Su taza o vaso de siempre va dentro de un portavasos con asa. La cápsula del asa aprende a qué horas suele tomar y te avisa solo si algo cambia.</p>
       <div class="actions">
         <a class="cta" href="#apartar" data-cta="hero">Aparta tu lugar en el piloto</a>
         <p class="fine muted">Piloto con 10 familias en Puebla. Sin costo y sin compromiso.</p>
       </div>
     </div>
 
-    <figure class="scene" aria-label="Ilustración: una taza sobre un portavasos con una cápsula de sensor debajo, y un teléfono que dice que no hay avisos hoy.">
+    <figure class="scene" aria-label="Ilustración: una taza dentro de un portavasos con la cápsula del sensor al costado como asa, y un teléfono que dice que no hay avisos hoy.">
       <svg viewBox="0 0 600 440" role="img" aria-hidden="true">
         <rect x="30" y="300" width="400" height="18" rx="6" fill="#B9862A"/>
         <rect x="60" y="318" width="14" height="80" rx="4" fill="#7A5A2A"/>
         <rect x="386" y="318" width="14" height="80" rx="4" fill="#7A5A2A"/>
         <ellipse cx="230" cy="404" rx="210" ry="12" fill="#E4E7E0"/>
-        <!-- portavasos con la cápsula del sensor debajo -->
-        <ellipse cx="200" cy="294" rx="74" ry="12" fill="#21303B" opacity=".12"/>
-        <ellipse cx="200" cy="288" rx="66" ry="12" fill="#21303B"/>
-        <ellipse cx="200" cy="284" rx="60" ry="9" fill="#2E4150"/>
-        <rect x="176" y="290" width="48" height="8" rx="4" fill="#C7922F"/>
-        <rect x="176" y="290" width="48" height="8" rx="4" fill="none" stroke="#21303B" stroke-width="1.4" stroke-dasharray="4 3"/>
-        <path d="M156 196 L244 196 L236 280 Q200 290 164 280 Z" fill="#5B7A99"/>
-        <ellipse cx="200" cy="196" rx="44" ry="10" fill="#4A6683"/>
-        <path d="M244 212 C 278 214, 278 258, 238 258" fill="none" stroke="#5B7A99" stroke-width="10"/>
-        <path d="M186 178 c-8 -12 8 -18 0 -32 M206 176 c-8 -12 8 -18 0 -32" fill="none" stroke="#9AA8B2" stroke-width="3" stroke-linecap="round"/>
-        <path d="M226 298 C 260 316, 270 350, 252 372" fill="none" stroke="#21303B" stroke-width="1.5" stroke-dasharray="3 4"/>
-        <text x="40" y="428" font-family="Atkinson Hyperlegible, sans-serif" font-size="17" fill="#21303B">El sensor va bajo el portavasos</text>
+        <!-- portavasos con asa: la taza va adentro y la cápsula al costado -->
+        <ellipse cx="200" cy="298" rx="64" ry="10" fill="#21303B" opacity=".12"/>
+        <ellipse cx="200" cy="196" rx="52" ry="12" fill="#A9637A"/>
+        <rect x="166" y="170" width="68" height="30" fill="#5B7A99"/>
+        <ellipse cx="200" cy="170" rx="34" ry="8" fill="#4A6683"/>
+        <path d="M148 196 L252 196 L252 288 Q200 302 148 288 Z" fill="#C97E93"/>
+        <path d="M148 196 Q200 210 252 196" fill="none" stroke="#DDA3B3" stroke-width="3"/>
+        <path d="M160 206 L160 284" stroke="#DDA3B3" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+        <rect x="252" y="206" width="9" height="76" rx="2" fill="#C97E93"/>
+        <rect x="261" y="202" width="44" height="84" rx="4" fill="#2E5E8C"/><rect x="303" y="200" width="6" height="88" rx="2" fill="#8FC3EA"/><rect x="274.4" y="237.3" width="17.3" height="13.4" rx="2" fill="#1D3F60"/>
+        <path d="M188 154 c-8 -12 8 -18 0 -32 M210 152 c-8 -12 8 -18 0 -32" fill="none" stroke="#9AA8B2" stroke-width="3" stroke-linecap="round"/>
+        <path d="M290 288 C 296 330, 280 360, 250 376" fill="none" stroke="#21303B" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <text x="40" y="428" font-family="Atkinson Hyperlegible, sans-serif" font-size="17" fill="#21303B">La cápsula va al costado y sirve de asa</text>
       </svg>
       <div class="phone" aria-hidden="true">
         <div class="bar"></div>
@@ -291,7 +309,7 @@
   <div class="wrap">
     <h2>Pensado para que ella siga con su día y tú con el tuyo.</h2>
     <div class="benefits">
-      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><h3>Ella no hace nada nuevo</h3><p class="muted">Sin botones ni pantallas. Solo deja su taza en el portavasos, como deja hoy su café en la mesa.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><h3>Ella no hace nada nuevo</h3><p class="muted">Sin botones ni pantallas. Pone su taza de siempre en el portavasos y lo levanta por el asa, como toma hoy su café.</p></div></div>
       <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 004 0"/></svg></div><div><h3>Te avisa solo cuando importa</h3><p class="muted">Si su día va como siempre, silencio. Si algo cambia, te llega un aviso en la app y por WhatsApp, a ti y a quien tú elijas.</p></div></div>
       <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg></div><div><h3>Sin instalar nada</h3><p class="muted">La app de la familia se abre desde un link en tu teléfono. El sensor se conecta al wifi de su casa.</p></div></div>
     </div>
@@ -302,7 +320,36 @@
 <section id="como-funciona">
   <div class="wrap">
     <h2>Cómo funciona</h2>
-    <ol class="steps"><li><span class="n" aria-hidden="true">1</span><div><h3>Lo colocas</h3><p class="muted">Pones el portavasos en la mesa donde suele tomar su café y escaneas su código con tu teléfono. Toma unos minutos.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><h3>Aprende su rutina</h3><p class="muted">Durante unas dos semanas registra a qué horas suele levantar y dejar su taza. En ese tiempo no manda avisos.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><h3>Te avisa por excepción</h3><p class="muted">Si a la hora en que normalmente ya tomó su taza no ha pasado, te enteras tú primero.</p></div></li></ol>
+    <ol class="steps"><li><span class="n" aria-hidden="true">1</span><div><h3>Lo colocas</h3><p class="muted">Pones el portavasos en la mesa donde suele tomar su café, metes su taza o vaso de siempre y escaneas el código de la cápsula con tu teléfono. Toma unos minutos.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><h3>Aprende su rutina</h3><p class="muted">Durante unas dos semanas registra a qué horas suele levantar el portavasos para tomar. En ese tiempo no manda avisos.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><h3>Te avisa por excepción</h3><p class="muted">Si a la hora en que normalmente ya tomó su taza no ha pasado, te enteras tú primero.</p></div></li></ol>
+  </div>
+</section>
+
+<!-- PROTOTIPO -->
+<section id="prototipo">
+  <div class="wrap">
+    <h2>Así es el prototipo.</h2>
+    <p class="muted" style="margin-top:12px;max-width:62ch">Una cápsula con el sensor, la misma que usan el sillón, el bastón y el portavasos, más el portavasos con asa, que la sujeta en el lugar correcto.</p>
+    <div class="proto">
+      <figure>
+        <div class="pair">
+          <img src="../assets/prototipo-portavasos.png" alt="Modelo 3D de la cápsula montada en el portavasos con asa" width="401" height="421" loading="lazy">
+          <img src="../assets/prototipo-capsula.png" alt="Vista explotada de la cápsula: tapa, electrónica, batería y cuerpo" width="265" height="559" loading="lazy">
+        </div>
+        <figcaption>Modelo 3D del prototipo que ya armamos. El producto final puede cambiar de forma y color.</figcaption>
+      </figure>
+      <div>
+        <h3>La cápsula</h3>
+        <ul class="parts">
+          <li><span><b>Sensor de movimiento</b> que nota cuándo se usa el objeto.</span></li>
+          <li><span><b>Microcontrolador con wifi</b> que manda la actividad a la app.</span></li>
+          <li><span><b>Batería recargable</b> por USB-C y tapa atornillada.</span></li>
+        </ul>
+        <h3>La base</h3>
+        <ul class="parts">
+          <li style="--c:#C97E93"><span><b>Portavasos:</b> un soporte para su vaso o taza; la cápsula va al costado y hace de asa.</span></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -345,20 +392,20 @@
 <section id="otros">
   <div class="wrap">
     <h2>¿No usa portavasos? Hay otras dos opciones.</h2>
-    <p class="muted" style="margin-top:12px;max-width:60ch">Mismo sensor, misma app y mismo precio. Elige el objeto que ya forma parte de su día.</p>
+    <p class="muted" style="margin-top:12px;max-width:60ch">Misma cápsula, misma app y mismo precio: solo cambia la base. Elige el objeto que ya forma parte de su día.</p>
     <div class="products" style="max-width:760px">
       <a class="product" href="../sillon/" data-cta="producto_sillon">
-        <div class="pic"><svg viewBox="30 60 390 330" aria-hidden="true"><rect x="82" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/><rect x="350" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/><path d="M92 120 Q92 70 142 70 L302 70 Q352 70 352 120 L352 250 L92 250 Z" fill="#C7922F"/><rect x="66" y="262" width="312" height="78" rx="22" fill="#B9862A"/><rect x="166" y="248" width="112" height="10" rx="5" fill="#3E7C5B"/><rect x="96" y="214" width="252" height="44" rx="20" fill="#D9A646"/><rect x="40" y="168" width="62" height="164" rx="28" fill="#C7922F"/><rect x="342" y="168" width="62" height="164" rx="28" fill="#C7922F"/></svg></div>
+        <div class="pic"><img src="../assets/prototipo-sillon.png" alt="Modelo 3D: cápsula azul sobre la placa verde para sillón" width="415" height="496" loading="lazy"></div>
         <span class="tag">El que más usa (recomendado)</span>
-        <h3>Placa para sillón</h3>
-        <p class="muted">Va bajo el cojín de su sillón favorito y registra cuándo se sienta y se levanta.</p>
+        <h3>Base para sillón</h3>
+        <p class="muted">Una placa que se fija a su sillón favorito con tornillos o velcro sostiene la cápsula y registra cuándo se sienta y se levanta.</p>
         <span class="more">Ver cómo funciona →</span>
       </a>
       <a class="product" href="../baston/" data-cta="producto_baston">
-        <div class="pic"><svg viewBox="140 50 160 345" aria-hidden="true"><path d="M196 384 L196 120" stroke="#7A5A2A" stroke-width="18" stroke-linecap="round"/><path d="M196 124 C196 70, 268 66, 276 108" fill="none" stroke="#7A5A2A" stroke-width="18" stroke-linecap="round"/><rect x="186" y="180" width="20" height="70" rx="10" fill="#C7922F"/></svg></div>
+        <div class="pic"><img src="../assets/prototipo-baston.png" alt="Modelo 3D: cápsula azul sujeta a un bastón con una abrazadera naranja" width="352" height="288" loading="lazy"></div>
         <span class="tag">Si lo usa todos los días</span>
-        <h3>Bastón con sensor</h3>
-        <p class="muted">Un bastón con el sensor adentro: registra cuándo lo toma y sale a caminar.</p>
+        <h3>Abrazadera para bastón</h3>
+        <p class="muted">Una abrazadera de dos piezas sujeta la cápsula a su propio bastón y registra cuándo lo toma y sale a caminar.</p>
         <span class="more">Ver cómo funciona →</span>
       </a>
     </div>
@@ -370,7 +417,7 @@
   <div class="wrap">
     <h2>Qué registra el sensor y qué no.</h2>
     <div class="seesplit">
-      <div><h3>Sí registra</h3><ul><li>Cuándo levanta o vuelve a dejar la taza.</li><li>El nivel de batería y la señal del portavasos.</li></ul></div>
+      <div><h3>Sí registra</h3><ul><li>Cuándo levanta el portavasos para tomar y cuándo lo vuelve a dejar.</li><li>El nivel de batería y la señal de la cápsula.</li></ul></div>
       <div class="no"><h3>No registra</h3><ul><li>Imágenes ni video: no tiene cámara.</li><li>Sonido ni conversaciones: no tiene micrófono.</li><li>Qué toma ni cuánto: solo si la taza se movió.</li></ul></div>
     </div>
     <p class="muted" style="margin-top:20px;max-width:62ch">Antes de colocarlo, tu mamá o tu papá da su autorización por escrito, una sola vez. Puede pausarlo o pedir que lo retiremos cuando quiera.</p>
@@ -395,10 +442,10 @@
   <div class="wrap">
     <h2>Precio estimado</h2>
     <div class="price">
-      <div class="row"><span>Portavasos con sensor</span><span class="amt">$3,990</span></div>
+      <div class="row"><span>Cápsula con sensor y portavasos con asa</span><span class="amt">$3,990</span></div>
       <div class="row"><span>Plan Tranquilidad: avisos, círculo de cuidado y resumen semanal</span><span class="amt">$449 <small>al mes</small></span></div>
       <div class="row total"><span>Total del primer año</span><span class="amt">$9,378</span></div>
-      <!-- SUPUESTO: se usa el mismo precio que la placa para sillón (Actividad 7). Confirmar con el costo real de este producto. -->
+      <!-- SUPUESTO: mismo precio que el sillón (Actividad 7): la cápsula es la misma y solo cambia la base. Confirmar con el costo real del portavasos. -->
       <!-- Cada cifra de esta sección sale de DistanciaCero_costos_y_calculos.xlsx, hoja Landing. -->
       <!-- POR VERIFICAR (Ley Federal de Protección al Consumidor): antes de vender, el precio debe mostrarse con IVA incluido. -->
       <p class="notes muted">Precios estimados en pesos mexicanos, más IVA. Pueden cambiar antes del lanzamiento. Cancela el servicio cuando quieras. Durante el piloto no se cobra nada.</p>
@@ -410,12 +457,13 @@
 <section id="preguntas">
   <div class="wrap faq">
     <h2>Preguntas frecuentes</h2>
-    <details><summary>¿Cómo se carga?</summary><p>Con un cable USB-C que se conecta a la cápsula bajo el portavasos. La app te avisa cuando la batería está baja, con tiempo para que alguien lo cargue.</p></details>
+    <details><summary>¿Cómo se carga?</summary><p>Con un cable USB-C que se conecta a la cápsula del asa. La app te avisa cuando la batería está baja, con tiempo para que alguien lo cargue.</p></details>
+    <details><summary>¿Le queda cualquier taza?</summary><p>El prototipo está hecho para vasos y tazas de tamaño común, que entran en el portavasos. Si la suya es muy grande o muy chica, dínoslo al apartar tu lugar.</p></details>
     <details><summary>¿Qué pasa si un día no toma café?</summary><p>Si a la hora de siempre no ha levantado su taza, te avisamos. Puedes cambiar después de cuánto tiempo te avisamos, o pausar los avisos si sale de viaje.</p></details>
     <details><summary>¿Necesita internet en su casa?</summary><p>Sí. El sensor se conecta al wifi de su casa. Si el internet o la batería fallan, en la app verás «Perdimos contacto con el sensor», que es distinto de un aviso: no queremos que te asustes por un problema de conexión.</p></details>
     <details><summary>¿Mi mamá o mi papá tiene que usar algo o aprender algo?</summary><p>No. El sensor trabaja solo. Si quiere, puede tener en su celular o tableta una pantalla con tres botones grandes (Estoy bien, Llámame y Necesito ayuda), sin cuenta ni contraseña. Es opcional.</p></details>
     <details><summary>¿Detecta caídas? ¿Es un servicio de emergencias?</summary><p>No. DistanciaCero no detecta caídas, no mide signos vitales, no es un dispositivo médico y no llama a servicios de emergencia. El botón «Necesito ayuda» avisa a su círculo de cuidado, no al 911. En una emergencia llama al 911.</p></details>
-    <details><summary>¿En qué etapa está?</summary><p>Estamos armando y probando prototipos de los tres objetos. Los tres usan el mismo módulo: un sensor de movimiento, un microcontrolador con wifi y una batería recargable. La app de la familia ya se puede probar en modo demostración. Todavía no está a la venta.</p></details>
+    <details><summary>¿En qué etapa está?</summary><p>Ya armamos el primer prototipo físico: una cápsula con un sensor de movimiento, un microcontrolador con wifi y una batería recargable, y una base distinta para cada objeto (placa para sillón, abrazadera para bastón y portavasos con asa). Lo estamos probando. La app de la familia ya se puede probar en modo demostración. Todavía no está a la venta.</p></details>
     <details><summary>¿Qué es el piloto?</summary><p>Instalamos prototipos con 10 familias en Puebla durante unos dos meses, sin costo, para comprobar que funcionan en casas reales. Puedes elegir sillón, bastón o portavasos. Al apartar tu lugar te escribimos para ver si tu familia encaja.</p></details>
   </div>
 </section>

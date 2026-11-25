@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://jesushernandez2005.github.io/Proyecto4/proyecto-final-distanciacero/landing/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Un sillón, un bastón y una taza sobre un portavasos, con un teléfono que dice: sin avisos hoy.">
+<meta property="og:image:alt" content="Un sillón, un bastón y un portavasos con la misma cápsula del sensor, y un teléfono que dice: sin avisos hoy.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="DistanciaCero · Saber que tu mamá o tu papá está bien, sin tener que llamarle">
 <meta name="twitter:description" content="Un sensor en el objeto que ya usa —sillón, bastón o portavasos— aprende su rutina y te avisa solo si algo cambia.">
@@ -228,6 +228,23 @@
   @media (min-width:900px){ .apptry{grid-template-columns:1.2fr 1fr} }
   .steps li{align-content:start}
   .note{margin-top:16px;font-size:.95rem;border-left:3px solid var(--line);padding-left:14px;max-width:62ch}
+
+  /* ===== Prototipo actual: una cápsula, tres bases ===== */
+  .product .pic{height:168px}
+  .product .pic img{max-height:148px;max-width:100%;width:auto;height:auto}
+  .proto{display:grid;gap:32px;align-items:center;margin-top:32px}
+  .proto figure{margin:0;background:var(--white);border:1px solid var(--line);border-radius:var(--radius-l);padding:22px 18px 16px;text-align:center}
+  .proto figure img{max-width:100%;height:auto;max-height:340px}
+  .proto .pair{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+  .proto .pair img{max-height:260px}
+  .proto figcaption{font-size:.88rem;color:var(--ink-2);margin-top:12px}
+  .proto h3{margin:0 0 10px}
+  .proto h3 + .parts{margin-bottom:26px}
+  .parts{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  .parts li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start}
+  .parts li::before{content:"";width:12px;height:12px;border-radius:3px;margin-top:8px;background:var(--c,#2E5E8C)}
+  .parts li b{font-weight:700}
+  @media (min-width:900px){ .proto{grid-template-columns:1fr 1.05fr;gap:48px} }
 </style>
 </head>
 <body>
@@ -247,14 +264,14 @@
   <div class="wrap">
     <div>
       <h1>Saber que tu mamá o tu papá está bien, sin tener que llamarle.</h1>
-      <p class="lead muted">Un sensor en algo que ya usa todos los días —su sillón, su bastón o su portavasos— aprende su rutina y te avisa solo si algo cambia. No tiene que hacer nada nuevo.</p>
+      <p class="lead muted">Una cápsula con sensor se fija a algo que ya usa todos los días —su sillón, su bastón o su portavasos—, aprende su rutina y te avisa solo si algo cambia. No tiene que hacer nada nuevo.</p>
       <div class="actions">
         <a class="cta" href="#apartar" data-cta="hero">Aparta tu lugar en el piloto</a>
         <p class="fine muted">Piloto con 10 familias en Puebla. Sin costo y sin compromiso.</p>
       </div>
     </div>
 
-    <figure class="scene" aria-label="Ilustración: un sillón, un bastón y una taza sobre un portavasos, cada uno con un sensor, y un teléfono que dice que no hay avisos hoy.">
+    <figure class="scene" aria-label="Ilustración: un sillón, un bastón y un portavasos, cada uno con la misma cápsula del sensor en su base, y un teléfono que dice que no hay avisos hoy.">
       <svg viewBox="0 0 600 440" role="img" aria-hidden="true">
         <ellipse cx="200" cy="390" rx="200" ry="14" fill="#E4E7E0"/>
         <!-- sillón -->
@@ -263,29 +280,36 @@
           <rect x="350" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/>
           <path d="M92 120 Q92 70 142 70 L302 70 Q352 70 352 120 L352 250 L92 250 Z" fill="#C7922F"/>
           <rect x="66" y="262" width="312" height="78" rx="22" fill="#B9862A"/>
-          <rect x="166" y="248" width="112" height="10" rx="5" fill="#3E7C5B"/>
           <rect x="96" y="214" width="252" height="44" rx="20" fill="#D9A646"/>
           <rect x="40" y="168" width="62" height="164" rx="28" fill="#C7922F"/>
           <rect x="342" y="168" width="62" height="164" rx="28" fill="#C7922F"/>
           <rect x="40" y="168" width="62" height="34" rx="17" fill="#D9A646"/>
           <rect x="342" y="168" width="62" height="34" rx="17" fill="#D9A646"/>
-          <rect x="166" y="248" width="112" height="10" rx="5" fill="none" stroke="#21303B" stroke-width="3" stroke-dasharray="8 6"/>
+          <!-- base verde fija bajo el asiento + cápsula -->
+          <rect x="166" y="340" width="112" height="6" rx="2" fill="#3E7C5B"/>
+          <rect x="184" y="348" width="76" height="28" rx="4" fill="#2E5E8C"/><rect x="182" y="344" width="80" height="6" rx="2" fill="#8FC3EA"/><rect x="205.3" y="357.4" width="27.4" height="5.1" rx="2" fill="#1D3F60"/>
         </g>
         <!-- bastón recargado en el sillón -->
         <path d="M232 384 L232 238" stroke="#7A5A2A" stroke-width="11" stroke-linecap="round"/>
         <path d="M232 241 C232 208, 276 205, 281 231" fill="none" stroke="#7A5A2A" stroke-width="11" stroke-linecap="round"/>
-        <rect x="226" y="272" width="12" height="42" rx="6" fill="#C7922F"/>
-        <rect x="226" y="272" width="12" height="42" rx="6" fill="none" stroke="#21303B" stroke-width="1.4" stroke-dasharray="4 3"/>
+        <!-- abrazadera + cápsula -->
+        <rect x="224" y="284" width="16" height="20" rx="4" fill="#C7922F"/>
+        <path d="M224 294 h16" stroke="#9C6F1E" stroke-width="1.4"/>
+        <rect x="240" y="280" width="20" height="28" rx="4" fill="#2E5E8C"/><rect x="258" y="278" width="6" height="32" rx="2" fill="#8FC3EA"/><rect x="246.7" y="291.8" width="8.6" height="4.5" rx="2" fill="#1D3F60"/>
         <!-- mesita con taza y portavasos -->
         <rect x="282" y="300" width="100" height="12" rx="4" fill="#B9862A"/>
         <rect x="292" y="312" width="8" height="76" rx="3" fill="#7A5A2A"/>
         <rect x="364" y="312" width="8" height="76" rx="3" fill="#7A5A2A"/>
-        <ellipse cx="332" cy="297" rx="30" ry="6" fill="#21303B"/>
-        <path d="M313 252 L351 252 L347 294 Q332 299 317 294 Z" fill="#5B7A99"/>
-        <ellipse cx="332" cy="252" rx="19" ry="5" fill="#4A6683"/>
-        <path d="M351 260 C366 261, 366 283, 347 283" fill="none" stroke="#5B7A99" stroke-width="5"/>
-        <path d="M326 242 c-5 -8 5 -12 0 -21 M338 241 c-5 -8 5 -12 0 -21" fill="none" stroke="#9AA8B2" stroke-width="2.4" stroke-linecap="round"/>
-        <text x="20" y="428" font-family="Atkinson Hyperlegible, sans-serif" font-size="17" fill="#21303B">El sensor va en algo que ya usa</text>
+        <!-- portavasos con asa: la cápsula va al costado -->
+        <ellipse cx="328" cy="258" rx="22" ry="5" fill="#A9637A"/>
+        <rect x="314" y="244" width="28" height="16" fill="#5B7A99"/>
+        <ellipse cx="328" cy="244" rx="14" ry="4" fill="#4A6683"/>
+        <path d="M306 258 L350 258 L350 296 Q328 302 306 296 Z" fill="#C97E93"/>
+        <path d="M306 258 Q328 264 350 258" fill="none" stroke="#DDA3B3" stroke-width="2"/>
+        <rect x="350" y="262" width="5" height="32" rx="1" fill="#C97E93"/>
+        <rect x="355" y="260" width="18" height="36" rx="4" fill="#2E5E8C"/><rect x="371" y="258" width="6" height="40" rx="2" fill="#8FC3EA"/><rect x="361.2" y="275.1" width="7.9" height="5.8" rx="2" fill="#1D3F60"/>
+        <path d="M323 236 c-5 -8 5 -12 0 -21 M334 235 c-5 -8 5 -12 0 -21" fill="none" stroke="#9AA8B2" stroke-width="2.4" stroke-linecap="round"/>
+        <text x="20" y="428" font-family="Atkinson Hyperlegible, sans-serif" font-size="17" fill="#21303B">La misma cápsula, en algo que ya usa</text>
       </svg>
       <div class="phone" aria-hidden="true">
         <div class="bar"></div>
@@ -303,29 +327,57 @@
 <section id="productos">
   <div class="wrap">
     <h2>Tres objetos, el mismo servicio.</h2>
-    <p class="muted" style="margin-top:12px;max-width:60ch">Elige el que ya forma parte de su día. Los tres usan el mismo sensor, la misma app y el mismo precio.</p>
+    <p class="muted" style="margin-top:12px;max-width:60ch">Elige el que ya forma parte de su día. Los tres usan la misma cápsula con sensor, la misma app y el mismo precio: lo único que cambia es la base que la sujeta.</p>
     <div class="products">
       <a class="product" href="sillon/" data-cta="producto_sillon">
-        <div class="pic"><svg viewBox="30 60 390 330" aria-hidden="true"><rect x="82" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/><rect x="350" y="330" width="14" height="50" rx="4" fill="#7A5A2A"/><path d="M92 120 Q92 70 142 70 L302 70 Q352 70 352 120 L352 250 L92 250 Z" fill="#C7922F"/><rect x="66" y="262" width="312" height="78" rx="22" fill="#B9862A"/><rect x="166" y="248" width="112" height="10" rx="5" fill="#3E7C5B"/><rect x="96" y="214" width="252" height="44" rx="20" fill="#D9A646"/><rect x="40" y="168" width="62" height="164" rx="28" fill="#C7922F"/><rect x="342" y="168" width="62" height="164" rx="28" fill="#C7922F"/></svg></div>
+        <div class="pic"><img src="assets/prototipo-sillon.png" alt="Modelo 3D: cápsula azul sobre la placa verde para sillón" width="415" height="496" loading="lazy"></div>
         <span class="tag">El que más usa (recomendado)</span>
-        <h3>Placa para sillón</h3>
-        <p class="muted">Va bajo el cojín de su sillón favorito y registra cuándo se sienta y se levanta.</p>
+        <h3>Base para sillón</h3>
+        <p class="muted">Una placa que se fija a su sillón favorito con tornillos o velcro sostiene la cápsula y registra cuándo se sienta y se levanta.</p>
         <span class="more">Ver cómo funciona →</span>
       </a>
       <a class="product" href="baston/" data-cta="producto_baston">
-        <div class="pic"><svg viewBox="140 50 160 345" aria-hidden="true"><path d="M196 384 L196 120" stroke="#7A5A2A" stroke-width="18" stroke-linecap="round"/><path d="M196 124 C196 70, 268 66, 276 108" fill="none" stroke="#7A5A2A" stroke-width="18" stroke-linecap="round"/><rect x="186" y="180" width="20" height="70" rx="10" fill="#C7922F"/></svg></div>
+        <div class="pic"><img src="assets/prototipo-baston.png" alt="Modelo 3D: cápsula azul sujeta a un bastón con una abrazadera naranja" width="352" height="288" loading="lazy"></div>
         <span class="tag">Si lo usa todos los días</span>
-        <h3>Bastón con sensor</h3>
-        <p class="muted">Un bastón con el sensor adentro: registra cuándo lo toma y sale a caminar.</p>
+        <h3>Abrazadera para bastón</h3>
+        <p class="muted">Una abrazadera de dos piezas sujeta la cápsula a su propio bastón y registra cuándo lo toma y sale a caminar.</p>
         <span class="more">Ver cómo funciona →</span>
       </a>
       <a class="product" href="portavasos/" data-cta="producto_portavasos">
-        <div class="pic"><svg viewBox="120 140 170 170" aria-hidden="true"><ellipse cx="200" cy="288" rx="66" ry="12" fill="#21303B"/><path d="M156 196 L244 196 L236 280 Q200 290 164 280 Z" fill="#5B7A99"/><ellipse cx="200" cy="196" rx="44" ry="10" fill="#4A6683"/><path d="M244 212 C 278 214, 278 258, 238 258" fill="none" stroke="#5B7A99" stroke-width="10"/><path d="M186 178 c-8 -12 8 -18 0 -32 M206 176 c-8 -12 8 -18 0 -32" fill="none" stroke="#9AA8B2" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <div class="pic"><img src="assets/prototipo-portavasos.png" alt="Modelo 3D: portavasos rosa con la cápsula azul al costado como asa" width="401" height="421" loading="lazy"></div>
         <span class="tag">Junto a su taza de siempre</span>
-        <h3>Portavasos</h3>
-        <p class="muted">Va en la mesa donde toma su café o su té y registra cuándo levanta la taza.</p>
+        <h3>Portavasos con asa</h3>
+        <p class="muted">Su vaso o taza de siempre va adentro y la cápsula hace de asa: registra cuándo lo levanta para tomar su café o su té.</p>
         <span class="more">Ver cómo funciona →</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOTIPO: una cápsula, tres bases -->
+<section id="prototipo">
+  <div class="wrap">
+    <h2>Una sola cápsula. Solo cambia la base.</h2>
+    <p class="muted" style="margin-top:12px;max-width:62ch">El sensor vive en una cápsula pequeña que es igual para los tres objetos. Cada objeto tiene su propia base, que la sujeta en el lugar correcto.</p>
+    <div class="proto">
+      <figure>
+        <img src="assets/prototipo-capsula.png" alt="Vista explotada del modelo 3D de la cápsula: tapa con tornillos, electrónica, batería y cuerpo azul" width="265" height="559" loading="lazy">
+        <figcaption>Modelo 3D del prototipo que ya armamos. El producto final puede cambiar de forma y color.</figcaption>
+      </figure>
+      <div>
+        <h3>La cápsula (igual en los tres)</h3>
+        <ul class="parts">
+          <li><span><b>Sensor de movimiento</b> que nota cuándo se usa el objeto.</span></li>
+          <li><span><b>Microcontrolador con wifi</b> que manda la actividad a la app.</span></li>
+          <li><span><b>Batería recargable</b> por USB-C y tapa atornillada.</span></li>
+        </ul>
+        <h3>La base (una para cada objeto)</h3>
+        <ul class="parts">
+          <li style="--c:#3E7C5B"><span><b>Sillón:</b> una placa que se fija con tornillos o velcro; la cápsula va encima.</span></li>
+          <li style="--c:#C7922F"><span><b>Bastón:</b> una abrazadera de dos piezas que se cierra alrededor de su propio bastón.</span></li>
+          <li style="--c:#C97E93"><span><b>Portavasos:</b> un soporte para su vaso o taza; la cápsula va al costado y hace de asa.</span></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -335,7 +387,7 @@
   <div class="wrap">
     <h2>Pensado para que tu familiar siga con su día y tú con el tuyo.</h2>
     <div class="benefits">
-      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><h3>Elige el objeto que ya usa</h3><p class="muted">Sillón, bastón o portavasos. Escoges el que forma parte de su día y el sensor se queda ahí, sin cables ni pulseras.</p></div></div>
+      <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><div><h3>Elige el objeto que ya usa</h3><p class="muted">Sillón, bastón o portavasos. Escoges el que forma parte de su día, la cápsula se fija ahí y se queda, sin cables ni pulseras.</p></div></div>
       <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0112 0c0 7 3 8 3 8H3s3-1 3-8"/><path d="M10 20a2 2 0 004 0"/></svg></div><div><h3>Te avisa solo cuando importa</h3><p class="muted">Si su día va como siempre, silencio. Si algo cambia, te llega un aviso en la app y por WhatsApp, a ti y a quien tú elijas.</p></div></div>
       <div class="benefit"><div class="ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1"/></svg></div><div><h3>Sin instalar nada</h3><p class="muted">La app de la familia se abre desde un link en tu teléfono. El sensor se conecta al wifi de su casa.</p></div></div>
     </div>
@@ -346,7 +398,7 @@
 <section id="como-funciona">
   <div class="wrap">
     <h2>Cómo funciona</h2>
-    <ol class="steps"><li><span class="n" aria-hidden="true">1</span><div><h3>Eliges y colocas</h3><p class="muted">Escoges sillón, bastón o portavasos, lo colocas en su casa y escaneas el código del sensor con tu teléfono. Toma unos minutos.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><h3>Aprende su rutina</h3><p class="muted">Durante unas dos semanas registra a qué horas suele usar ese objeto. En ese tiempo no manda avisos.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><h3>Te avisa por excepción</h3><p class="muted">Si a la hora en que normalmente ya lo usó no ha pasado, te enteras tú primero.</p></div></li></ol>
+    <ol class="steps"><li><span class="n" aria-hidden="true">1</span><div><h3>Eliges y colocas</h3><p class="muted">Escoges sillón, bastón o portavasos, colocas su base con la cápsula y escaneas el código de la cápsula con tu teléfono. Toma unos minutos.</p></div></li><li><span class="n" aria-hidden="true">2</span><div><h3>Aprende su rutina</h3><p class="muted">Durante unas dos semanas registra a qué horas suele usar ese objeto. En ese tiempo no manda avisos.</p></div></li><li><span class="n" aria-hidden="true">3</span><div><h3>Te avisa por excepción</h3><p class="muted">Si a la hora en que normalmente ya lo usó no ha pasado, te enteras tú primero.</p></div></li></ol>
   </div>
 </section>
 
@@ -415,7 +467,7 @@
   <div class="wrap">
     <h2>Precio estimado</h2>
     <div class="price">
-      <div class="row"><span>Equipo: sillón, bastón o portavasos con sensor</span><span class="amt">$3,990</span></div>
+      <div class="row"><span>Equipo: cápsula con sensor y base para sillón, bastón o portavasos</span><span class="amt">$3,990</span></div>
       <div class="row"><span>Plan Tranquilidad: avisos, círculo de cuidado y resumen semanal</span><span class="amt">$449 <small>al mes</small></span></div>
       <div class="row total"><span>Total del primer año</span><span class="amt">$9,378</span></div>
       <!-- Cada cifra de esta sección sale de DistanciaCero_costos_y_calculos.xlsx, hoja Landing. -->
@@ -429,12 +481,12 @@
 <section id="preguntas">
   <div class="wrap faq">
     <h2>Preguntas frecuentes</h2>
-    <details><summary>¿Cuál de los tres me conviene?</summary><p>El que más use tu familiar todos los días. Si pasa buena parte del día en su sillón, la placa para sillón. Si usa bastón para moverse en casa, el bastón. Si empieza cada mañana con su café o su té en la misma mesa, el portavasos. Si no sabes, en el formulario elige «Todavía no sé» y lo vemos contigo.</p></details>
+    <details><summary>¿Cuál de los tres me conviene?</summary><p>El que más use tu familiar todos los días. Si pasa buena parte del día en su sillón, la base para sillón. Si usa bastón para moverse en casa, la abrazadera para su bastón. Si empieza cada mañana con su café o su té en la misma mesa, el portavasos con asa. Si no sabes, en el formulario elige «Todavía no sé» y lo vemos contigo.</p></details>
     <details><summary>¿Puedo poner más de uno?</summary><p>En el piloto instalamos un objeto por familia. Si te interesa tener dos, dínoslo al apartar tu lugar: nos ayuda a decidir si lo ofrecemos.</p></details>
     <details><summary>¿Necesita internet en su casa?</summary><p>Sí. El sensor se conecta al wifi de su casa. Si el internet o la batería fallan, en la app verás «Perdimos contacto con el sensor», que es distinto de un aviso: no queremos que te asustes por un problema de conexión.</p></details>
     <details><summary>¿Mi mamá o mi papá tiene que usar algo o aprender algo?</summary><p>No. El sensor trabaja solo. Si quiere, puede tener en su celular o tableta una pantalla con tres botones grandes (Estoy bien, Llámame y Necesito ayuda), sin cuenta ni contraseña. Es opcional.</p></details>
     <details><summary>¿Detecta caídas? ¿Es un servicio de emergencias?</summary><p>No. DistanciaCero no detecta caídas, no mide signos vitales, no es un dispositivo médico y no llama a servicios de emergencia. El botón «Necesito ayuda» avisa a su círculo de cuidado, no al 911. En una emergencia llama al 911.</p></details>
-    <details><summary>¿En qué etapa está?</summary><p>Estamos armando y probando prototipos de los tres objetos. Los tres usan el mismo módulo: un sensor de movimiento, un microcontrolador con wifi y una batería recargable. La app de la familia ya se puede probar en modo demostración. Todavía no está a la venta.</p></details>
+    <details><summary>¿En qué etapa está?</summary><p>Ya armamos el primer prototipo físico: una cápsula con un sensor de movimiento, un microcontrolador con wifi y una batería recargable, y una base distinta para cada objeto (placa para sillón, abrazadera para bastón y portavasos con asa). Lo estamos probando. La app de la familia ya se puede probar en modo demostración. Todavía no está a la venta.</p></details>
     <details><summary>¿Qué es el piloto?</summary><p>Instalamos prototipos con 10 familias en Puebla durante unos dos meses, sin costo, para comprobar que funcionan en casas reales. Puedes elegir sillón, bastón o portavasos. Al apartar tu lugar te escribimos para ver si tu familia encaja.</p></details>
   </div>
 </section>
