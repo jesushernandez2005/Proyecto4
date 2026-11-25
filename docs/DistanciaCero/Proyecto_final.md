@@ -566,12 +566,12 @@
 - **Decisión:** el siguiente paso es un **piloto de 90 días con 10 familias**, que solo arranca con el módulo SA-H y el consentimiento firmado.
 - **Evidencia:** §15–§17.
 - **Qué cambió:** se pasó de "construir el sistema completo" a "probar primero las tres hipótesis que deciden el negocio".
-- **Qué falta:** el aprendizaje firmado por cada integrante.
+- **Qué falta:** —
 
 | Integrante | Aprendizaje clave (un párrafo) | Firma |
 |---|---|---|
-| Jesús León Hernández Martínez | `[ ]` | `[ ]` |
-| Andrea Solano López | `[ ]` | `[ ]` |
+| Jesús León Hernández Martínez | Lo que más me llevo del semestre es que un diseño que se ve bien en papel no está probado hasta que lo enfrentas con datos reales. De la semana 5 a la 8 hice arquitectura, BOM y carcasa sin que nadie del segmento viera el producto, y cada vez que puse medidas o nombres exactos apareció un problema: la 18650 no cabía en 15 mm, el SIM7600E-H no tenía las bandas de México y el módulo celular era el 71 % del costo. Terminé armando el prototipo con una ESP32-S3 Super Mini por WiFi, y en el pitch decidimos decirlo de frente en lugar de esconderlo. Aprendí que prepararse para presentar es lo contrario de maquillar: prefiero enseñar con números lo que falta que defender algo que todavía no he medido. | ![Firma de Jesús](firmas/firma-jesus.png){ width="110" }<br>25/11/2026 |
+| Andrea Solano López | Mi aprendizaje más importante es que lo que la gente dice no es lo mismo que lo que hace. Después de las tres entrevistas de la semana 3 concluimos que el precio era correcto, porque los tres dijeron que pagarían. En la encuesta de 47 personas, 40 dijeron que pagarían, pero 32 ven caro $3,990 más $449 al mes. También me sorprendió que el dolor no dependiera de la distancia, sino de si hay alguien cerca que cuide, y que una persona como Sonia, la hermana de Ricardo, pudiera frenar la compra aunque el hijo esté convencido. Ahora sé que una opinión no es un compromiso: la próxima vez pediría un pre-registro o un anticipo antes de dar por validado un precio, y escucharía también a quien cuida de cerca, no solo a quien paga. | ![Firma de Andrea](firmas/firma-andrea.png){ width="70" }<br>25/11/2026 |
 
 **Qué haríamos diferente:** `[ ]`
 
