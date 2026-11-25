@@ -52,16 +52,16 @@ Esta página es la memoria del proyecto final. Cada sección sigue la misma plan
 
 | Campo | Contenido |
 |---|---|
-| **Versión** | v1.1 · 25/11/2026 (origen: semana 1) |
+| **Versión** | v1.2 · 25/11/2026 (origen: semana 1) |
 | **Decisión** | Dos integrantes con cuatro roles: Jesús lleva H (hardware y firmware) y A (app y nube); Andrea, N (negocio, usuarios y landing) y D (documentación, pitch y demo). |
 | **Evidencia** | [Acuerdo de colaboración firmado el 28/08/2026 (PDF)](../DistanciaCero/Acuerdo_de_colaboracion_DistanciaCero.pdf); [Actividad 2, matriz de selección](../actividades/actividad-02.md); [guion](anexos/DistanciaCero_guion_pitch_y_demo.pdf). |
 | **Qué cambió** | La ruta de la semana 9 pedía cuatro roles; somos dos, así que cada quien lleva dos. |
-| **Qué falta** | Enlazar los commits o archivos de cada quien en "quién hizo qué". |
+| **Estado** | Terminado. La tabla de "quién hizo qué" está completa y cada aporte enlaza a su archivo o sección. |
 
 | Integrante | Rol | Área de interés | Quién hizo qué |
 |---|---|---|---|
-| Jesús León Hernández Martínez | H · Hardware y firmware; A · App y nube | Sistemas embebidos, electrónica, programación | **PENDIENTE** |
-| Andrea Solano López | N · Negocio, usuarios y landing; D · Documentación, pitch y demo | **PENDIENTE** | **PENDIENTE** |
+| Jesús León Hernández Martínez | H · Hardware y firmware; A · App y nube | Sistemas embebidos, electrónica, programación | Prototipo físico: la cápsula con ESP32-S3, MPU6050 y LiPo, y las tres bases (sillón, bastón y portavasos) ([§9](#9-diseno-del-producto), [§10](#10-prototipos-y-evidencia)); [firmware del sensor](anexos/firmware/DistanciaCero_Sensor.ino) y [simulador](anexos/firmware/sim_dispositivo.py); [app web](https://jesushernandez2005.github.io/Proyecto4/app/) ([§12](#12-aplicacion-conectada)); el sitio con las Actividades 1–9 y esta memoria. Con Andrea: matriz de selección, PDS, conceptos, entrevistas y modelo financiero. |
+| Andrea Solano López | N · Negocio, usuarios y landing; D · Documentación, pitch y demo | Negocio, usuarios y comunicación | Negocio y usuarios: entrevistas ([§3](#3-usuario-y-evidencia-de-campo)), encuesta de 47 personas ([§18](#18-pruebas-con-usuarios)), modelo de negocio y [costos](DistanciaCero_costos_y_calculos.xlsx) ([§13](#13-modelo-de-negocio-business-blueprint), [§14](#14-costos-precio-y-viabilidad-financiera)); [landing](landing/index.html) con los tres productos ([§19](#19-landing-page)); [guion del pitch y la demo](anexos/DistanciaCero_guion_pitch_y_demo.pdf) y [presentación final](anexos/DistanciaCero_presentacion_final.pptx) ([§20](#20-pitch-y-demo)). Con Jesús: matriz de selección, PDS, conceptos, app web y modelo financiero. |
 
 Las responsabilidades de cada rol están en la sección 1 del acuerdo. El guion dice: "entre los dos hicimos el circuito, las entrevistas y el modelo financiero".
 
