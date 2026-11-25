@@ -1,9 +1,8 @@
 # Proyecto final: DistanciaCero
 
-<div style="display:flex;align-items:center;gap:14px;margin:6px 0 18px">
-<svg width="56" height="56" viewBox="0 0 64 64" aria-label="Logotipo de DistanciaCero"><rect width="64" height="64" rx="14" fill="#21303B"/><rect x="12" y="20" width="40" height="8" rx="4" fill="#C7922F"/><rect x="14" y="31" width="36" height="7" rx="3.5" fill="#3E7C5B"/></svg>
-<div><strong style="font-size:1.3rem">DistanciaCero</strong><br><span style="color:#555">Jesús León Hernández Martínez y Andrea Solano López · Proyectos 4 · IBERO Puebla · 2026</span></div>
-</div>
+<p align="center" markdown>![DistanciaCero. Cerca, sin invadir.](../DistanciaCero/logo/logo-completo.png){ width="280" }</p>
+
+<p align="center"><span style="color:#555">Jesús León Hernández Martínez y Andrea Solano López · Proyectos 4 · IBERO Puebla · 2026</span></p>
 
 Esta página es la memoria del proyecto final. Cada sección sigue la misma plantilla (**versión y fecha · decisión · evidencia · qué cambió · qué falta**). Lo que no tiene evidencia dice **HIPÓTESIS**; cada número tiene fuente o dice **SUPUESTO**. El detalle vive en las [actividades semanales](../actividades/actividad-01.md) y en los [anexos](anexos.md).
 
