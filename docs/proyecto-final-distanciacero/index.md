@@ -52,20 +52,20 @@ Esta página es la memoria del proyecto final. Cada sección sigue la misma plan
 
 | Campo | Contenido |
 |---|---|
-| **Versión** | v1.0 · 24/11/2026 (origen: semana 1) |
-| **Decisión** | Dos integrantes; el operador de la demo es Jesús (hardware) y la narradora, Andrea (sugerencia del guion). |
-| **Evidencia** | [Actividad 2, matriz de selección](../actividades/actividad-02.md); [guion](anexos/DistanciaCero_guion_pitch_y_demo.pdf). |
+| **Versión** | v1.1 · 25/11/2026 (origen: semana 1) |
+| **Decisión** | Dos integrantes con cuatro roles: Jesús lleva H (hardware y firmware) y A (app y nube); Andrea, N (negocio, usuarios y landing) y D (documentación, pitch y demo). |
+| **Evidencia** | [Acuerdo de colaboración firmado el 28/08/2026 (PDF)](../DistanciaCero/Acuerdo_de_colaboracion_DistanciaCero.pdf); [Actividad 2, matriz de selección](../actividades/actividad-02.md); [guion](anexos/DistanciaCero_guion_pitch_y_demo.pdf). |
 | **Qué cambió** | La ruta de la semana 9 pedía cuatro roles; somos dos, así que cada quien lleva dos. |
-| **Qué falta** | Acuerdo de colaboración firmado y roles confirmados. |
+| **Qué falta** | Enlazar los commits o archivos de cada quien en "quién hizo qué". |
 
 | Integrante | Rol | Área de interés | Quién hizo qué |
 |---|---|---|---|
-| Jesús León Hernández Martínez | **PENDIENTE** (el guion sugiere: operador de la demo, hardware) | Sistemas embebidos, electrónica, programación | **PENDIENTE** |
-| Andrea Solano López | **PENDIENTE** (el guion sugiere: narradora) | **PENDIENTE** | **PENDIENTE** |
+| Jesús León Hernández Martínez | H · Hardware y firmware; A · App y nube | Sistemas embebidos, electrónica, programación | **PENDIENTE** |
+| Andrea Solano López | N · Negocio, usuarios y landing; D · Documentación, pitch y demo | **PENDIENTE** | **PENDIENTE** |
 
-Lo único documentado del reparto es la frase del guion: "entre los dos hicimos el circuito, las entrevistas y el modelo financiero".
+Las responsabilidades de cada rol están en la sección 1 del acuerdo. El guion dice: "entre los dos hicimos el circuito, las entrevistas y el modelo financiero".
 
-**Acuerdo de colaboración:** **PENDIENTE.** Debe decir cómo se deciden las cosas, cómo se reparte el trabajo y qué pasa si alguien no entrega. **Razón del equipo:** nuestros abuelos, que han ido perdiendo movilidad al envejecer (Actividad 2).
+**Acuerdo de colaboración:** [firmado por los dos el 28/08/2026 (PDF)](../DistanciaCero/Acuerdo_de_colaboracion_DistanciaCero.pdf). Define los roles, la comunicación (WhatsApp, respuesta en 24 h hábiles), la reunión semanal (miércoles de 3 a 5 en la IBERO), las entregas internas 24 h antes, las reglas del repositorio y del uso de IA, cómo se decide (consenso, mayoría y, si hay empate, la opción con más evidencia) y qué pasa si alguien incumple. En la versión publicada se taparon los teléfonos. **Razón del equipo:** nuestros abuelos, que han ido perdiendo movilidad al envejecer (Actividad 2).
 
 ---
 

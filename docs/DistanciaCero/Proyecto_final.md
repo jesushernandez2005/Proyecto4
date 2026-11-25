@@ -69,16 +69,16 @@
 
 - **Versión y fecha:** v1 · Semana 1 → v9.1 · 24/11/2026
 - **Decisión:** el equipo es de dos personas, Jesús y Andrea, que se reparten 4 roles de cierre: **H** hardware y firmware · **A** app y nube · **N** negocio, usuarios y landing · **D** documentación, pitch y demo. Las reglas de trabajo quedan firmadas en el acuerdo de colaboración.
-- **Evidencia:** acuerdo de colaboración firmado `[ENLACE: PDF escaneado del acuerdo]`; historial de commits del [repositorio](https://github.com/jesushernandez2005/proyecto4/commits/main) (Anexo B).
+- **Evidencia:** [acuerdo de colaboración firmado el 28/08/2026 (PDF)](Acuerdo_de_colaboracion_DistanciaCero.pdf); historial de commits del [repositorio](https://github.com/jesushernandez2005/proyecto4/commits/main) (Anexo B).
 - **Qué cambió:** en la Semana 9 el trabajo pasó a roles con entregables por semana; cada integrante lleva dos roles.
-- **Qué falta:** el rol de cada quien y los enlaces de "quién hizo qué".
+- **Qué falta:** los enlaces de "quién hizo qué".
 
 | Integrante | Rol | Aportaciones verificables |
 |---|---|---|
-| Jesús León Hernández Martínez | `[ROL]` | Autor del sitio con las Actividades 1–9; coautor de la app web ([/app/](https://jesushernandez2005.github.io/Proyecto4/app/)) |
-| Andrea Solano López | `[ROL]` | Coautora (con Jesús) de la matriz de selección (Semana 2), el PDS (Semana 5), los conceptos (Semana 6) y la app web |
+| Jesús León Hernández Martínez | H · Hardware y firmware; A · App y nube | Autor del sitio con las Actividades 1–9; coautor de la app web ([/app/](https://jesushernandez2005.github.io/Proyecto4/app/)) |
+| Andrea Solano López | N · Negocio, usuarios y landing; D · Documentación, pitch y demo | Coautora (con Jesús) de la matriz de selección (Semana 2), el PDS (Semana 5), los conceptos (Semana 6) y la app web |
 
-**Acuerdo de colaboración:** documento Word con roles, reuniones, reglas del repositorio, uso de IA, decisiones, conflictos y firmas → `[ENLACE: acuerdo firmado]`.
+**Acuerdo de colaboración:** firmado por los dos el 28/08/2026, con roles, reuniones, reglas del repositorio, uso de IA, decisiones, conflictos y firmas → [Acuerdo de colaboración (PDF)](Acuerdo_de_colaboracion_DistanciaCero.pdf). En la versión publicada se taparon los teléfonos.
 
 ## 2. Problema y oportunidad
 
@@ -601,7 +601,7 @@
 | Anexo | Contenido | Enlace |
 |---|---|---|
 | **A** | BOM completa con cotizaciones (proveedor, fecha y captura) | `[URL_PENDIENTE: hoja BOM]` |
-| **B** | Repositorio, README, bitácora de commits y entregables por semana; tabla de licencias (R10); acuerdo de colaboración | [github.com/jesushernandez2005/proyecto4](https://github.com/jesushernandez2005/proyecto4) · README `[PENDIENTE]` |
+| **B** | Repositorio, README, bitácora de commits y entregables por semana; tabla de licencias (R10); acuerdo de colaboración | [github.com/jesushernandez2005/proyecto4](https://github.com/jesushernandez2005/proyecto4) · [Acuerdo de colaboración (PDF)](Acuerdo_de_colaboracion_DistanciaCero.pdf) · README `[PENDIENTE]` |
 | **C** | Archivos de diseño: CAD y STL de la carcasa, esquemático y PCB, firmware | `[URL_PENDIENTE: carpeta]` |
 | **D** | Datos crudos de entrevistas, sesiones y pruebas T1–T6 (con consentimiento; anonimizados) | `[URL_PENDIENTE: carpeta]` |
 | **E** | Modelo financiero con fórmulas visibles (CREAR/DISTRIBUIR, flujo, VPN, economía unitaria y sensibilidad) | `[URL_PENDIENTE: hoja]` |
